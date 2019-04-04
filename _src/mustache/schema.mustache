@@ -10,12 +10,12 @@
 
 {{> nav }}
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>{{ name }}</h1>
     <p>{{ description }}</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
     {{# schema.@parent }}
         <h2>Parent</h2>
         <a href="/{{ . }}">{{ . }}</a>
@@ -23,11 +23,11 @@
 
     {{# hasProperties }}
         <h2>Properties</h2>
-        <table>
+        <table class="site-schema__properties">
             {{# properties }}
-                <tr>
-                    <td>{{ @name }}</td>
-                    <td>{{ @description }}</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">{{ @name }}</td>
+                    <td class="site-schema__property__description">{{ @description }}</td>
                 </tr>
             {{/ properties }}
         </table>
@@ -35,11 +35,11 @@
    
     {{# hasOptions }}
         <h3>Options</h3>
-        <table>
+        <table class="site-schema__properties">
             {{# options }}
-                <tr>
-                    <td>{{ @name }}</td>
-                    <td>{{ @description }}</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">{{ @name }}</td>
+                    <td class="site-schema__property__description">{{ @description }}</td>
                 </tr>
             {{/ options }}
         </table>
@@ -49,23 +49,23 @@
         <h2>Example</h2>
     
         {{# exampleIframe }}
-            <details>
-                <summary>Visual</summary>
-                <iframe srcdoc="{{ . }}"></iframe>
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">Visual</summary>
+                <iframe class="site-schema__details__iframe" srcdoc="{{ . }}"></iframe>
             </details>
         {{/ exampleIframe }}
             
         {{# exampleHTML }}
-            <details>
-                <summary>HTML</summary>
-                <pre>{{ . }}</pre>
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">HTML</summary>
+                <pre class="site-schema__code">{{ . }}</pre>
             </details>
         {{/ exampleHTML }}
         
         {{# exampleJSON }}
-            <details>
-                <summary>JSON</summary>
-                <pre>{{ . }}"</pre>
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">JSON</summary>
+                <pre class="site-schema__code">{{ . }}"</pre>
             </details>
         {{/ exampleJSON }}
     {{/ hasExample }}
@@ -73,16 +73,16 @@
     <h2>Definition</h2>
 
     {{# json }}
-        <details>
-            <summary>JSON</summary>
-            <pre>{{{ . }}}</pre>
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{{{ . }}}</pre>
         </details>
     {{/ json }}
 
     {{# template }}
-        <details>
-            <summary>Template</summary>
-            <pre>{{ . }}</pre>
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">{{ . }}</pre>
         </details>
     {{/ template }}
 
