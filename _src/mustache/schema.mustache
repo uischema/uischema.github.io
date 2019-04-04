@@ -10,24 +10,41 @@
 
 {{> nav }}
 
-<header class="site-header ui-container">
-    <h1>{{ name }}</h1>
-    <p>{{ description }}</p>
+<header class="site-header">
+    <div class="ui-container site-header__container">
+        <h1 class="site-header__title">{{ name }}</h1>
+        <p class="site-header__description">{{ description }}</p>
+    </div>
+    
+    <div class="site-header__links">
+        <div class="ui-container site-header__links__container">
+            {{# schema.@parent }}
+                <div class="site-header__links__group">
+                    <span class="site-header__links__group__title">Parent: </span>
+                    <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
+                </div>
+            {{/ schema.@parent }}
+            {{# hasChildren }}
+                <div class="site-header__links__group">
+                    <span class="site-header__links__group__title">Children: </span>
+                    {{# children }}
+                        <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
+                    {{/ children }}
+                </div>
+            {{/ hasChildren }}
+        </div>
+    </div>
 </header>
     
-<main class="site-schema ui-container">
-    {{# schema.@parent }}
-        <h2>Parent</h2>
-        <a href="/{{ . }}">{{ . }}</a>
-    {{/ schema.@parent }}
-
+<main class="site-main site-schema ui-container">
     {{# hasProperties }}
         <h2>Properties</h2>
         <table class="site-schema__properties">
             {{# properties }}
                 <tr class="site-schema__property">
-                    <td class="site-schema__property__name">{{ @name }}</td>
-                    <td class="site-schema__property__description">{{ @description }}</td>
+                    <td class="site-schema__property__key">{{ key }}</td>
+                    <td class="site-schema__property__name">{{ name }}</td>
+                    <td class="site-schema__property__description">{{ description }}</td>
                 </tr>
             {{/ properties }}
         </table>
@@ -38,8 +55,9 @@
         <table class="site-schema__properties">
             {{# options }}
                 <tr class="site-schema__property">
-                    <td class="site-schema__property__name">{{ @name }}</td>
-                    <td class="site-schema__property__description">{{ @description }}</td>
+                    <td class="site-schema__property__key">{{ key }}</td>
+                    <td class="site-schema__property__name">{{ name }}</td>
+                    <td class="site-schema__property__description">{{ description }}</td>
                 </tr>
             {{/ options }}
         </table>

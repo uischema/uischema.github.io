@@ -12,47 +12,55 @@
     <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul class="site-nav__items">
-            <li>
-                <a href="/Feature">Feature</a>
-                <p>An element for featuring other content</p>
-            </li>
-            <li>
-                <a href="/Gallery">Gallery</a>
-                <p>A collection of featured items</p>
-            </li>
-            <li>
-                <a href="/Hero">Hero</a>
-                <p>A large element with an image background</p>
-            </li>
-            <li>
-                <a href="/Highlight">Highlight</a>
-                <p>A side-by-side image and accompanying text</p>
-            </li>
-            <li>
-                <a href="/Image">Image</a>
-                <p>A reference to an image</p>
-            </li>
-            <li>
-                <a href="/Link">Link</a>
-                <p>A reference to another page or element</p>
-            </li>
-            <li>
-                <a href="/Timeline">Timeline</a>
-                <p>A list of events</p>
-            </li>
-    </ul>
+    <div class="site-nav__items">
+            <a class="site-nav__item" href="/Feature">
+                <p class="site-nav__item__name">Feature</p>
+                <p class="site-nav__item__description">An element for featuring other content</p>
+            </a>
+            <a class="site-nav__item" href="/Gallery">
+                <p class="site-nav__item__name">Gallery</p>
+                <p class="site-nav__item__description">A collection of featured items</p>
+            </a>
+            <a class="site-nav__item" href="/Hero">
+                <p class="site-nav__item__name">Hero</p>
+                <p class="site-nav__item__description">A large element with an image background</p>
+            </a>
+            <a class="site-nav__item" href="/Highlight">
+                <p class="site-nav__item__name">Highlight</p>
+                <p class="site-nav__item__description">A side-by-side image and accompanying text</p>
+            </a>
+            <a class="site-nav__item" href="/Image">
+                <p class="site-nav__item__name">Image</p>
+                <p class="site-nav__item__description">A reference to an image</p>
+            </a>
+            <a class="site-nav__item" href="/Link">
+                <p class="site-nav__item__name">Link</p>
+                <p class="site-nav__item__description">A reference to another page or element</p>
+            </a>
+            <a class="site-nav__item" href="/Timeline">
+                <p class="site-nav__item__name">Timeline</p>
+                <p class="site-nav__item__description">A list of events</p>
+            </a>
+    </div>
 </nav>
 
-<header class="site-header ui-container">
-    <h1>Highlight</h1>
-    <p>A side-by-side image and accompanying text</p>
+<header class="site-header">
+    <div class="ui-container site-header__container">
+        <h1 class="site-header__title">Highlight</h1>
+        <p class="site-header__description">A side-by-side image and accompanying text</p>
+    </div>
+    
+    <div class="site-header__links">
+        <div class="ui-container site-header__links__container">
+                <div class="site-header__links__group">
+                    <span class="site-header__links__group__title">Parent: </span>
+                    <a href="/Feature" class="site-header__link">Feature</a>
+                </div>
+        </div>
+    </div>
 </header>
     
-<main class="site-schema ui-container">
-        <h2>Parent</h2>
-        <a href="/Feature">Feature</a>
-
+<main class="site-main site-schema ui-container">
    
    
    

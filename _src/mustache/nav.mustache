@@ -2,12 +2,12 @@
     <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul class="site-nav__items">
+    <div class="site-nav__items">
         {{# schemas }}
-            <li>
-                <a href="/{{ @type }}">{{ @i18n.en.@name }}</a>
-                <p>{{ @i18n.en.@description }}</p>
-            </li>
+            <a class="site-nav__item" href="/{{ @type }}">
+                <p class="site-nav__item__name">{{ @i18n.en.@name }}</p>
+                <p class="site-nav__item__description">{{ @i18n.en.@description }}</p>
+            </a>
         {{/ schemas }}
-    </ul>
+    </div>
 </nav>

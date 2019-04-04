@@ -1,10 +1,25 @@
 @import 'normalize';
 @import '../lib/uischema.org/css';
 
+@mixin link {
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+
+    &, &:visited {
+        color: dodgerblue;
+    }
+    
+    &:hover, &:focus, &:active {
+        color: white;
+        background-color: dodgerblue;
+    }
+}
+
 html {
     font-family: sans-serif;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.25;
 
     @include ui-screen('sm', 'width') {
         font-size: 15px;
@@ -13,6 +28,10 @@ html {
     @include ui-screen('xs', 'width') {
         font-size: 14px;
     }
+}
+
+.site-link {
+    @include link();
 }
 
 .site-nav {
@@ -24,9 +43,15 @@ html {
     &__toggle {
         display: block;
         cursor: pointer;
-        line-height: 2rem;
-        width: 2rem;
+        line-height: 3rem;
+        width: 3rem;
         text-align: center;
+        color: white;
+        background-color: dodgerblue;
+
+        &:hover, &:focus {
+            background-color: darkblue;
+        }
 
         &__checkbox {
             display: none;
@@ -45,17 +70,16 @@ html {
 
             &:checked {
                 display: block;
-            }
-
-            &:not(:checked) {
+                
                 + .site-nav__items {
-                    transform: translateX(-101%);
+                    transform: none;
                 }   
             }
         }
     }
 
     &__items {
+        transform: translateX(-101%);
         position: absolute;
         top: 0;
         left: 0;
@@ -63,12 +87,67 @@ html {
         overflow: auto;
         width: calc(100vw - 4rem);
         max-width: 20rem;
-        padding: 1rem;
         margin: 0;
         list-style-type: none;
         transition: transform 0.5s ease;
         background-color: white;
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    &__item {
+        padding: 1rem;
+        display: block;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            background-color: dodgerblue;
+        } 
+        
+        &:hover &, &:focus & {
+            &__name, &__description {
+                color: white;
+            }
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid lightgrey;
+        }
+
+        &__name {
+            font-weight: bold;
+            color: dodgerblue;
+        }
+
+        &__description {
+            color: black;
+        }
+    }
+}
+
+.site-header {
+    background-color: whitesmoke;
+    margin-bottom: 4rem;
+
+    &__container {
+        padding: 4rem 0;
+    }
+
+    &__links {
+        border-top: 1px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
+        background-color: whitesmoke;
+
+        &__container {
+            display: flex;
+        }
+    }
+
+    &__link {
+        padding: 0 1rem;
+        line-height: 3rem;
+        display: inline-block;
+
+        @include link();
     }
 }
 
@@ -76,16 +155,25 @@ html {
     &__properties {
         border: 0;
         border-spacing: 0;
+        width: 100%;
     }
 
     &__property {
-        &__name, &__description {
+        &__key, &__name, &__description {
             vertical-align: top;
             padding: 0.5rem 0;
             border-bottom: 1px solid lightgrey;
         }
 
+        &__key {
+            width: 20%;
+        }
+
         &__name {
+            width: 30%;
+        }
+
+        &__name, &__key {
             padding-right: 2rem;
         }
     }
@@ -98,7 +186,7 @@ html {
 
     &__details {
         margin-bottom: 1rem;
-        
+
         &__summary {
             cursor: pointer;
         }

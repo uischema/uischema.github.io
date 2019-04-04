@@ -92,6 +92,15 @@ async function renderSchemaPage(type) {
     view['template'] = await UISchema.getTemplate(type);
     view['json'] = await readFile('lib/uischema.org/schemas/' + type + '.json');
 
+    // Children
+    view['children'] = [];
+
+    for(let schema of view['schemas']) {
+        if(schema['@parent'] === view['schema']['@type']) {
+            view['children'].push(schema['@type']);
+        }
+    }
+
     // Example JSON, HTML and iFrame
     view['exampleJSON'] = await readFile('examples/' + type + '.json');
 
@@ -120,12 +129,35 @@ async function renderSchemaPage(type) {
 
     // Extract the options
     if(view['properties']['options']) {
-        view['options'] = Object.values(view['properties']['options']);
+        let options = [];
+        
+        for(let key in view['properties']['options']) {
+            options.push({
+                'key': key,
+                'name': view['properties']['options'][key]['@name'],
+                'description': view['properties']['options'][key]['@description']
+            });
+        }
+
+        view['options'] = options;
     }
     
-    view['properties'] = Object.values(view['properties']).filter((x) => { return !!x && !!x['@name'] && !!x['@description']; });
+    delete view['properties']['options'];
+    
+    let properties = [];
+
+    for(let key in view['properties']) {
+        properties.push({
+            'key': key,
+            'name': view['properties'][key]['@name'],
+            'description': view['properties'][key]['@description']
+        });
+    }
+
+    view['properties'] = properties;
 
     // Booleans
+    view['hasChildren'] = view['children'].length > 0;
     view['hasExample'] = !!view['exampleJSON'];
     view['hasOptions'] = Array.isArray(view['options']) && view['options'].length > 0;
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
