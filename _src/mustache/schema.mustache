@@ -61,8 +61,24 @@
                 </tr>
             {{/ options }}
         </table>
-    {{/ hasOptions }}
+    {{/ hasOptions }} 
    
+    <h2>Definition</h2>
+
+    {{# json }}
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{{{ . }}}</pre>
+        </details>
+    {{/ json }}
+
+    {{# template }}
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">{{ . }}</pre>
+        </details>
+    {{/ template }}
+
     {{# hasExample }}
         <h2>Example</h2>
     
@@ -87,21 +103,4 @@
             </details>
         {{/ exampleJSON }}
     {{/ hasExample }}
-   
-    <h2>Definition</h2>
-
-    {{# json }}
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">JSON</summary>
-            <pre class="site-schema__code">{{{ . }}}</pre>
-        </details>
-    {{/ json }}
-
-    {{# template }}
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">Template</summary>
-            <pre class="site-schema__code">{{ . }}</pre>
-        </details>
-    {{/ template }}
-
 </main>

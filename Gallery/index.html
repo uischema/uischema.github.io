@@ -104,6 +104,96 @@
                 </tr>
         </table>
    
+    <h2>Definition</h2>
+
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
+    "@context": "http://uischema.org",
+    "@type": "Gallery",
+    "heading": "string",
+    "subheading": "string",
+    "body": "string",
+    "items": [ "Feature" ],
+    "options": {
+        "useSquares": "bool",
+        "useCoverLinks": "bool",
+        "isCarousel": "bool",
+        "isGrid": "bool",
+        "columns": {
+            "xs": "int",
+            "sm": "int",
+            "md": "int",
+            "lg": "int",
+            "xl": "int"
+        }
+    },
+    "@i18n": {
+        "en": {
+            "@name": "Gallery",
+            "@description": "A collection of featured items",
+            "heading": {
+                "@name": "Heading",
+                "@description": "The largest heading"
+            },
+            "subheading": {
+                "@name": "Subheading",
+                "@description": "The smaller heading"
+            },
+            "body": {
+                "@name": "Body text",
+                "@description": "The smaller text under the headings"
+            },
+            "items": {
+                "@name": "Items",
+                "@description": "The list of featured items"
+            },
+            "options": {
+                "useSquares": {
+                    "@name": "Use squares",
+                    "@description": "Make the featured items square"
+                },
+                "useCoverLinks": {
+                    "@name": "Use cover links",
+                    "@description": "Make the featured items clickable"
+                },
+                "isCarousel": {
+                    "@name": "Is carousel",
+                    "@description": "Display all featured items in a single row"
+                }
+            }
+        }
+    }
+}
+</pre>
+        </details>
+
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
+        {{# heading }}
+            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
+        {{&#x2F; heading }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+        
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+    &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-gallery__items{{# options.isContained }} ui-container{{&#x2F; options.isContained }}&quot;&gt;
+        {{# items }}
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;{{&gt; Feature }}&lt;&#x2F;div&gt;
+        {{&#x2F; items }}
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
+</pre>
+        </details>
+
         <h2>Example</h2>
     
             <details class="site-schema__details">
@@ -292,95 +382,4 @@
     &quot;@type&quot;: &quot;Gallery&quot;
 }"</pre>
             </details>
-   
-    <h2>Definition</h2>
-
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">JSON</summary>
-            <pre class="site-schema__code">{
-    "@context": "http://uischema.org",
-    "@type": "Gallery",
-    "heading": "string",
-    "subheading": "string",
-    "body": "string",
-    "items": [ "Feature" ],
-    "options": {
-        "useSquares": "bool",
-        "useCoverLinks": "bool",
-        "isCarousel": "bool",
-        "isGrid": "bool",
-        "columns": {
-            "xs": "int",
-            "sm": "int",
-            "md": "int",
-            "lg": "int",
-            "xl": "int"
-        }
-    },
-    "@i18n": {
-        "en": {
-            "@name": "Gallery",
-            "@description": "A collection of featured items",
-            "heading": {
-                "@name": "Heading",
-                "@description": "The largest heading"
-            },
-            "subheading": {
-                "@name": "Subheading",
-                "@description": "The smaller heading"
-            },
-            "body": {
-                "@name": "Body text",
-                "@description": "The smaller text under the headings"
-            },
-            "items": {
-                "@name": "Items",
-                "@description": "The list of featured items"
-            },
-            "options": {
-                "useSquares": {
-                    "@name": "Use squares",
-                    "@description": "Make the featured items square"
-                },
-                "useCoverLinks": {
-                    "@name": "Use cover links",
-                    "@description": "Make the featured items clickable"
-                },
-                "isCarousel": {
-                    "@name": "Is carousel",
-                    "@description": "Display all featured items in a single row"
-                }
-            }
-        }
-    }
-}
-</pre>
-        </details>
-
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">Template</summary>
-            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
-    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
-        {{# heading }}
-            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
-        {{&#x2F; heading }}
-        
-        {{# subheading }}
-            &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
-        {{&#x2F; subheading }}
-        
-        {{# body }}
-            &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
-        {{&#x2F; body }}
-    &lt;&#x2F;div&gt;
-
-    &lt;div class&#x3D;&quot;ui-gallery__items{{# options.isContained }} ui-container{{&#x2F; options.isContained }}&quot;&gt;
-        {{# items }}
-            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;{{&gt; Feature }}&lt;&#x2F;div&gt;
-        {{&#x2F; items }}
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;section&gt;
-</pre>
-        </details>
-
 </main>

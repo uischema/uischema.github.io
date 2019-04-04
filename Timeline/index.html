@@ -76,6 +76,65 @@
         </table>
    
    
+    <h2>Definition</h2>
+
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
+    "@context": "http://uischema.org",
+    "@type": "Timeline",
+    "@parent": "Gallery",
+    "link": "Link",
+    "@i18n": {
+        "en": {
+            "@name": "Timeline",
+            "@description": "A list of events",
+            "items": {
+                "@name": "Items",
+                "@description": "The events"
+            },
+            "link": {
+                "@name": "Link",
+                "@description": "A link after the events"
+            }
+        }
+    }
+}
+</pre>
+        </details>
+
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
+        {{# heading }}
+            &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
+        {{&#x2F; heading }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-timeline__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+        
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-timeline__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+        
+        &lt;div class&#x3D;&quot;ui-timeline__items&quot;&gt;
+            {{# items }}
+                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;
+                    {{&gt; Feature }}
+                &lt;&#x2F;div&gt;
+            {{&#x2F; items }}
+            
+            {{# link }}
+                &lt;div class&#x3D;&quot;ui-timeline__link&quot;&gt;{{&gt; Link }}&lt;&#x2F;div&gt;
+            {{&#x2F; link }}
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
+</pre>
+        </details>
+
         <h2>Example</h2>
     
             <details class="site-schema__details">
@@ -277,64 +336,4 @@
     &quot;@type&quot;: &quot;Timeline&quot;
 }"</pre>
             </details>
-   
-    <h2>Definition</h2>
-
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">JSON</summary>
-            <pre class="site-schema__code">{
-    "@context": "http://uischema.org",
-    "@type": "Timeline",
-    "@parent": "Gallery",
-    "link": "Link",
-    "@i18n": {
-        "en": {
-            "@name": "Timeline",
-            "@description": "A list of events",
-            "items": {
-                "@name": "Items",
-                "@description": "The events"
-            },
-            "link": {
-                "@name": "Link",
-                "@description": "A link after the events"
-            }
-        }
-    }
-}
-</pre>
-        </details>
-
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">Template</summary>
-            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
-    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
-        {{# heading }}
-            &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
-        {{&#x2F; heading }}
-        
-        {{# subheading }}
-            &lt;h3 class&#x3D;&quot;ui-timeline__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
-        {{&#x2F; subheading }}
-        
-        {{# body }}
-            &lt;div class&#x3D;&quot;ui-timeline__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
-        {{&#x2F; body }}
-        
-        &lt;div class&#x3D;&quot;ui-timeline__items&quot;&gt;
-            {{# items }}
-                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;
-                    {{&gt; Feature }}
-                &lt;&#x2F;div&gt;
-            {{&#x2F; items }}
-            
-            {{# link }}
-                &lt;div class&#x3D;&quot;ui-timeline__link&quot;&gt;{{&gt; Link }}&lt;&#x2F;div&gt;
-            {{&#x2F; link }}
-        &lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;section&gt;
-</pre>
-        </details>
-
 </main>
