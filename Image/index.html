@@ -8,11 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<nav>
-    <label for="nav__toggle">☰</label>
-    <input id="nav__toggle" type="checkbox">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul>
+    <ul class="site-nav__items">
             <li>
                 <a href="/Feature">Feature</a>
                 <p>An element for featuring other content</p>
@@ -44,22 +44,22 @@
     </ul>
 </nav>
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>Image</h1>
     <p>A reference to an image</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
 
         <h2>Properties</h2>
-        <table>
-                <tr>
-                    <td>Source</td>
-                    <td>The source of the image</td>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Source</td>
+                    <td class="site-schema__property__description">The source of the image</td>
                 </tr>
-                <tr>
-                    <td>Description</td>
-                    <td>A short description of the image</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Description</td>
+                    <td class="site-schema__property__description">A short description of the image</td>
                 </tr>
         </table>
    
@@ -67,9 +67,9 @@
    
     <h2>Definition</h2>
 
-        <details>
-            <summary>JSON</summary>
-            <pre>{
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Image",
     "@description": "An image element",
@@ -94,9 +94,9 @@
 </pre>
         </details>
 
-        <details>
-            <summary>Template</summary>
-            <pre>&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;{{{ src }}}&quot; alt&#x3D;&quot;{{ alt }}&quot;&gt;
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;{{{ src }}}&quot; alt&#x3D;&quot;{{ alt }}&quot;&gt;
 </pre>
         </details>
 

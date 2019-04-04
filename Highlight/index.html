@@ -8,11 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<nav>
-    <label for="nav__toggle">☰</label>
-    <input id="nav__toggle" type="checkbox">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul>
+    <ul class="site-nav__items">
             <li>
                 <a href="/Feature">Feature</a>
                 <p>An element for featuring other content</p>
@@ -44,12 +44,12 @@
     </ul>
 </nav>
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>Highlight</h1>
     <p>A side-by-side image and accompanying text</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
         <h2>Parent</h2>
         <a href="/Feature">Feature</a>
 
@@ -58,9 +58,9 @@
    
     <h2>Definition</h2>
 
-        <details>
-            <summary>JSON</summary>
-            <pre>{
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Highlight",
     "@parent": "Feature",
@@ -74,9 +74,9 @@
 </pre>
         </details>
 
-        <details>
-            <summary>Template</summary>
-            <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Highlight&quot; class&#x3D;&quot;ui-highlight{{^ image }} no-image{{&#x2F; image }}&quot;&gt;
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Highlight&quot; class&#x3D;&quot;ui-highlight{{^ image }} no-image{{&#x2F; image }}&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container ui-highlight__container&quot;&gt;
         &lt;div class&#x3D;&quot;ui-highlight__details&quot;&gt;
             {{# heading }}

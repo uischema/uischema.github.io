@@ -8,11 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<nav>
-    <label for="nav__toggle">☰</label>
-    <input id="nav__toggle" type="checkbox">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul>
+    <ul class="site-nav__items">
             <li>
                 <a href="/Feature">Feature</a>
                 <p>An element for featuring other content</p>
@@ -44,59 +44,59 @@
     </ul>
 </nav>
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>Gallery</h1>
     <p>A collection of featured items</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
 
         <h2>Properties</h2>
-        <table>
-                <tr>
-                    <td>Heading</td>
-                    <td>The largest heading</td>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Heading</td>
+                    <td class="site-schema__property__description">The largest heading</td>
                 </tr>
-                <tr>
-                    <td>Subheading</td>
-                    <td>The smaller heading</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Subheading</td>
+                    <td class="site-schema__property__description">The smaller heading</td>
                 </tr>
-                <tr>
-                    <td>Body text</td>
-                    <td>The smaller text under the headings</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Body text</td>
+                    <td class="site-schema__property__description">The smaller text under the headings</td>
                 </tr>
-                <tr>
-                    <td>Items</td>
-                    <td>The list of featured items</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Items</td>
+                    <td class="site-schema__property__description">The list of featured items</td>
                 </tr>
         </table>
    
         <h3>Options</h3>
-        <table>
-                <tr>
-                    <td>Use squares</td>
-                    <td>Make the featured items square</td>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Use squares</td>
+                    <td class="site-schema__property__description">Make the featured items square</td>
                 </tr>
-                <tr>
-                    <td>Use cover links</td>
-                    <td>Make the featured items clickable</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Use cover links</td>
+                    <td class="site-schema__property__description">Make the featured items clickable</td>
                 </tr>
-                <tr>
-                    <td>Is carousel</td>
-                    <td>Display all featured items in a single row</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Is carousel</td>
+                    <td class="site-schema__property__description">Display all featured items in a single row</td>
                 </tr>
         </table>
    
         <h2>Example</h2>
     
-            <details>
-                <summary>Visual</summary>
-                <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">Visual</summary>
+                <iframe class="site-schema__details__iframe" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
             </details>
             
-            <details>
-                <summary>HTML</summary>
-                <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">HTML</summary>
+                <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
             &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
         
@@ -179,9 +179,9 @@
 </pre>
             </details>
         
-            <details>
-                <summary>JSON</summary>
-                <pre>{
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">JSON</summary>
+                <pre class="site-schema__code">{
     &quot;heading&quot;: &quot;Heading&quot;,
     &quot;subheading&quot;: &quot;Subheading&quot;,
     &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
@@ -278,9 +278,9 @@
    
     <h2>Definition</h2>
 
-        <details>
-            <summary>JSON</summary>
-            <pre>{
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Gallery",
     "heading": "string",
@@ -340,9 +340,9 @@
 </pre>
         </details>
 
-        <details>
-            <summary>Template</summary>
-            <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
         {{# heading }}
             &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;

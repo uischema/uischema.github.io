@@ -8,11 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<nav>
-    <label for="nav__toggle">☰</label>
-    <input id="nav__toggle" type="checkbox">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul>
+    <ul class="site-nav__items">
             <li>
                 <a href="/Feature">Feature</a>
                 <p>An element for featuring other content</p>
@@ -44,38 +44,38 @@
     </ul>
 </nav>
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>Timeline</h1>
     <p>A list of events</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
         <h2>Parent</h2>
         <a href="/Gallery">Gallery</a>
 
         <h2>Properties</h2>
-        <table>
-                <tr>
-                    <td>Items</td>
-                    <td>The list events</td>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Items</td>
+                    <td class="site-schema__property__description">The list events</td>
                 </tr>
-                <tr>
-                    <td>Link</td>
-                    <td>A link after the events</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Link</td>
+                    <td class="site-schema__property__description">A link after the events</td>
                 </tr>
         </table>
    
    
         <h2>Example</h2>
     
-            <details>
-                <summary>Visual</summary>
-                <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-timeline__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-timeline__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__items&quot;&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                            &lt;div class&#x3D;&quot;ui-timeline__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;        &lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">Visual</summary>
+                <iframe class="site-schema__details__iframe" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-timeline__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-timeline__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__items&quot;&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                &lt;div class&#x3D;&quot;ui-timeline__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;                &lt;&#x2F;div&gt;                            &lt;div class&#x3D;&quot;ui-timeline__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;        &lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
             </details>
             
-            <details>
-                <summary>HTML</summary>
-                <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">HTML</summary>
+                <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
             &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
         
@@ -165,9 +165,9 @@
 </pre>
             </details>
         
-            <details>
-                <summary>JSON</summary>
-                <pre>{
+            <details class="site-schema__details">
+                <summary class="site-schema__details__summary">JSON</summary>
+                <pre class="site-schema__code">{
     &quot;link&quot;: {
         &quot;text&quot;: &quot;Link&quot;,
         &quot;href&quot;: &quot;#&quot;,
@@ -270,9 +270,9 @@
    
     <h2>Definition</h2>
 
-        <details>
-            <summary>JSON</summary>
-            <pre>{
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Timeline",
     "@parent": "Gallery",
@@ -295,9 +295,9 @@
 </pre>
         </details>
 
-        <details>
-            <summary>Template</summary>
-            <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Timeline&quot; class&#x3D;&quot;ui-timeline&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
         {{# heading }}
             &lt;h2 class&#x3D;&quot;ui-timeline__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;

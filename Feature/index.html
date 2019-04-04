@@ -8,11 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-<nav>
-    <label for="nav__toggle">☰</label>
-    <input id="nav__toggle" type="checkbox">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
 
-    <ul>
+    <ul class="site-nav__items">
             <li>
                 <a href="/Feature">Feature</a>
                 <p>An element for featuring other content</p>
@@ -44,30 +44,30 @@
     </ul>
 </nav>
 
-<header class="ui-container">
+<header class="site-header ui-container">
     <h1>Feature</h1>
     <p>An element for featuring other content</p>
 </header>
     
-<main class="ui-container">
+<main class="site-schema ui-container">
 
         <h2>Properties</h2>
-        <table>
-                <tr>
-                    <td>Image</td>
-                    <td>The main image</td>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Image</td>
+                    <td class="site-schema__property__description">The main image</td>
                 </tr>
-                <tr>
-                    <td>Heading</td>
-                    <td>The largest heading</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Heading</td>
+                    <td class="site-schema__property__description">The largest heading</td>
                 </tr>
-                <tr>
-                    <td>Subheading</td>
-                    <td>The smaller heading</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Subheading</td>
+                    <td class="site-schema__property__description">The smaller heading</td>
                 </tr>
-                <tr>
-                    <td>Body text</td>
-                    <td>The smaller text under the headings</td>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__name">Body text</td>
+                    <td class="site-schema__property__description">The smaller text under the headings</td>
                 </tr>
         </table>
    
@@ -75,9 +75,9 @@
    
     <h2>Definition</h2>
 
-        <details>
-            <summary>JSON</summary>
-            <pre>{
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">JSON</summary>
+            <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Feature",
     "image": "Image",
@@ -111,9 +111,9 @@
 </pre>
         </details>
 
-        <details>
-            <summary>Template</summary>
-            <pre>&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
+        <details class="site-schema__details">
+            <summary class="site-schema__details__summary">Template</summary>
+            <pre class="site-schema__code">&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
     {{# image }}
         &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;
             {{&gt; Image }}
