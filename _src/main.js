@@ -207,6 +207,7 @@ async function serve(req, res) {
  * Generates the pages
  */
 async function generate() {
+    // Remove all but the default files in the root dir
     for(let filename of await Util.promisify(FileSystem.readdir)(ROOT_DIR)) {
         if(
             filename === '_src' ||
@@ -220,10 +221,12 @@ async function generate() {
         await unlink(Path.join(ROOT_DIR, filename));
     }
 
+    // Render the index page
     let indexPage = await renderIndexPage();
 
     await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
 
+    // Render the schema pages
     for(let type in await UISchema.getSchemas()) {
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, type));
 
@@ -232,6 +235,7 @@ async function generate() {
         await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
     }
         
+    // Create "css" directory
     await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'css'));
   
     for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'css'))) {
@@ -240,6 +244,7 @@ async function generate() {
         await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'css', filename), Path.join(ROOT_DIR, 'css', filename));
     }
 
+    // Create "img" directory
     await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
 
     for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'img'))) {
@@ -253,6 +258,7 @@ async function generate() {
  * Main
  */
 async function main() {
+    // Load all views into memory first
     await loadViews();
     
     switch(process.argv[2]) {
