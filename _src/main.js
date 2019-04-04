@@ -75,13 +75,6 @@ async function loadViews() {
 }
 
 /**
- * Test
- */
-async function test() {
-    console.log('Test!');
-}
-
-/**
  * Render a schema page
  *
  * @param {String} type
@@ -91,11 +84,15 @@ async function test() {
 async function renderSchemaPage(type) {
     let view = {};
 
+    // List of all schemas (for the nav)
     view['schemas'] = Object.values(await UISchema.getSchemas());
     
+    // Definition content
     view['schema'] = await UISchema.getSchema(type);
     view['template'] = await UISchema.getTemplate(type);
     view['json'] = await readFile('lib/uischema.org/schemas/' + type + '.json');
+
+    // Example JSON, HTML and iFrame
     view['exampleJSON'] = await readFile('examples/' + type + '.json');
 
     if(view['exampleJSON']) {
@@ -111,14 +108,17 @@ async function renderSchemaPage(type) {
         view['exampleIframe'] = iframe;
     }
 
+    // Properties
     view['properties'] = view['schema']['@i18n']['en'];
 
+    // Extract the name and description
     view['name'] = view['properties']['@name'];
     view['description'] = view['properties']['@description'];
 
     delete view['properties']['@name'];
     delete view['properties']['@description'];
 
+    // Extract the options
     if(view['properties']['options']) {
         view['options'] = Object.values(view['properties']['options']);
     }
@@ -130,6 +130,7 @@ async function renderSchemaPage(type) {
     view['hasOptions'] = Array.isArray(view['options']) && view['options'].length > 0;
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
 
+    // Render the view
     return Mustache.render(MUSTACHE['schema'], view, MUSTACHE);
 }
 
@@ -163,14 +164,14 @@ async function serve(req, res) {
             break;
 
         case 'css':
-            let css = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, 'css', path[1]), 'utf8');
+            let css = await readFile('css/' + path[1]);
 
             res.writeHead(200, { 'Content-Type': 'text/css' }); 
             res.end(css);
             break;
         
         case 'img':
-            let img = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, 'img', path[1]));
+            let img = await readFile('img/' + path[1], true);
 
             res.writeHead(200, { 'Content-Type': 'image/jpeg' }); 
             res.end(img);
@@ -260,16 +261,14 @@ async function main() {
             HTTP.createServer(serve).listen(PORT);
             break;
 
-        case 'test':
-            console.log('Running test...');
-            await test();
-            console.log('...test done');
-            break;
-
-        default:
+        case 'generate':
             console.log('Generating site...');
             await generate();
             console.log('...done generating site');
+            break;
+
+        default:
+            console.log('Usage: node main.js [generate|serve]');
             break;
     }
 }
