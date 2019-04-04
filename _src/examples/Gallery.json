@@ -1,0 +1,48 @@
+{
+    "@type": "Gallery",
+    "heading": "Heading",
+    "subheading": "Subheading",
+    "body": "<p>Body</p>",
+    "items": [
+        {
+            "@type": "Feature",
+            "heading": "Heading",
+            "subheading": "Subheading",
+            "body": "<p>Body</p>",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Heading",
+            "subheading": "Subheading",
+            "body": "<p>Body</p>",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Heading",
+            "subheading": "Subheading",
+            "body": "<p>Body</p>",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Heading",
+            "subheading": "Subheading",
+            "body": "<p>Body</p>",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        }
+    ]
+}

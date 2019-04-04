@@ -1,0 +1,13 @@
+<nav>
+    <label for="nav__toggle">☰</label>
+    <input id="nav__toggle" type="checkbox">
+
+    <ul>
+        {{# schemas }}
+            <li>
+                <a href="/{{ @type }}">{{ @i18n.en.@name }}</a>
+                <p>{{ @i18n.en.@description }}</p>
+            </li>
+        {{/ schemas }}
+    </ul>
+</nav>

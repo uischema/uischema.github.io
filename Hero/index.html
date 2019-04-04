@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<title>Hero</title>
+
+<meta name="description" content="A large element with an image background">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<nav>
+    <label for="nav__toggle">☰</label>
+    <input id="nav__toggle" type="checkbox">
+
+    <ul>
+            <li>
+                <a href="/Feature">Feature</a>
+                <p>An element for featuring other content</p>
+            </li>
+            <li>
+                <a href="/Gallery">Gallery</a>
+                <p>A collection of featured items</p>
+            </li>
+            <li>
+                <a href="/Hero">Hero</a>
+                <p>A large element with an image background</p>
+            </li>
+            <li>
+                <a href="/Highlight">Highlight</a>
+                <p>A side-by-side image and accompanying text</p>
+            </li>
+            <li>
+                <a href="/Image">Image</a>
+                <p>A reference to an image</p>
+            </li>
+            <li>
+                <a href="/Link">Link</a>
+                <p>A reference to another page or element</p>
+            </li>
+            <li>
+                <a href="/Timeline">Timeline</a>
+                <p>A list of events</p>
+            </li>
+    </ul>
+</nav>
+
+<header class="ui-container">
+    <h1>Hero</h1>
+    <p>A large element with an image background</p>
+</header>
+    
+<main class="ui-container">
+        <h2>Parent</h2>
+        <a href="/Feature">Feature</a>
+
+   
+   
+        <h2>Example</h2>
+    
+            <details>
+                <summary>Visual</summary>
+                <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;    &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;            &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Background&quot;&gt;&lt;&#x2F;div&gt;                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-hero__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
+            </details>
+            
+            <details>
+                <summary>HTML</summary>
+                <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;
+            &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Background&quot;&gt;
+&lt;&#x2F;div&gt;
+
+                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
+        
+            &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;
+
+            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+
+            &lt;div class&#x3D;&quot;ui-hero__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
+</pre>
+            </details>
+        
+            <details>
+                <summary>JSON</summary>
+                <pre>{
+    &quot;options&quot;: {
+        &quot;isHeader&quot;: false
+    },
+    &quot;image&quot;: {
+        &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+        &quot;srcset&quot;: &quot;&quot;,
+        &quot;alt&quot;: &quot;Background&quot;,
+        &quot;@type&quot;: &quot;Image&quot;
+    },
+    &quot;heading&quot;: &quot;Heading&quot;,
+    &quot;subheading&quot;: &quot;Subheading&quot;,
+    &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+    &quot;link&quot;: {
+        &quot;text&quot;: &quot;Link&quot;,
+        &quot;href&quot;: &quot;#&quot;,
+        &quot;openNew&quot;: false,
+        &quot;@type&quot;: &quot;Link&quot;
+    },
+    &quot;@type&quot;: &quot;Hero&quot;
+}"</pre>
+            </details>
+   
+    <h2>Definition</h2>
+
+        <details>
+            <summary>JSON</summary>
+            <pre>{
+    "@context": "http://uischema.org",
+    "@type": "Hero",
+    "@parent": "Feature",
+    "options": {
+        "isHeader": "bool"
+    },
+    "@i18n": {
+        "en": {
+            "@name": "Hero",
+            "@description": "A large element with an image background"
+        }
+    }
+}
+</pre>
+        </details>
+
+        <details>
+            <summary>Template</summary>
+            <pre>&lt;{{# options.isHeader }}header{{&#x2F; options.isHeader  }}{{^ options.isHeader }}section{{&#x2F; options.isHeader }} data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;
+        {{# image }}
+            &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;{{&gt; Image }}&lt;&#x2F;div&gt;
+        {{&#x2F; image }}
+
+        {{# options.isHeader }}
+            {{# heading }}
+                &lt;h1 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{{ . }}}&lt;&#x2F;h1&gt;
+            {{&#x2F; heading }}
+        {{&#x2F; options.isHeader }}
+        {{^ options.isHeader }}
+            {{# heading }}
+                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{{ . }}}&lt;&#x2F;h2&gt;
+            {{&#x2F; heading }}
+        {{&#x2F; options.isHeader }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;{{{ . }}}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+
+        {{# link }}
+            &lt;div class&#x3D;&quot;ui-hero__link&quot;&gt;{{&gt; Link }}&lt;&#x2F;div&gt;
+        {{&#x2F; link }}
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;{{# options.isHeader }}header{{&#x2F; options.isHeader  }}{{^ options.isHeader }}section{{&#x2F; options.isHeader }}&gt;
+</pre>
+        </details>
+
+</main>

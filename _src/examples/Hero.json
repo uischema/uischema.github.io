@@ -1,0 +1,14 @@
+{
+    "@type": "Hero",
+    "heading": "Heading",
+    "subheading": "Subheading",
+    "body": "<p>Body</p>",
+    "image": {
+        "src": "/img/bg.jpg",
+        "alt": "Background"
+    },
+    "link": {
+        "text": "Link",
+        "href": "#"
+    }
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<title>Gallery</title>
+
+<meta name="description" content="A collection of featured items">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<nav>
+    <label for="nav__toggle">☰</label>
+    <input id="nav__toggle" type="checkbox">
+
+    <ul>
+            <li>
+                <a href="/Feature">Feature</a>
+                <p>An element for featuring other content</p>
+            </li>
+            <li>
+                <a href="/Gallery">Gallery</a>
+                <p>A collection of featured items</p>
+            </li>
+            <li>
+                <a href="/Hero">Hero</a>
+                <p>A large element with an image background</p>
+            </li>
+            <li>
+                <a href="/Highlight">Highlight</a>
+                <p>A side-by-side image and accompanying text</p>
+            </li>
+            <li>
+                <a href="/Image">Image</a>
+                <p>A reference to an image</p>
+            </li>
+            <li>
+                <a href="/Link">Link</a>
+                <p>A reference to another page or element</p>
+            </li>
+            <li>
+                <a href="/Timeline">Timeline</a>
+                <p>A list of events</p>
+            </li>
+    </ul>
+</nav>
+
+<header class="ui-container">
+    <h1>Gallery</h1>
+    <p>A collection of featured items</p>
+</header>
+    
+<main class="ui-container">
+
+        <h2>Properties</h2>
+        <table>
+                <tr>
+                    <td>Heading</td>
+                    <td>The largest heading</td>
+                </tr>
+                <tr>
+                    <td>Subheading</td>
+                    <td>The smaller heading</td>
+                </tr>
+                <tr>
+                    <td>Body text</td>
+                    <td>The smaller text under the headings</td>
+                </tr>
+                <tr>
+                    <td>Items</td>
+                    <td>The list of featured items</td>
+                </tr>
+        </table>
+   
+        <h3>Options</h3>
+        <table>
+                <tr>
+                    <td>Use squares</td>
+                    <td>Make the featured items square</td>
+                </tr>
+                <tr>
+                    <td>Use cover links</td>
+                    <td>Make the featured items clickable</td>
+                </tr>
+                <tr>
+                    <td>Is carousel</td>
+                    <td>Display all featured items in a single row</td>
+                </tr>
+        </table>
+   
+        <h2>Example</h2>
+    
+            <details>
+                <summary>Visual</summary>
+                <iframe srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
+            </details>
+            
+            <details>
+                <summary>HTML</summary>
+                <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery &quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
+            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
+        
+            &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;
+        
+            &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
+        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;
+&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;
+        &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;
+            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;
+        
+            &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;
+        
+            &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+
+            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
+        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;
+&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;
+        &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;
+            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;
+        
+            &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;
+        
+            &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+
+            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
+        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;
+&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;
+        &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;
+            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;
+        
+            &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;
+        
+            &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+
+            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;
+        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;
+&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;
+        &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;
+            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;
+        
+            &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;
+        
+            &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
+
+            &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;&quot; &gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
+</pre>
+            </details>
+        
+            <details>
+                <summary>JSON</summary>
+                <pre>{
+    &quot;heading&quot;: &quot;Heading&quot;,
+    &quot;subheading&quot;: &quot;Subheading&quot;,
+    &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+    &quot;items&quot;: [
+        {
+            &quot;image&quot;: {
+                &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+                &quot;srcset&quot;: &quot;&quot;,
+                &quot;alt&quot;: &quot;Feature&quot;,
+                &quot;@type&quot;: &quot;Image&quot;
+            },
+            &quot;heading&quot;: &quot;Heading&quot;,
+            &quot;subheading&quot;: &quot;Subheading&quot;,
+            &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+            &quot;link&quot;: {
+                &quot;text&quot;: &quot;&quot;,
+                &quot;href&quot;: &quot;&quot;,
+                &quot;openNew&quot;: false,
+                &quot;@type&quot;: &quot;Link&quot;
+            },
+            &quot;@type&quot;: &quot;Feature&quot;
+        },
+        {
+            &quot;image&quot;: {
+                &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+                &quot;srcset&quot;: &quot;&quot;,
+                &quot;alt&quot;: &quot;Feature&quot;,
+                &quot;@type&quot;: &quot;Image&quot;
+            },
+            &quot;heading&quot;: &quot;Heading&quot;,
+            &quot;subheading&quot;: &quot;Subheading&quot;,
+            &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+            &quot;link&quot;: {
+                &quot;text&quot;: &quot;&quot;,
+                &quot;href&quot;: &quot;&quot;,
+                &quot;openNew&quot;: false,
+                &quot;@type&quot;: &quot;Link&quot;
+            },
+            &quot;@type&quot;: &quot;Feature&quot;
+        },
+        {
+            &quot;image&quot;: {
+                &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+                &quot;srcset&quot;: &quot;&quot;,
+                &quot;alt&quot;: &quot;Feature&quot;,
+                &quot;@type&quot;: &quot;Image&quot;
+            },
+            &quot;heading&quot;: &quot;Heading&quot;,
+            &quot;subheading&quot;: &quot;Subheading&quot;,
+            &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+            &quot;link&quot;: {
+                &quot;text&quot;: &quot;&quot;,
+                &quot;href&quot;: &quot;&quot;,
+                &quot;openNew&quot;: false,
+                &quot;@type&quot;: &quot;Link&quot;
+            },
+            &quot;@type&quot;: &quot;Feature&quot;
+        },
+        {
+            &quot;image&quot;: {
+                &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+                &quot;srcset&quot;: &quot;&quot;,
+                &quot;alt&quot;: &quot;Feature&quot;,
+                &quot;@type&quot;: &quot;Image&quot;
+            },
+            &quot;heading&quot;: &quot;Heading&quot;,
+            &quot;subheading&quot;: &quot;Subheading&quot;,
+            &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+            &quot;link&quot;: {
+                &quot;text&quot;: &quot;&quot;,
+                &quot;href&quot;: &quot;&quot;,
+                &quot;openNew&quot;: false,
+                &quot;@type&quot;: &quot;Link&quot;
+            },
+            &quot;@type&quot;: &quot;Feature&quot;
+        }
+    ],
+    &quot;options&quot;: {
+        &quot;useSquares&quot;: false,
+        &quot;useCoverLinks&quot;: false,
+        &quot;isCarousel&quot;: false,
+        &quot;isGrid&quot;: false,
+        &quot;columns&quot;: {
+            &quot;xs&quot;: 0,
+            &quot;sm&quot;: 0,
+            &quot;md&quot;: 0,
+            &quot;lg&quot;: 0,
+            &quot;xl&quot;: 0
+        }
+    },
+    &quot;@type&quot;: &quot;Gallery&quot;
+}"</pre>
+            </details>
+   
+    <h2>Definition</h2>
+
+        <details>
+            <summary>JSON</summary>
+            <pre>{
+    "@context": "http://uischema.org",
+    "@type": "Gallery",
+    "heading": "string",
+    "subheading": "string",
+    "body": "string",
+    "items": [ "Feature" ],
+    "options": {
+        "useSquares": "bool",
+        "useCoverLinks": "bool",
+        "isCarousel": "bool",
+        "isGrid": "bool",
+        "columns": {
+            "xs": "int",
+            "sm": "int",
+            "md": "int",
+            "lg": "int",
+            "xl": "int"
+        }
+    },
+    "@i18n": {
+        "en": {
+            "@name": "Gallery",
+            "@description": "A collection of featured items",
+            "heading": {
+                "@name": "Heading",
+                "@description": "The largest heading"
+            },
+            "subheading": {
+                "@name": "Subheading",
+                "@description": "The smaller heading"
+            },
+            "body": {
+                "@name": "Body text",
+                "@description": "The smaller text under the headings"
+            },
+            "items": {
+                "@name": "Items",
+                "@description": "The list of featured items"
+            },
+            "options": {
+                "useSquares": {
+                    "@name": "Use squares",
+                    "@description": "Make the featured items square"
+                },
+                "useCoverLinks": {
+                    "@name": "Use cover links",
+                    "@description": "Make the featured items clickable"
+                },
+                "isCarousel": {
+                    "@name": "Is carousel",
+                    "@description": "Display all featured items in a single row"
+                }
+            }
+        }
+    }
+}
+</pre>
+        </details>
+
+        <details>
+            <summary>Template</summary>
+            <pre>&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container&quot;&gt;
+        {{# heading }}
+            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
+        {{&#x2F; heading }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+        
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+    &lt;&#x2F;div&gt;
+
+    &lt;div class&#x3D;&quot;ui-gallery__items{{# options.isContained }} ui-container{{&#x2F; options.isContained }}&quot;&gt;
+        {{# items }}
+            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;{{&gt; Feature }}&lt;&#x2F;div&gt;
+        {{&#x2F; items }}
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
+</pre>
+        </details>
+
+</main>
