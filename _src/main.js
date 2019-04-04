@@ -211,6 +211,7 @@ async function generate() {
     for(let filename of await Util.promisify(FileSystem.readdir)(ROOT_DIR)) {
         if(
             filename === '_src' ||
+            filename === 'CNAME' ||
             filename === '.git' ||
             filename === '.gitignore' ||
             filename === '.gitmodules' ||
