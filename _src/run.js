@@ -31,6 +31,25 @@ async function readFile(path, isBinary = false) {
 }
 
 /**
+ * Removes a file or directory
+ *
+ * @param {String} path
+ */
+async function unlink(path) {
+    if(FileSystem.lstatSync(path).isDirectory()) {
+        for(let filename of await Util.promisify(FileSystem.readdir)(path)) {
+            await unlink(Path.join(path, filename));
+        }
+    
+        await Util.promisify(FileSystem.rmdir)(path);
+
+    } else {
+        await Util.promisify(FileSystem.unlink)(path);
+
+    }
+}
+
+/**
  * Reads a directory
  *
  * @param {String} path
@@ -197,7 +216,7 @@ async function generate() {
             filename === '..'
         ) { continue; }
 
-        await Util.promisify(FileSystem.unlink)(Path.join(ROOT_DIR, filename));
+        await unlink(Path.join(ROOT_DIR, filename));
     }
 
     let indexPage = await renderIndexPage();
@@ -217,7 +236,7 @@ async function generate() {
     for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'css'))) {
         if(Path.extname(filename) !== '.css') { continue; }
 
-        await Util.promisify(FileSystem.copy)(Path.join(__dirname, 'css', filename), Path.join(ROOT_DIR, 'css', filename));
+        await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'css', filename), Path.join(ROOT_DIR, 'css', filename));
     }
 
     await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
@@ -225,7 +244,7 @@ async function generate() {
     for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'img'))) {
         if(Path.extname(filename) !== '.jpg') { continue; }
 
-        await Util.promisify(FileSystem.copy)(Path.join(__dirname, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
+        await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
     }
 }
 
