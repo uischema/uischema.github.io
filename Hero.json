@@ -1,0 +1,14 @@
+{
+    "@context": "http://uischema.org",
+    "@type": "Hero",
+    "@parent": "Feature",
+    "options": {
+        "isHeader": "bool"
+    },
+    "@i18n": {
+        "en": {
+            "@name": "Hero",
+            "@description": "A large element with an image background"
+        }
+    }
+}

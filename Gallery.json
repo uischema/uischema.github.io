@@ -1,0 +1,57 @@
+{
+    "@context": "http://uischema.org",
+    "@type": "Gallery",
+    "heading": "string",
+    "subheading": "string",
+    "body": "string",
+    "items": [ "Feature" ],
+    "options": {
+        "useSquares": "bool",
+        "useCoverLinks": "bool",
+        "isCarousel": "bool",
+        "isGrid": "bool",
+        "columns": {
+            "xs": "int",
+            "sm": "int",
+            "md": "int",
+            "lg": "int",
+            "xl": "int"
+        }
+    },
+    "@i18n": {
+        "en": {
+            "@name": "Gallery",
+            "@description": "A collection of featured items",
+            "heading": {
+                "@name": "Heading",
+                "@description": "The largest heading"
+            },
+            "subheading": {
+                "@name": "Subheading",
+                "@description": "The smaller heading"
+            },
+            "body": {
+                "@name": "Body text",
+                "@description": "The smaller text under the headings"
+            },
+            "items": {
+                "@name": "Items",
+                "@description": "The list of featured items"
+            },
+            "options": {
+                "useSquares": {
+                    "@name": "Use squares",
+                    "@description": "Make the featured items square"
+                },
+                "useCoverLinks": {
+                    "@name": "Use cover links",
+                    "@description": "Make the featured items clickable"
+                },
+                "isCarousel": {
+                    "@name": "Is carousel",
+                    "@description": "Display all featured items in a single row"
+                }
+            }
+        }
+    }
+}

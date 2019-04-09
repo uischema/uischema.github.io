@@ -1,0 +1,20 @@
+{
+    "@context": "http://uischema.org",
+    "@type": "Timeline",
+    "@parent": "Gallery",
+    "link": "Link",
+    "@i18n": {
+        "en": {
+            "@name": "Timeline",
+            "@description": "A list of events",
+            "items": {
+                "@name": "Items",
+                "@description": "The events"
+            },
+            "link": {
+                "@name": "Link",
+                "@description": "A link after the events"
+            }
+        }
+    }
+}

@@ -12,8 +12,6 @@ const PORT = 4000;
 const ROOT_DIR = Path.join(__dirname, '../');
 const MUSTACHE = {};
 
-let isDirty = true;
-
 /**
  * Reads a file
  *
@@ -194,7 +192,7 @@ async function serve(req, res) {
             res.writeHead(404);
             res.end();
             break;
-
+        
         case 'css':
             let css = await readFile('css/' + path[1]);
 
@@ -220,10 +218,34 @@ async function serve(req, res) {
         // Schema page
         default:
             try {
-                let html = await renderSchemaPage(path[0]);
+                if(path[0].indexOf('.json') > -1) {
+                    let json = null;
+                    
+                    if(path[0] === 'all.json') {
+                        json = '[';
+                        
+                        for(let file of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'lib', 'uischema.org', 'schemas'))) {
+                            if(Path.extname(file) !== '.json') { continue; }
+                            
+                            json += await readFile('lib/uischema.org/schemas/' + file);
+                            json += ',';
+                        }
 
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(html);
+                        json = json.slice(0, -1) + ']';
+                    } else {
+                        json = await readFile('lib/uischema.org/schemas/' + path[0]);
+                    }
+
+                    res.writeHead(200, { 'Content-Type': 'application/json' }); 
+                    res.end(json);
+
+                } else {
+                    let html = await renderSchemaPage(path[0]);
+
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end(html);
+                
+                }
             
             } catch(e) {
                 res.writeHead(404);
@@ -285,6 +307,23 @@ async function generate() {
 
         await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
     }
+
+    // Copy JSON files
+    let all = '[';
+    
+    for(let file of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'lib', 'uischema.org', 'schemas'))) {
+        if(Path.extname(file) !== '.json') { continue; }
+        
+        let json = await readFile('lib/uischema.org/schemas/' + file);
+        all += json; 
+        all += ',';
+
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, file), json);
+    }
+
+    all = all.slice(0, -1) + ']';
+            
+    await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'all.json'), all);
 }
 
 /**
