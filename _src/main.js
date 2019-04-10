@@ -34,6 +34,7 @@ async function readFile(path, isBinary = false) {
  * @param {String} path
  */
 async function unlink(path) {
+    if(!currentUserIsAdmin()) { return; }
     if(FileSystem.lstatSync(path).isDirectory()) {
         for(let filename of await Util.promisify(FileSystem.readdir)(path)) {
             await unlink(Path.join(path, filename));
@@ -81,6 +82,9 @@ async function loadViews() {
  */
 async function renderSchemaPage(type) {
     let view = {};
+
+    // We're in development mode, so don't use the cache
+    UISchema.clearCache();
 
     // List of all schemas (for the nav)
     view['schemas'] = Object.values(await UISchema.getSchemas());
