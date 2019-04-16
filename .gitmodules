@@ -3,4 +3,4 @@
 	url = https://github.com/uischema/node.git
 [submodule "_src/scss/uischema.org"]
 	path = _src/scss/uischema.org
-	url = git@github.com:uischema/css.git
+	url = https://github.com/uischema/css.git
