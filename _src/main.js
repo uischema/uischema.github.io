@@ -34,7 +34,6 @@ async function readFile(path, isBinary = false) {
  * @param {String} path
  */
 async function unlink(path) {
-    if(!currentUserIsAdmin()) { return; }
     if(FileSystem.lstatSync(path).isDirectory()) {
         for(let filename of await Util.promisify(FileSystem.readdir)(path)) {
             await unlink(Path.join(path, filename));
@@ -65,15 +64,6 @@ async function readDir(path) {
 }
 
 /**
- * Loads all views
- */
-async function loadViews() {
-    for(let filename of await readDir('mustache')) {
-        MUSTACHE[filename.replace('.mustache', '')] = await readFile('mustache/' + filename);
-    }
-}
-
-/**
  * Render a schema page
  *
  * @param {String} type
@@ -85,6 +75,13 @@ async function renderSchemaPage(type) {
 
     // We're in development mode, so don't use the cache
     UISchema.clearCache();
+
+    // Load all templates
+    let templates = {};
+    
+    for(let filename of await readDir('mustache')) {
+        templates[filename.replace('.mustache', '')] = await readFile('mustache/' + filename);
+    }
 
     // List of all schemas (for the nav)
     view['schemas'] = Object.values(await UISchema.getSchemas());
@@ -134,6 +131,8 @@ async function renderSchemaPage(type) {
         let options = [];
         
         for(let key in view['properties']['options']) {
+            if(key[0] === '@') { continue; }
+
             options.push({
                 'key': key,
                 'name': view['properties']['options'][key]['@name'],
@@ -145,7 +144,9 @@ async function renderSchemaPage(type) {
     }
     
     delete view['properties']['options'];
-    
+   
+    let parentProperties
+
     let properties = [];
 
     for(let key in view['properties']) {
@@ -165,7 +166,7 @@ async function renderSchemaPage(type) {
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
 
     // Render the view
-    return Mustache.render(MUSTACHE['schema'], view, MUSTACHE);
+    return Mustache.render(templates['schema'], view, templates);
 }
 
 /**
@@ -174,11 +175,19 @@ async function renderSchemaPage(type) {
  * @return {String} HTML
  */
 async function renderIndexPage() {
+    // Load all templates
+    let templates = {};
+    
+    for(let filename of await readDir('mustache')) {
+        templates[filename.replace('.mustache', '')] = await readFile('mustache/' + filename);
+    }
+    
+    // Init view
     let view = {};
 
     view['schemas'] = Object.values(await UISchema.getSchemas());
 
-    return Mustache.render(MUSTACHE['index'], view, MUSTACHE);
+    return Mustache.render(templates['index'], view, templates);
 }
 
 /**
@@ -334,9 +343,6 @@ async function generate() {
  * Main
  */
 async function main() {
-    // Load all views into memory first
-    await loadViews();
-    
     switch(process.argv[2]) {
         case 'serve':
             console.log('Running server on port ' + PORT + '...');
