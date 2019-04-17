@@ -62,6 +62,14 @@
     
 <main class="site-main site-schema ui-container">
    
+        <h3>Options</h3>
+        <table class="site-schema__properties">
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__key">isHeader</td>
+                    <td class="site-schema__property__name">Is header</td>
+                    <td class="site-schema__property__description">If enabled, this hero will act as the page header</td>
+                </tr>
+        </table>
    
     <h2>Definition</h2>
 
@@ -73,12 +81,6 @@
     "@parent": "Feature",
     "options": {
         "isHeader": "bool"
-    },
-    "@i18n": {
-        "en": {
-            "@name": "Hero",
-            "@description": "A large element with an image background"
-        }
     }
 }
 </pre>
@@ -149,25 +151,22 @@
             <details class="site-schema__details">
                 <summary class="site-schema__details__summary">JSON</summary>
                 <pre class="site-schema__code">{
-    &quot;options&quot;: {
-        &quot;isHeader&quot;: false
-    },
-    &quot;image&quot;: {
-        &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
-        &quot;srcset&quot;: &quot;&quot;,
-        &quot;alt&quot;: &quot;Background&quot;,
-        &quot;@type&quot;: &quot;Image&quot;
-    },
+    &quot;@type&quot;: &quot;Hero&quot;,
     &quot;heading&quot;: &quot;Heading&quot;,
     &quot;subheading&quot;: &quot;Subheading&quot;,
     &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
+    &quot;image&quot;: {
+        &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
+        &quot;alt&quot;: &quot;Background&quot;
+    },
     &quot;link&quot;: {
         &quot;text&quot;: &quot;Link&quot;,
-        &quot;href&quot;: &quot;#&quot;,
-        &quot;openNew&quot;: false,
-        &quot;@type&quot;: &quot;Link&quot;
-    },
-    &quot;@type&quot;: &quot;Hero&quot;
+        &quot;href&quot;: &quot;#&quot;
+    }
 }"</pre>
             </details>
 </main>
+
+<footer class="site-footer">
+
+</footer>

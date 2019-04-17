@@ -2,15 +2,17 @@
 
 const Path = require('path');
 const FileSystem = require('fs');
-const Mustache = require(Path.join(__dirname, 'lib', 'uischema.org', 'lib', 'mustache'));
+const Mustache = require(Path.join(__dirname, 'lib', 'mustache'));
 const HTTP = require('http');
-const UISchema = require(Path.join(__dirname, 'lib', 'uischema.org'));
 const Url = require('url');
 const Util = require('util');
 
 const PORT = 4000;
-const ROOT_DIR = Path.join(__dirname, '../');
-const MUSTACHE = {};
+const SRC_DIR = Path.join(__dirname);
+const ROOT_DIR = Path.join(SRC_DIR, '../');
+const TEMPLATE_DIR = Path.join(SRC_DIR, 'templates');
+const SCHEMA_DIR = Path.join(SRC_DIR, 'schemas');
+const I18N_DIR = Path.join(SCHEMA_DIR, 'i18n');
 
 /**
  * Reads a file
@@ -21,7 +23,7 @@ const MUSTACHE = {};
  */
 async function readFile(path, isBinary = false) {
     try {
-        return await Util.promisify(FileSystem.readFile)(Path.join(__dirname, path), !isBinary ? 'utf8' : undefined);
+        return await Util.promisify(FileSystem.readFile)(path, !isBinary ? 'utf8' : undefined);
 
     } catch(e) {
         return null;
@@ -56,7 +58,7 @@ async function unlink(path) {
  */
 async function readDir(path) {
     try {
-        return await Util.promisify(FileSystem.readdir)(Path.join(__dirname, path));
+        return await Util.promisify(FileSystem.readdir)(path);
 
     } catch(e) {
         return [];
@@ -64,32 +66,81 @@ async function readDir(path) {
 }
 
 /**
+ * Gets site templates
+ *
+ * @return {Object} Templates
+ */
+async function getSiteTemplates() {
+    let templates = {};
+    
+    for(let filename of await readDir(Path.join(SRC_DIR,'mustache'))) {
+        templates[filename.replace('.mustache', '')] = await readFile(Path.join(SRC_DIR, 'mustache', filename));
+    }
+
+    return templates;
+}
+
+/**
+ * Gets schema templates
+ *
+ * @return {Object} Templates
+ */
+async function getSchemaTemplates() {
+    let templates = {};
+    
+    for(let filename of await readDir(TEMPLATE_DIR)) {
+        templates[filename.replace('.mustache', '')] = await readFile(Path.join(TEMPLATE_DIR, filename));
+    }
+
+    return templates;
+}
+
+/**
+ * Gets internationalisations for a type
+ *
+ * @param {String} type
+ * @param {String} language
+ *
+ * @return {Object} Internationalisation
+ */
+async function getInternationalization(type, language) {
+    if(!type) { throw new Error('Type is required'); }
+    if(!language) { throw new Error('Language is required'); }
+
+    let path = Path.join(I18N_DIR, language, type + '.json');
+    
+    let data = await readFile(path);
+
+    if(!data) { throw new Error('Internationalisation for ' + path + ' not found'); }
+    
+    return JSON.parse(data);
+}
+
+/**
  * Render a schema page
  *
  * @param {String} type
+ * @param {String} language
  *
  * @return {String} HTML
  */
-async function renderSchemaPage(type) {
+async function renderSchemaPage(type, language) {
+    if(!type) { throw new Error('Type is required'); }
+    if(!language) { throw new Error('Language is required'); }
+
     let view = {};
 
-    // We're in development mode, so don't use the cache
-    UISchema.clearCache();
-
-    // Load all templates
-    let templates = {};
-    
-    for(let filename of await readDir('mustache')) {
-        templates[filename.replace('.mustache', '')] = await readFile('mustache/' + filename);
-    }
+    // Get templates
+    let siteTemplates = await getSiteTemplates();
+    let schemaTemplates = await getSchemaTemplates();
 
     // List of all schemas (for the nav)
-    view['schemas'] = Object.values(await UISchema.getSchemas());
+    view['schemas'] = await getAllJsonResponses();
     
     // Definition content
-    view['schema'] = await UISchema.getSchema(type);
-    view['template'] = await UISchema.getTemplate(type);
-    view['json'] = await readFile('lib/uischema.org/schemas/' + type + '.json');
+    view['schema'] = await getJsonResponse(type + '.json');
+    view['template'] = schemaTemplates[type];
+    view['json'] = await readFile(Path.join(SCHEMA_DIR, type + '.json'));
 
     // Children
     view['children'] = [];
@@ -105,10 +156,9 @@ async function renderSchemaPage(type) {
 
     if(view['exampleJSON']) {
         let json = JSON.parse(view['exampleJSON']);
-        json = await UISchema.check(json['@type'], json);
         view['exampleJSON'] = JSON.stringify(json, null, 4);
 
-        let html = await UISchema.render(json);
+        let html = await Mustache.render(schemaTemplates[type], json, schemaTemplates);
         view['exampleHTML'] = html;                
 
         let iframe = '<!DOCTYPE html><meta name="viewport" content="width=device-width, initial-scale=0.6"><meta charset="utf8"><link rel="stylesheet" type="text/css" href="/css/style.css">' + html;
@@ -117,7 +167,7 @@ async function renderSchemaPage(type) {
     }
 
     // Properties
-    view['properties'] = view['schema']['@i18n']['en'];
+    view['properties'] = await getInternationalization(type, language);
 
     // Extract the name and description
     view['name'] = view['properties']['@name'];
@@ -166,7 +216,7 @@ async function renderSchemaPage(type) {
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
 
     // Render the view
-    return Mustache.render(templates['schema'], view, templates);
+    return Mustache.render(siteTemplates['schema'], view, siteTemplates);
 }
 
 /**
@@ -178,16 +228,61 @@ async function renderIndexPage() {
     // Load all templates
     let templates = {};
     
-    for(let filename of await readDir('mustache')) {
-        templates[filename.replace('.mustache', '')] = await readFile('mustache/' + filename);
+    for(let filename of await readDir(Path.join(SRC_DIR, 'mustache'))) {
+        templates[filename.replace('.mustache', '')] = await readFile(Path.join(SRC_DIR, 'mustache', filename));
     }
     
     // Init view
     let view = {};
 
-    view['schemas'] = Object.values(await UISchema.getSchemas());
+    view['schemas'] = await getAllJsonResponses();
 
     return Mustache.render(templates['index'], view, templates);
+}
+
+/**
+ * Gets the combined JSON responses
+ *
+ * @return {Array} Responses
+ */
+async function getAllJsonResponses() {
+    let all = [];
+    
+    for(let file of await readDir(Path.join(SCHEMA_DIR))) {
+        if(Path.extname(file) !== '.json') { continue; }
+        
+        let json = await getJsonResponse(file);
+
+        all.push(json);
+    }
+
+    return all;
+}
+
+/**
+ * Renders a JSON response
+ *
+ * @param {String} file
+ *
+ * @return {Object} JSON
+ */
+async function getJsonResponse(file) {
+    let json = await readFile(Path.join(SCHEMA_DIR, file));
+    
+    if(!json) { throw new Error('JSON file "' + file + '" could not be found in /schemas'); }
+    
+    json = JSON.parse(json);
+    json['@i18n'] = {};
+
+    for(let language of await readDir(Path.join(I18N_DIR))) {
+        let i18n = await readFile(Path.join(I18N_DIR, language, file));
+
+        if(i18n) {
+            json['@i18n'][language] = JSON.parse(i18n);
+        }
+    }
+
+    return json;
 }
 
 /**
@@ -235,25 +330,18 @@ async function serve(req, res) {
                     let json = null;
                     
                     if(path[0] === 'all.json') {
-                        json = '[';
-                        
-                        for(let file of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'lib', 'uischema.org', 'schemas'))) {
-                            if(Path.extname(file) !== '.json') { continue; }
-                            
-                            json += await readFile('lib/uischema.org/schemas/' + file);
-                            json += ',';
-                        }
-
-                        json = json.slice(0, -1) + ']';
+                        json = await getAllJsonResponses();
                     } else {
-                        json = await readFile('lib/uischema.org/schemas/' + path[0]);
+                        json = await getJsonResponse(path[0]);
                     }
+                        
+                    json = JSON.stringify(json);
 
                     res.writeHead(200, { 'Content-Type': 'application/json' }); 
                     res.end(json);
 
                 } else {
-                    let html = await renderSchemaPage(path[0]);
+                    let html = await renderSchemaPage(path[0], 'en');
 
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                     res.end(html);
@@ -262,9 +350,7 @@ async function serve(req, res) {
             
             } catch(e) {
                 res.writeHead(404);
-                res.end(e.message);
-            
-                throw e;
+                res.end(e.stack || e.message);
             }
             break;
     }
@@ -274,69 +360,71 @@ async function serve(req, res) {
  * Generates the pages
  */
 async function generate() {
-    // Remove all but the default files in the root dir
-    for(let filename of await Util.promisify(FileSystem.readdir)(ROOT_DIR)) {
-        if(
-            filename === '_src' ||
-            filename === 'CNAME' ||
-            filename === '.git' ||
-            filename === '.gitignore' ||
-            filename === '.gitmodules' ||
-            filename === '.' || 
-            filename === '..'
-        ) { continue; }
+    try {
+        // Remove all but the default files in the root dir
+        for(let filename of await readDir(ROOT_DIR)) {
+            if(
+                filename === '_src' ||
+                filename === 'CNAME' ||
+                filename === '.git' ||
+                filename === '.gitignore' ||
+                filename === '.gitmodules' ||
+                filename === '.' || 
+                filename === '..'
+            ) { continue; }
 
-        await unlink(Path.join(ROOT_DIR, filename));
-    }
+            await unlink(Path.join(ROOT_DIR, filename));
+        }
 
-    // Render the index page
-    let indexPage = await renderIndexPage();
+        // Render the index page
+        let indexPage = await renderIndexPage();
 
-    await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
 
-    // Render the schema pages
-    for(let type in await UISchema.getSchemas()) {
-        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, type));
-
-        let schemaPage = await renderSchemaPage(type);
-
-        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
-    }
-        
-    // Create "css" directory
-    await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'css'));
-  
-    for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'css'))) {
-        if(Path.extname(filename) !== '.css') { continue; }
-
-        await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'css', filename), Path.join(ROOT_DIR, 'css', filename));
-    }
-
-    // Create "img" directory
-    await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
-
-    for(let filename of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'img'))) {
-        if(Path.extname(filename) !== '.jpg') { continue; }
-
-        await Util.promisify(FileSystem.copyFile)(Path.join(__dirname, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
-    }
-
-    // Copy JSON files
-    let all = '[';
-    
-    for(let file of await Util.promisify(FileSystem.readdir)(Path.join(__dirname, 'lib', 'uischema.org', 'schemas'))) {
-        if(Path.extname(file) !== '.json') { continue; }
-        
-        let json = await readFile('lib/uischema.org/schemas/' + file);
-        all += json; 
-        all += ',';
-
-        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, file), json);
-    }
-
-    all = all.slice(0, -1) + ']';
+        // Render the schema pages
+        for(let json of await getAllJsonResponses()) {
+            let type = json['@type'];
             
-    await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'all.json'), all);
+            await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, type));
+
+            let schemaPage = await renderSchemaPage(type, 'en');
+
+            await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
+        }
+            
+        // Create "css" directory
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'css'));
+      
+        for(let filename of await readDir('css')) {
+            if(Path.extname(filename) !== '.css') { continue; }
+
+            await Util.promisify(FileSystem.copyFile)(Path.join(SRC_DIR, 'css', filename), Path.join(ROOT_DIR, 'css', filename));
+        }
+
+        // Create "img" directory
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
+
+        for(let filename of await readDir('img')) {
+            if(Path.extname(filename) !== '.jpg') { continue; }
+
+            await Util.promisify(FileSystem.copyFile)(Path.join(SRC_DIR, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
+        }
+
+        // Copy JSON files
+        let all = await getAllJsonResponses();
+
+        for(let json of all) {
+            await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, json['@type'] + '.json'), JSON.stringify(json));
+        }
+
+        all = JSON.stringify(all);
+                
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'all.json'), all);
+    
+    } catch(e) {
+        console.log(e.stack || e.message);
+        
+    }
 }
 
 /**

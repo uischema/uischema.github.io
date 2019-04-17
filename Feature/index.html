@@ -84,6 +84,11 @@
                     <td class="site-schema__property__name">Body text</td>
                     <td class="site-schema__property__description">The smaller text under the headings</td>
                 </tr>
+                <tr class="site-schema__property">
+                    <td class="site-schema__property__key">link</td>
+                    <td class="site-schema__property__name">Link</td>
+                    <td class="site-schema__property__description">The URL redirected to when clicked</td>
+                </tr>
         </table>
    
    
@@ -94,33 +99,12 @@
             <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Feature",
+    "@label": "heading",
     "image": "Image",
     "heading": "string",
     "subheading": "string",
     "body": "string",
-    "link": "Link",
-    "@i18n": {
-        "en": {
-            "@name": "Feature",
-            "@description": "An element for featuring other content",
-            "image": {
-                "@name": "Image",
-                "@description": "The main image"
-            },
-            "heading": {
-                "@name": "Heading",
-                "@description": "The largest heading"
-            },
-            "subheading": {
-                "@name": "Subheading",
-                "@description": "The smaller heading"
-            },
-            "body": {
-                "@name": "Body text",
-                "@description": "The smaller text under the headings"
-            }
-        }
-    }
+    "link": "Link"
 }
 </pre>
         </details>
@@ -156,3 +140,7 @@
         </details>
 
 </main>
+
+<footer class="site-footer">
+
+</footer>

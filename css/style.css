@@ -1104,4 +1104,9 @@ html {
   max-height: 40vh;
 }
 
+.site-footer {
+  margin-top: 4rem;
+  padding: 8rem 0;
+}
+
 /*# sourceMappingURL=style.css.map */
