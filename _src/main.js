@@ -117,24 +117,11 @@ async function getInternationalization(type, language) {
 }
 
 /**
- * Render a schema page
+ * Applies site-wide view data to a view object
  *
- * @param {String} type
- * @param {String} language
- *
- * @return {String} HTML
+ * @param {Object} view
  */
-async function renderSchemaPage(type, language) {
-    if(!type) { throw new Error('Type is required'); }
-    if(!language) { throw new Error('Language is required'); }
-
-    let view = {};
-
-    // Get templates
-    let siteTemplates = await getSiteTemplates();
-    let schemaTemplates = await getSchemaTemplates();
-
-    // List of all schemas (for the nav)
+async function applySiteViewData(view) {
     view['topics'] = await getTopics();
     view['schemas'] = await getSchemas();
    
@@ -159,7 +146,28 @@ async function renderSchemaPage(type, language) {
             }
         }
     }
+}
 
+/**
+ * Render a schema page
+ *
+ * @param {String} type
+ * @param {String} language
+ *
+ * @return {String} HTML
+ */
+async function renderSchemaPage(type, language) {
+    if(!type) { throw new Error('Type is required'); }
+    if(!language) { throw new Error('Language is required'); }
+
+    let view = {};
+
+    // Get templates
+    let siteTemplates = await getSiteTemplates();
+    let schemaTemplates = await getSchemaTemplates();
+
+    // Site data
+    await applySiteViewData(view);
 
     // Definition content
     view['schema'] = await getSchema(type + '.json');
@@ -259,7 +267,8 @@ async function renderIndexPage() {
     // Init view
     let view = {};
 
-    view['schemas'] = await getSchemas();
+    // Site data
+    await applySiteViewData(view);
 
     return Mustache.render(templates['index'], view, templates);
 }

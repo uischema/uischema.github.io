@@ -10,17 +10,17 @@
         <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body class="site-page">
-        <header class="site-header">
-            <div class="ui-container site-header__container">
-                <h1 class="site-header__title">uischema.org</h1>
-                <p class="site-header__description">A portable standard for frontend web modules</p>
-            </div>
-        </header>
+        {{> nav }}
             
         <main class="site-main">
-            {{> nav }}
+            <header class="site-header">
+                <div class="ui-container site-header__container">
+                    <h1 class="site-header__title">uischema.org</h1>
+                    <p class="site-header__description">A portable standard for frontend web modules</p>
+                </div>
+            </header>
 
-            <div class="site-content">
+            <div class="ui-container">
                 <p>Check out the <label class="site-link" for="site-nav__toggle">schemas</label>!</p>
             </div>
         </main>

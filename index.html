@@ -10,41 +10,37 @@
         <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body class="site-page">
-        <header class="site-header">
-            <div class="ui-container site-header__container">
-                <h1 class="site-header__title">uischema.org</h1>
-                <p class="site-header__description">A portable standard for frontend web modules</p>
-            </div>
-        </header>
-            
-        <main class="site-main">
 <nav class="site-nav">
     <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
    
     <div class="site-nav__container">
+            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle"></label>
+            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle"></label>
 
         <div class="site-nav__topics">
+                <label for="topic-0" class="site-nav__topics__topic">media</label>
+                <label for="topic-1" class="site-nav__topics__topic">text</label>
         </div>
         
         <div class="site-nav__items">
-                <a href="/Feature" class="site-nav__item topic- topic-">
+                <a href="/Feature" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature</p>
                     <p class="site-nav__item__description">An element for featuring other content</p>
                 </a>
-                <a href="/Gallery" class="site-nav__item topic- topic-">
+                <a href="/Gallery" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Gallery</p>
                     <p class="site-nav__item__description">A collection of featured items</p>
                 </a>
-                <a href="/Hero" class="site-nav__item topic- topic-">
+                <a href="/Hero" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Hero</p>
                     <p class="site-nav__item__description">A large element with an image background</p>
                 </a>
-                <a href="/Highlight" class="site-nav__item topic- topic-">
+                <a href="/Highlight" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Highlight</p>
                     <p class="site-nav__item__description">A side-by-side image and accompanying text</p>
                 </a>
-                <a href="/Image" class="site-nav__item topic-">
+                <a href="/Image" class="site-nav__item topic-0">
                     <p class="site-nav__item__name">Image</p>
                     <p class="site-nav__item__description">A reference to an image</p>
                 </a>
@@ -52,15 +48,23 @@
                     <p class="site-nav__item__name">Link</p>
                     <p class="site-nav__item__description">A reference to another page or element</p>
                 </a>
-                <a href="/Timeline" class="site-nav__item topic- topic-">
+                <a href="/Timeline" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Timeline</p>
                     <p class="site-nav__item__description">A list of events</p>
                 </a>
         </div>
     </div>
 </nav>
+            
+        <main class="site-main">
+            <header class="site-header">
+                <div class="ui-container site-header__container">
+                    <h1 class="site-header__title">uischema.org</h1>
+                    <p class="site-header__description">A portable standard for frontend web modules</p>
+                </div>
+            </header>
 
-            <div class="site-content">
+            <div class="ui-container">
                 <p>Check out the <label class="site-link" for="site-nav__toggle">schemas</label>!</p>
             </div>
         </main>

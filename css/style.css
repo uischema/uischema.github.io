@@ -1036,7 +1036,11 @@ html {
 }
 .site-nav__topics {
   flex-shrink: 0;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+  border-bottom: 1px solid lightgrey;
+}
+.site-nav__topics:empty {
+  display: none;
 }
 .site-nav__topics__topic {
   font-weight: bold;
