@@ -135,10 +135,34 @@ async function renderSchemaPage(type, language) {
     let schemaTemplates = await getSchemaTemplates();
 
     // List of all schemas (for the nav)
-    view['schemas'] = await getAllJsonResponses();
-    
+    view['topics'] = await getTopics();
+    view['schemas'] = await getSchemas();
+   
+    // Assign ids to topics
+    for(let i in view['topics']) {
+        view['topics'][i] = {
+            id: i,
+            name: view['topics'][i]
+        };
+
+        for(let schema of view['schemas']) {
+            if(!schema['@topic']) { continue; }
+
+            if(!Array.isArray(schema['@topic'])) {
+                schema['@topic'] = [ schema['@topic'] ];
+            }
+
+            let topicIndex = schema['@topic'].indexOf(view['topics'][i]['name']);
+        
+            if(topicIndex > -1) {
+                schema['@topic'][topicIndex] = view['topics'][i];
+            }
+        }
+    }
+
+
     // Definition content
-    view['schema'] = await getJsonResponse(type + '.json');
+    view['schema'] = await getSchema(type + '.json');
     view['template'] = schemaTemplates[type];
     view['json'] = await readFile(Path.join(SCHEMA_DIR, type + '.json'));
 
@@ -235,7 +259,7 @@ async function renderIndexPage() {
     // Init view
     let view = {};
 
-    view['schemas'] = await getAllJsonResponses();
+    view['schemas'] = await getSchemas();
 
     return Mustache.render(templates['index'], view, templates);
 }
@@ -245,18 +269,47 @@ async function renderIndexPage() {
  *
  * @return {Array} Responses
  */
-async function getAllJsonResponses() {
+async function getSchemas() {
     let all = [];
     
     for(let file of await readDir(Path.join(SCHEMA_DIR))) {
         if(Path.extname(file) !== '.json') { continue; }
         
-        let json = await getJsonResponse(file);
+        let json = await getSchema(file);
 
         all.push(json);
     }
 
     return all;
+}
+
+/**
+ * Gets all topics
+ *
+ * @return {Array} Topics
+ */
+async function getTopics() {
+    let topics = [];
+
+    for(let schema of await getSchemas()) {
+        if(!schema['@topic']) { continue; }
+
+        if(Array.isArray(schema['@topic'])) {
+            for(let topic of schema['@topic']) {
+                if(topics.indexOf(topic) < 0) {
+                    topics.push(topic);
+                }
+            }
+        } else if(typeof schema['@topic'] === 'string') {
+            let topic = schema['@topic'];
+            
+            if(topics.indexOf(topic) < 0) {
+                topics.push(topic);
+            }
+        }
+    }
+
+    return topics.sort();
 }
 
 /**
@@ -266,7 +319,9 @@ async function getAllJsonResponses() {
  *
  * @return {Object} JSON
  */
-async function getJsonResponse(file) {
+async function getSchema(file) {
+    if(file.indexOf('.json') < 0) { file += '.json'; }
+    
     let json = await readFile(Path.join(SCHEMA_DIR, file));
     
     if(!json) { throw new Error('JSON file "' + file + '" could not be found in /schemas'); }
@@ -330,9 +385,9 @@ async function serve(req, res) {
                     let json = null;
                     
                     if(path[0] === 'all.json') {
-                        json = await getAllJsonResponses();
+                        json = await getSchemas();
                     } else {
-                        json = await getJsonResponse(path[0]);
+                        json = await getSchema(path[0]);
                     }
                         
                     json = JSON.stringify(json);
@@ -382,7 +437,7 @@ async function generate() {
         await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
 
         // Render the schema pages
-        for(let json of await getAllJsonResponses()) {
+        for(let json of await getSchemas()) {
             let type = json['@type'];
             
             await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, type));
@@ -411,7 +466,7 @@ async function generate() {
         }
 
         // Copy JSON files
-        let all = await getAllJsonResponses();
+        let all = await getSchemas();
 
         for(let json of all) {
             await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, json['@type'] + '.json'), JSON.stringify(json));

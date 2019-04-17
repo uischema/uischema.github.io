@@ -1,108 +1,115 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ name }}</title>
 
-<title>{{ name }}</title>
+        <meta name="description" content="{{ description }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
 
-<meta name="description" content="{{ description }}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
 
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <body class="site-page">
+        {{> nav }}
 
-{{> nav }}
-
-<header class="site-header">
-    <div class="ui-container site-header__container">
-        <h1 class="site-header__title">{{ name }}</h1>
-        <p class="site-header__description">{{ description }}</p>
-    </div>
-    
-    <div class="site-header__links">
-        <div class="ui-container site-header__links__container">
-            {{# schema.@parent }}
-                <div class="site-header__links__group">
-                    <span class="site-header__links__group__title">Parent: </span>
-                    <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
+        <main class="site-main">
+            <header class="site-header">
+                <div class="ui-container site-header__container">
+                    <h1 class="site-header__title">{{ name }}</h1>
+                    <p class="site-header__description">{{ description }}</p>
                 </div>
-            {{/ schema.@parent }}
-            {{# hasChildren }}
-                <div class="site-header__links__group">
-                    <span class="site-header__links__group__title">Children: </span>
-                    {{# children }}
-                        <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
-                    {{/ children }}
+                
+                <div class="site-header__links">
+                    <div class="ui-container site-header__links__container">
+                        {{# schema.@parent }}
+                            <div class="site-header__links__group">
+                                <span class="site-header__links__group__title">Parent: </span>
+                                <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
+                            </div>
+                        {{/ schema.@parent }}
+                        {{# hasChildren }}
+                            <div class="site-header__links__group">
+                                <span class="site-header__links__group__title">Children: </span>
+                                {{# children }}
+                                    <a href="/{{ . }}" class="site-header__link">{{ . }}</a>
+                                {{/ children }}
+                            </div>
+                        {{/ hasChildren }}
+                    </div>
                 </div>
-            {{/ hasChildren }}
-        </div>
-    </div>
-</header>
-    
-<main class="site-main site-schema ui-container">
-    {{# hasProperties }}
-        <h2>Properties</h2>
-        <table class="site-schema__properties">
-            {{# properties }}
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">{{ key }}</td>
-                    <td class="site-schema__property__name">{{ name }}</td>
-                    <td class="site-schema__property__description">{{ description }}</td>
-                </tr>
-            {{/ properties }}
-        </table>
-    {{/ hasProperties }}
-   
-    {{# hasOptions }}
-        <h3>Options</h3>
-        <table class="site-schema__properties">
-            {{# options }}
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">{{ key }}</td>
-                    <td class="site-schema__property__name">{{ name }}</td>
-                    <td class="site-schema__property__description">{{ description }}</td>
-                </tr>
-            {{/ options }}
-        </table>
-    {{/ hasOptions }} 
-   
-    <h2>Definition</h2>
+            </header>
+           
+            <div class="site-schema ui-container">
+                {{# hasProperties }}
+                    <h2>Properties</h2>
+                    <table class="site-schema__properties">
+                        {{# properties }}
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">{{ key }}</td>
+                                <td class="site-schema__property__name">{{ name }}</td>
+                                <td class="site-schema__property__description">{{ description }}</td>
+                            </tr>
+                        {{/ properties }}
+                    </table>
+                {{/ hasProperties }}
+               
+                {{# hasOptions }}
+                    <h3>Options</h3>
+                    <table class="site-schema__properties">
+                        {{# options }}
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">{{ key }}</td>
+                                <td class="site-schema__property__name">{{ name }}</td>
+                                <td class="site-schema__property__description">{{ description }}</td>
+                            </tr>
+                        {{/ options }}
+                    </table>
+                {{/ hasOptions }} 
+               
+                <h2>Definition</h2>
 
-    {{# json }}
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">JSON</summary>
-            <pre class="site-schema__code">{{{ . }}}</pre>
-        </details>
-    {{/ json }}
+                {{# json }}
+                    <details class="site-schema__details">
+                        <summary class="site-schema__details__summary">JSON</summary>
+                        <pre class="site-schema__code">{{{ . }}}</pre>
+                    </details>
+                {{/ json }}
 
-    {{# template }}
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">Template</summary>
-            <pre class="site-schema__code">{{ . }}</pre>
-        </details>
-    {{/ template }}
+                {{# template }}
+                    <details class="site-schema__details">
+                        <summary class="site-schema__details__summary">Template</summary>
+                        <pre class="site-schema__code">{{ . }}</pre>
+                    </details>
+                {{/ template }}
 
-    {{# hasExample }}
-        <h2>Example</h2>
-    
-        {{# exampleIframe }}
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">Visual</summary>
-                <iframe class="site-schema__details__iframe" srcdoc="{{ . }}"></iframe>
-            </details>
-        {{/ exampleIframe }}
-            
-        {{# exampleHTML }}
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">HTML</summary>
-                <pre class="site-schema__code">{{ . }}</pre>
-            </details>
-        {{/ exampleHTML }}
-        
-        {{# exampleJSON }}
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">JSON</summary>
-                <pre class="site-schema__code">{{ . }}"</pre>
-            </details>
-        {{/ exampleJSON }}
-    {{/ hasExample }}
-</main>
+                {{# hasExample }}
+                    <h2>Example</h2>
+                
+                    {{# exampleIframe }}
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">Visual</summary>
+                            <iframe class="site-schema__details__iframe" srcdoc="{{ . }}"></iframe>
+                        </details>
+                    {{/ exampleIframe }}
+                        
+                    {{# exampleHTML }}
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">HTML</summary>
+                            <pre class="site-schema__code">{{ . }}</pre>
+                        </details>
+                    {{/ exampleHTML }}
+                    
+                    {{# exampleJSON }}
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">JSON</summary>
+                            <pre class="site-schema__code">{{ . }}"</pre>
+                        </details>
+                    {{/ exampleJSON }}
+                {{/ hasExample }}
+            </div>
+        </main>
 
-{{> footer }}
+        {{> footer }}
+    </body>
+</html>

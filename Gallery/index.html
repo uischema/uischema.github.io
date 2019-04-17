@@ -1,127 +1,142 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallery</title>
 
-<title>Gallery</title>
+        <meta name="description" content="A collection of featured items">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
 
-<meta name="description" content="A collection of featured items">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
 
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-
+    <body class="site-page">
 <nav class="site-nav">
     <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
+   
+    <div class="site-nav__container">
+            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle"></label>
+            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle"></label>
 
-    <div class="site-nav__items">
-            <a class="site-nav__item" href="/Feature">
-                <p class="site-nav__item__name">Feature</p>
-                <p class="site-nav__item__description">An element for featuring other content</p>
-            </a>
-            <a class="site-nav__item" href="/Gallery">
-                <p class="site-nav__item__name">Gallery</p>
-                <p class="site-nav__item__description">A collection of featured items</p>
-            </a>
-            <a class="site-nav__item" href="/Hero">
-                <p class="site-nav__item__name">Hero</p>
-                <p class="site-nav__item__description">A large element with an image background</p>
-            </a>
-            <a class="site-nav__item" href="/Highlight">
-                <p class="site-nav__item__name">Highlight</p>
-                <p class="site-nav__item__description">A side-by-side image and accompanying text</p>
-            </a>
-            <a class="site-nav__item" href="/Image">
-                <p class="site-nav__item__name">Image</p>
-                <p class="site-nav__item__description">A reference to an image</p>
-            </a>
-            <a class="site-nav__item" href="/Link">
-                <p class="site-nav__item__name">Link</p>
-                <p class="site-nav__item__description">A reference to another page or element</p>
-            </a>
-            <a class="site-nav__item" href="/Timeline">
-                <p class="site-nav__item__name">Timeline</p>
-                <p class="site-nav__item__description">A list of events</p>
-            </a>
+        <div class="site-nav__topics">
+                <label for="topic-0" class="site-nav__topics__topic">media</label>
+                <label for="topic-1" class="site-nav__topics__topic">text</label>
+        </div>
+        
+        <div class="site-nav__items">
+                <a href="/Feature" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature</p>
+                    <p class="site-nav__item__description">An element for featuring other content</p>
+                </a>
+                <a href="/Gallery" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Gallery</p>
+                    <p class="site-nav__item__description">A collection of featured items</p>
+                </a>
+                <a href="/Hero" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Hero</p>
+                    <p class="site-nav__item__description">A large element with an image background</p>
+                </a>
+                <a href="/Highlight" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Highlight</p>
+                    <p class="site-nav__item__description">A side-by-side image and accompanying text</p>
+                </a>
+                <a href="/Image" class="site-nav__item topic-0">
+                    <p class="site-nav__item__name">Image</p>
+                    <p class="site-nav__item__description">A reference to an image</p>
+                </a>
+                <a href="/Link" class="site-nav__item no-topic">
+                    <p class="site-nav__item__name">Link</p>
+                    <p class="site-nav__item__description">A reference to another page or element</p>
+                </a>
+                <a href="/Timeline" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Timeline</p>
+                    <p class="site-nav__item__description">A list of events</p>
+                </a>
+        </div>
     </div>
 </nav>
 
-<header class="site-header">
-    <div class="ui-container site-header__container">
-        <h1 class="site-header__title">Gallery</h1>
-        <p class="site-header__description">A collection of featured items</p>
-    </div>
-    
-    <div class="site-header__links">
-        <div class="ui-container site-header__links__container">
-                <div class="site-header__links__group">
-                    <span class="site-header__links__group__title">Children: </span>
-                        <a href="/Timeline" class="site-header__link">Timeline</a>
+        <main class="site-main">
+            <header class="site-header">
+                <div class="ui-container site-header__container">
+                    <h1 class="site-header__title">Gallery</h1>
+                    <p class="site-header__description">A collection of featured items</p>
                 </div>
-        </div>
-    </div>
-</header>
-    
-<main class="site-main site-schema ui-container">
-        <h2>Properties</h2>
-        <table class="site-schema__properties">
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">heading</td>
-                    <td class="site-schema__property__name">Heading</td>
-                    <td class="site-schema__property__description">The largest heading</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">subheading</td>
-                    <td class="site-schema__property__name">Subheading</td>
-                    <td class="site-schema__property__description">The smaller heading</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">body</td>
-                    <td class="site-schema__property__name">Body text</td>
-                    <td class="site-schema__property__description">The smaller text under the headings</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">items</td>
-                    <td class="site-schema__property__name">Items</td>
-                    <td class="site-schema__property__description">The list of featured items</td>
-                </tr>
-        </table>
-   
-        <h3>Options</h3>
-        <table class="site-schema__properties">
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">useSquares</td>
-                    <td class="site-schema__property__name">Use squares</td>
-                    <td class="site-schema__property__description">Make the featured items square</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">useCoverLinks</td>
-                    <td class="site-schema__property__name">Use cover links</td>
-                    <td class="site-schema__property__description">Make the featured items clickable</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">isCarousel</td>
-                    <td class="site-schema__property__name">Is carousel</td>
-                    <td class="site-schema__property__description">Display all featured items in a single row</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">isGrid</td>
-                    <td class="site-schema__property__name">Is grid</td>
-                    <td class="site-schema__property__description">Restrict the featured items to a grid</td>
-                </tr>
-                <tr class="site-schema__property">
-                    <td class="site-schema__property__key">columns</td>
-                    <td class="site-schema__property__name">Columns</td>
-                    <td class="site-schema__property__description">The amount of columns</td>
-                </tr>
-        </table>
-   
-    <h2>Definition</h2>
+                
+                <div class="site-header__links">
+                    <div class="ui-container site-header__links__container">
+                            <div class="site-header__links__group">
+                                <span class="site-header__links__group__title">Children: </span>
+                                    <a href="/Timeline" class="site-header__link">Timeline</a>
+                            </div>
+                    </div>
+                </div>
+            </header>
+           
+            <div class="site-schema ui-container">
+                    <h2>Properties</h2>
+                    <table class="site-schema__properties">
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">heading</td>
+                                <td class="site-schema__property__name">Heading</td>
+                                <td class="site-schema__property__description">The largest heading</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">subheading</td>
+                                <td class="site-schema__property__name">Subheading</td>
+                                <td class="site-schema__property__description">The smaller heading</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">body</td>
+                                <td class="site-schema__property__name">Body text</td>
+                                <td class="site-schema__property__description">The smaller text under the headings</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">items</td>
+                                <td class="site-schema__property__name">Items</td>
+                                <td class="site-schema__property__description">The list of featured items</td>
+                            </tr>
+                    </table>
+               
+                    <h3>Options</h3>
+                    <table class="site-schema__properties">
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">useSquares</td>
+                                <td class="site-schema__property__name">Use squares</td>
+                                <td class="site-schema__property__description">Make the featured items square</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">useCoverLinks</td>
+                                <td class="site-schema__property__name">Use cover links</td>
+                                <td class="site-schema__property__description">Make the featured items clickable</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">isCarousel</td>
+                                <td class="site-schema__property__name">Is carousel</td>
+                                <td class="site-schema__property__description">Display all featured items in a single row</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">isGrid</td>
+                                <td class="site-schema__property__name">Is grid</td>
+                                <td class="site-schema__property__description">Restrict the featured items to a grid</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">columns</td>
+                                <td class="site-schema__property__name">Columns</td>
+                                <td class="site-schema__property__description">The amount of columns</td>
+                            </tr>
+                    </table>
+               
+                <h2>Definition</h2>
 
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">JSON</summary>
-            <pre class="site-schema__code">{
+                    <details class="site-schema__details">
+                        <summary class="site-schema__details__summary">JSON</summary>
+                        <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Gallery",
     "@label": "heading",
+    "@topic": [ "media", "text" ],
     "heading": "string",
     "subheading": "string",
     "body": "string",
@@ -141,11 +156,11 @@
     }
 }
 </pre>
-        </details>
+                    </details>
 
-        <details class="site-schema__details">
-            <summary class="site-schema__details__summary">Template</summary>
-            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
+                    <details class="site-schema__details">
+                        <summary class="site-schema__details__summary">Template</summary>
+                        <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
         {{# heading }}
             &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
@@ -167,18 +182,18 @@
     &lt;&#x2F;div&gt;
 &lt;&#x2F;section&gt;
 </pre>
-        </details>
+                    </details>
 
-        <h2>Example</h2>
-    
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">Visual</summary>
-                <iframe class="site-schema__details__iframe" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery&quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
-            </details>
-            
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">HTML</summary>
-                <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery&quot;&gt;
+                    <h2>Example</h2>
+                
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">Visual</summary>
+                            <iframe class="site-schema__details__iframe" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery&quot;&gt;    &lt;div class&#x3D;&quot;ui-container&quot;&gt;            &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-gallery__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;                    &lt;div class&#x3D;&quot;ui-gallery__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-gallery__items&quot;&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-gallery__item&quot;&gt;&lt;div data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature&quot;&gt;        &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Feature&quot;&gt;        &lt;&#x2F;div&gt;    &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;            &lt;h3 class&#x3D;&quot;ui-feature__heading&quot;&gt;Heading&lt;&#x2F;h3&gt;                    &lt;h4 class&#x3D;&quot;ui-feature__subheading&quot;&gt;Subheading&lt;&#x2F;h4&gt;                    &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;div&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
+                        </details>
+                        
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">HTML</summary>
+                            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Gallery&quot; class&#x3D;&quot;ui-gallery&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container&quot;&gt;
             &lt;h2 class&#x3D;&quot;ui-gallery__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
         
@@ -251,11 +266,11 @@
     &lt;&#x2F;div&gt;
 &lt;&#x2F;section&gt;
 </pre>
-            </details>
-        
-            <details class="site-schema__details">
-                <summary class="site-schema__details__summary">JSON</summary>
-                <pre class="site-schema__code">{
+                        </details>
+                    
+                        <details class="site-schema__details">
+                            <summary class="site-schema__details__summary">JSON</summary>
+                            <pre class="site-schema__code">{
     &quot;@type&quot;: &quot;Gallery&quot;,
     &quot;heading&quot;: &quot;Heading&quot;,
     &quot;subheading&quot;: &quot;Subheading&quot;,
@@ -303,9 +318,12 @@
         }
     ]
 }"</pre>
-            </details>
-</main>
+                        </details>
+            </div>
+        </main>
 
 <footer class="site-footer">
 
 </footer>
+    </body>
+</html>

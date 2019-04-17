@@ -1,1 +1,1 @@
-{"@context":"http://uischema.org","@type":"Highlight","@parent":"Feature","@i18n":{"en":{"@name":"Highlight","@description":"A side-by-side image and accompanying text"}}}
+{"@context":"http://uischema.org","@type":"Highlight","@topic":["media","text"],"@parent":"Feature","@i18n":{"en":{"@name":"Highlight","@description":"A side-by-side image and accompanying text"}}}

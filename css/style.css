@@ -961,6 +961,40 @@ html {
   top: 0;
   left: 0;
   z-index: 100;
+  height: 100vh;
+}
+@media screen and (min-width: 993px) {
+  .site-nav {
+    position: relative;
+    width: calc(100vw - 4rem);
+    max-width: 20rem;
+    flex-shrink: 0;
+  }
+}
+.site-nav__container {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  transform: translateX(-101%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: calc(100vw - 4rem);
+  max-width: 20rem;
+  transition: transform 0.5s ease;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+@media screen and (min-width: 993px) {
+  .site-nav__container {
+    width: inherit;
+    max-width: inherit;
+    transform: none;
+    position: fixed;
+    box-shadow: none;
+    border-right: 1px solid lightgrey;
+  }
 }
 .site-nav__toggle {
   display: block;
@@ -973,6 +1007,11 @@ html {
 }
 .site-nav__toggle:hover, .site-nav__toggle:focus {
   background-color: darkblue;
+}
+@media screen and (min-width: 993px) {
+  .site-nav__toggle {
+    display: none;
+  }
 }
 .site-nav__toggle__checkbox {
   display: none;
@@ -992,28 +1031,748 @@ html {
 .site-nav__toggle__checkbox:checked {
   display: block;
 }
-.site-nav__toggle__checkbox:checked + .site-nav__items {
+.site-nav__toggle__checkbox:checked ~ .site-nav__container {
   transform: none;
 }
+.site-nav__topics {
+  flex-shrink: 0;
+  padding: 1rem;
+}
+.site-nav__topics__topic {
+  font-weight: bold;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.5rem 0.5rem 0;
+  cursor: pointer;
+  background-color: lightgrey;
+  color: grey;
+  font-size: 0.8rem;
+  display: inline-block;
+  vertical-align: top;
+}
+.site-nav__topics__toggle {
+  display: none;
+}
+.site-nav__topics__toggle#topic-0:checked ~ .site-nav__items .site-nav__item.topic-0 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-0:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-0] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-1:checked ~ .site-nav__items .site-nav__item.topic-1 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-1:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-1] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-2:checked ~ .site-nav__items .site-nav__item.topic-2 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-2:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-2] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-3:checked ~ .site-nav__items .site-nav__item.topic-3 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-3:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-3] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-4:checked ~ .site-nav__items .site-nav__item.topic-4 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-4:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-4] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-5:checked ~ .site-nav__items .site-nav__item.topic-5 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-5:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-5] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-6:checked ~ .site-nav__items .site-nav__item.topic-6 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-6:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-6] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-7:checked ~ .site-nav__items .site-nav__item.topic-7 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-7:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-7] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-8:checked ~ .site-nav__items .site-nav__item.topic-8 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-8:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-8] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-9:checked ~ .site-nav__items .site-nav__item.topic-9 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-9:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-9] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-10:checked ~ .site-nav__items .site-nav__item.topic-10 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-10:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-10] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-11:checked ~ .site-nav__items .site-nav__item.topic-11 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-11:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-11] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-12:checked ~ .site-nav__items .site-nav__item.topic-12 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-12:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-12] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-13:checked ~ .site-nav__items .site-nav__item.topic-13 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-13:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-13] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-14:checked ~ .site-nav__items .site-nav__item.topic-14 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-14:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-14] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-15:checked ~ .site-nav__items .site-nav__item.topic-15 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-15:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-15] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-16:checked ~ .site-nav__items .site-nav__item.topic-16 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-16:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-16] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-17:checked ~ .site-nav__items .site-nav__item.topic-17 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-17:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-17] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-18:checked ~ .site-nav__items .site-nav__item.topic-18 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-18:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-18] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-19:checked ~ .site-nav__items .site-nav__item.topic-19 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-19:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-19] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-20:checked ~ .site-nav__items .site-nav__item.topic-20 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-20:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-20] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-21:checked ~ .site-nav__items .site-nav__item.topic-21 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-21:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-21] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-22:checked ~ .site-nav__items .site-nav__item.topic-22 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-22:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-22] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-23:checked ~ .site-nav__items .site-nav__item.topic-23 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-23:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-23] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-24:checked ~ .site-nav__items .site-nav__item.topic-24 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-24:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-24] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-25:checked ~ .site-nav__items .site-nav__item.topic-25 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-25:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-25] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-26:checked ~ .site-nav__items .site-nav__item.topic-26 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-26:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-26] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-27:checked ~ .site-nav__items .site-nav__item.topic-27 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-27:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-27] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-28:checked ~ .site-nav__items .site-nav__item.topic-28 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-28:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-28] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-29:checked ~ .site-nav__items .site-nav__item.topic-29 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-29:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-29] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-30:checked ~ .site-nav__items .site-nav__item.topic-30 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-30:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-30] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-31:checked ~ .site-nav__items .site-nav__item.topic-31 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-31:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-31] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-32:checked ~ .site-nav__items .site-nav__item.topic-32 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-32:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-32] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-33:checked ~ .site-nav__items .site-nav__item.topic-33 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-33:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-33] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-34:checked ~ .site-nav__items .site-nav__item.topic-34 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-34:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-34] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-35:checked ~ .site-nav__items .site-nav__item.topic-35 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-35:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-35] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-36:checked ~ .site-nav__items .site-nav__item.topic-36 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-36:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-36] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-37:checked ~ .site-nav__items .site-nav__item.topic-37 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-37:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-37] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-38:checked ~ .site-nav__items .site-nav__item.topic-38 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-38:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-38] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-39:checked ~ .site-nav__items .site-nav__item.topic-39 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-39:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-39] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-40:checked ~ .site-nav__items .site-nav__item.topic-40 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-40:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-40] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-41:checked ~ .site-nav__items .site-nav__item.topic-41 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-41:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-41] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-42:checked ~ .site-nav__items .site-nav__item.topic-42 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-42:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-42] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-43:checked ~ .site-nav__items .site-nav__item.topic-43 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-43:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-43] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-44:checked ~ .site-nav__items .site-nav__item.topic-44 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-44:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-44] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-45:checked ~ .site-nav__items .site-nav__item.topic-45 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-45:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-45] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-46:checked ~ .site-nav__items .site-nav__item.topic-46 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-46:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-46] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-47:checked ~ .site-nav__items .site-nav__item.topic-47 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-47:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-47] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-48:checked ~ .site-nav__items .site-nav__item.topic-48 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-48:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-48] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-49:checked ~ .site-nav__items .site-nav__item.topic-49 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-49:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-49] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-50:checked ~ .site-nav__items .site-nav__item.topic-50 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-50:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-50] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-51:checked ~ .site-nav__items .site-nav__item.topic-51 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-51:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-51] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-52:checked ~ .site-nav__items .site-nav__item.topic-52 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-52:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-52] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-53:checked ~ .site-nav__items .site-nav__item.topic-53 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-53:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-53] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-54:checked ~ .site-nav__items .site-nav__item.topic-54 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-54:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-54] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-55:checked ~ .site-nav__items .site-nav__item.topic-55 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-55:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-55] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-56:checked ~ .site-nav__items .site-nav__item.topic-56 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-56:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-56] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-57:checked ~ .site-nav__items .site-nav__item.topic-57 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-57:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-57] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-58:checked ~ .site-nav__items .site-nav__item.topic-58 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-58:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-58] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-59:checked ~ .site-nav__items .site-nav__item.topic-59 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-59:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-59] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-60:checked ~ .site-nav__items .site-nav__item.topic-60 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-60:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-60] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-61:checked ~ .site-nav__items .site-nav__item.topic-61 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-61:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-61] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-62:checked ~ .site-nav__items .site-nav__item.topic-62 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-62:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-62] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-63:checked ~ .site-nav__items .site-nav__item.topic-63 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-63:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-63] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-64:checked ~ .site-nav__items .site-nav__item.topic-64 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-64:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-64] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-65:checked ~ .site-nav__items .site-nav__item.topic-65 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-65:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-65] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-66:checked ~ .site-nav__items .site-nav__item.topic-66 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-66:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-66] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-67:checked ~ .site-nav__items .site-nav__item.topic-67 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-67:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-67] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-68:checked ~ .site-nav__items .site-nav__item.topic-68 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-68:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-68] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-69:checked ~ .site-nav__items .site-nav__item.topic-69 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-69:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-69] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-70:checked ~ .site-nav__items .site-nav__item.topic-70 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-70:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-70] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-71:checked ~ .site-nav__items .site-nav__item.topic-71 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-71:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-71] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-72:checked ~ .site-nav__items .site-nav__item.topic-72 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-72:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-72] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-73:checked ~ .site-nav__items .site-nav__item.topic-73 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-73:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-73] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-74:checked ~ .site-nav__items .site-nav__item.topic-74 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-74:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-74] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-75:checked ~ .site-nav__items .site-nav__item.topic-75 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-75:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-75] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-76:checked ~ .site-nav__items .site-nav__item.topic-76 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-76:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-76] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-77:checked ~ .site-nav__items .site-nav__item.topic-77 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-77:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-77] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-78:checked ~ .site-nav__items .site-nav__item.topic-78 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-78:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-78] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-79:checked ~ .site-nav__items .site-nav__item.topic-79 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-79:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-79] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-80:checked ~ .site-nav__items .site-nav__item.topic-80 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-80:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-80] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-81:checked ~ .site-nav__items .site-nav__item.topic-81 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-81:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-81] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-82:checked ~ .site-nav__items .site-nav__item.topic-82 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-82:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-82] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-83:checked ~ .site-nav__items .site-nav__item.topic-83 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-83:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-83] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-84:checked ~ .site-nav__items .site-nav__item.topic-84 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-84:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-84] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-85:checked ~ .site-nav__items .site-nav__item.topic-85 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-85:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-85] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-86:checked ~ .site-nav__items .site-nav__item.topic-86 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-86:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-86] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-87:checked ~ .site-nav__items .site-nav__item.topic-87 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-87:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-87] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-88:checked ~ .site-nav__items .site-nav__item.topic-88 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-88:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-88] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-89:checked ~ .site-nav__items .site-nav__item.topic-89 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-89:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-89] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-90:checked ~ .site-nav__items .site-nav__item.topic-90 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-90:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-90] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-91:checked ~ .site-nav__items .site-nav__item.topic-91 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-91:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-91] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-92:checked ~ .site-nav__items .site-nav__item.topic-92 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-92:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-92] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-93:checked ~ .site-nav__items .site-nav__item.topic-93 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-93:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-93] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-94:checked ~ .site-nav__items .site-nav__item.topic-94 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-94:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-94] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-95:checked ~ .site-nav__items .site-nav__item.topic-95 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-95:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-95] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-96:checked ~ .site-nav__items .site-nav__item.topic-96 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-96:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-96] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-97:checked ~ .site-nav__items .site-nav__item.topic-97 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-97:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-97] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-98:checked ~ .site-nav__items .site-nav__item.topic-98 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-98:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-98] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-99:checked ~ .site-nav__items .site-nav__item.topic-99 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-99:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-99] {
+  background-color: dodgerblue;
+  color: white;
+}
+.site-nav__topics__toggle#topic-100:checked ~ .site-nav__items .site-nav__item.topic-100 {
+  display: block;
+}
+.site-nav__topics__toggle#topic-100:checked ~ .site-nav__topics .site-nav__topics__topic[for=topic-100] {
+  background-color: dodgerblue;
+  color: white;
+}
 .site-nav__items {
-  transform: translateX(-101%);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  overflow: auto;
-  width: calc(100vw - 4rem);
-  max-width: 20rem;
+  flex-grow: 1;
   margin: 0;
   list-style-type: none;
-  transition: transform 0.5s ease;
-  background-color: white;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  overflow: auto;
 }
 .site-nav__item {
   padding: 1rem;
-  display: block;
   text-decoration: none;
+  display: none;
+}
+.site-nav__item.no-topic {
+  display: block;
 }
 .site-nav__item:hover, .site-nav__item:focus {
   background-color: dodgerblue;
@@ -1027,14 +1786,15 @@ html {
 .site-nav__item__name {
   font-weight: bold;
   color: dodgerblue;
+  margin: 0 0 0.5em 0;
 }
 .site-nav__item__description {
   color: black;
+  margin: 0;
 }
 
 .site-header {
   background-color: whitesmoke;
-  margin-bottom: 4rem;
 }
 .site-header__container {
   padding: 4rem 0;
@@ -1102,6 +1862,19 @@ html {
 }
 .site-schema__details .site-schema__code {
   max-height: 40vh;
+}
+
+@media screen and (min-width: 993px) {
+  .site-page {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .site-main {
+    flex-grow: 1;
+  }
 }
 
 .site-footer {
