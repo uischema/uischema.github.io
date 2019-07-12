@@ -375,7 +375,12 @@ async function serve(req, res) {
         case 'img':
             let img = await readFile('img/' + path[1], true);
 
-            res.writeHead(200, { 'Content-Type': 'image/jpeg' }); 
+            if(path[1].indexOf('.svg') > -1) {
+                res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); 
+            } else {
+                res.writeHead(200, { 'Content-Type': 'image/jpeg' }); 
+            }
+            
             res.end(img);
             break;
 

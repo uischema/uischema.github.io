@@ -1,5 +1,5 @@
 <nav class="site-nav">
-    <label class="site-nav__toggle" for="site-nav__toggle">☰</label>
+    <label class="site-nav__toggle" for="site-nav__toggle"></label>
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
    
     <div class="site-nav__container">
@@ -8,6 +8,8 @@
         {{/ topics }}
 
         <div class="site-nav__topics">
+            <img class="site-nav__topics__logo" src="/img/logo.svg">
+
             {{# topics }}
                 <label for="topic-{{ id }}" class="site-nav__topics__topic">{{ name }}</label>
             {{/ topics }}
