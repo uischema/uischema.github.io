@@ -474,7 +474,7 @@ async function generate() {
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
 
         for(let filename of await readDir('img')) {
-            if(Path.extname(filename) !== '.jpg') { continue; }
+            if(Path.extname(filename) !== '.jpg' && Path.extname(filename) !== '.svg') { continue; }
 
             await Util.promisify(FileSystem.copyFile)(Path.join(SRC_DIR, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
         }
