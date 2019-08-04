@@ -999,14 +999,17 @@ html {
 .site-nav__toggle {
   display: block;
   cursor: pointer;
-  line-height: 3rem;
+  height: 3rem;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
   width: 3rem;
   text-align: center;
   color: white;
-  background-color: dodgerblue;
-}
-.site-nav__toggle:hover, .site-nav__toggle:focus {
-  background-color: darkblue;
+  background-color: transparent;
+  background-image: url("/img/logo.svg");
+  background-size: 2.5rem 2.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 @media screen and (min-width: 993px) {
   .site-nav__toggle {
@@ -1034,9 +1037,25 @@ html {
 .site-nav__toggle__checkbox:checked ~ .site-nav__container {
   transform: none;
 }
+.site-nav__logo {
+  padding: 0.5rem;
+  display: flex;
+}
+.site-nav__logo__image {
+  display: block;
+  width: 2.5rem;
+  margin-right: 0.5rem;
+  height: 2.5rem;
+}
+.site-nav__logo__title {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  padding: 0;
+  margin: 0 0 0 0.25rem;
+}
 .site-nav__topics {
   flex-shrink: 0;
-  padding: 1rem 1rem 0.5rem 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid lightgrey;
 }
 .site-nav__topics:empty {

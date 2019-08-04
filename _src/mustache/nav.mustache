@@ -7,9 +7,12 @@
             <input checked type="checkbox" id="topic-{{ id }}" class="site-nav__topics__toggle"></label>
         {{/ topics }}
 
-        <div class="site-nav__topics">
-            <img class="site-nav__topics__logo" src="/img/logo.svg">
+        <div class="site-nav__logo">
+            <img class="site-nav__logo__image" src="/img/logo.svg">
+            <p class="site-nav__logo__title">uischema.org</p>
+        </div>
 
+        <div class="site-nav__topics">
             {{# topics }}
                 <label for="topic-{{ id }}" class="site-nav__topics__topic">{{ name }}</label>
             {{/ topics }}
