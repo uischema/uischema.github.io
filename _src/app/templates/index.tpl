@@ -24,5 +24,8 @@
         </main>
 
         {{> footer }}
+        
+        <script type="text/javascript" src="/js/mustache/index.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
     </body>
 </html>

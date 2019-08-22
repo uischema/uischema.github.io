@@ -23,11 +23,6 @@
                 <a href="/{{ @type }}" data-ui-schema="{{ @type }}" class="site-nav__item{{^ @topic }} no-topic{{/ @topic }}{{# @topic }} topic-{{ id }}{{/ @topic }}">
                     <p class="site-nav__item__name">{{ @i18n.en.@name }}</p>
                     <p class="site-nav__item__description">{{ @i18n.en.@description }}</p>
-                    {{# hasExample }} 
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/{{ @type }}.html" scrolling="no"></iframe>
-                        </div>
-                    {{/ hasExample }}
                 </a>
             {{/ schemas }}
         </div>

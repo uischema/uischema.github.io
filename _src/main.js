@@ -2,7 +2,7 @@
 
 const Path = require('path');
 const FileSystem = require('fs');
-const Mustache = require(Path.join(__dirname, 'app', 'lib', 'mustache'));
+const Mustache = require(Path.join(__dirname, 'app', 'js', 'mustache'));
 const HTTP = require('http');
 const Url = require('url');
 const Util = require('util');
@@ -111,6 +111,25 @@ async function getSchemaTemplate(type) {
 }
 
 /**
+ * Gets a schema example
+ *
+ * @param {String} type
+ *
+ * @return {Object} Example
+ */
+async function getSchemaExample(type) {
+    let example = await readFile(Path.join(EXAMPLES_DIR, type) + '.json');
+
+    try {
+        return JSON.parse(example);
+
+    } catch(e) {
+        return null;
+    
+    }
+}
+
+/**
  * Gets internationalisations for a type
  *
  * @param {String} type
@@ -161,11 +180,6 @@ async function applyAppViewData(view) {
             }
         }
     }
-
-    // Check for examples
-    for(let schema of view['schemas']) {
-        schema['hasExample'] = schemaHasExample(schema['@type']);
-    }
 }
 
 /**
@@ -200,8 +214,6 @@ async function renderSchemaPage(type, language) {
 
     // Definition content
     view['schema'] = await getSchema(type);
-    view['template'] = schemaTemplates[type];
-    view['json'] = await readFile(Path.join(SCHEMA_DIR, type + '.json'));
 
     // Children
     view['children'] = [];
@@ -353,46 +365,24 @@ async function getTopics() {
 }
 
 /**
- * Gets a schema exmaple HTML
+ * Gets schema examples
  *
- * @param {String} type
- *
- * @return {String} HTML
+ * @return {Array} Examples
  */
-async function getSchemaExample(type) {
-    let json = await readFile(Path.join(SRC_DIR, 'examples', type + '.json'));
-    let html = '';
+async function getSchemaExamples() {
+    let examples = [];
+    
+    for(let filename of await readDir(EXAMPLES_DIR)) {
+        if(Path.extname(filename) !== '.json') { continue; }
 
-    if(json) {
+        let json = await readFile(Path.join(EXAMPLES_DIR, filename));
+
         json = JSON.parse(json);
-        
-        let schemaTemplates = await getSchemaTemplates();
 
-        html = await Mustache.render(schemaTemplates[type], json, schemaTemplates);
-    
-    } else {
-        html = '(example missing)';
-
+        examples.push(json);
     }
-    
-    html = `
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=0.6">
-                <meta charset="utf8">
-                <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
-                <link rel="stylesheet" type="text/css" href="/css/style.css">
-            </head>
 
-            <body>
-                ${html}
-            </body>
-    `;
-    
-    html = html.replace(/\n/g, '');
-
-    return html;
+    return examples;
 }
 
 /**
@@ -455,10 +445,12 @@ async function serve(req, res) {
         case 'js':
             let js = '';
 
-            if(path[1] === 'uischema.org.js') {
-                js = await readFile(Path.join('js', path[1]));
+            path.shift();
+
+            if(path[0] === 'uischema.org.js') {
+                js = await readFile(Path.join('js', path.join('/')));
             } else {
-                js = await readFile(Path.join('app', 'js', path[1]));
+                js = await readFile(Path.join('app', 'js', path.join('/')));
             }
 
             res.writeHead(200, { 'Content-Type': 'text/javascript' }); 
@@ -478,9 +470,19 @@ async function serve(req, res) {
             break;
 
         // JSON API
-        case 'all.json':
+        case 'schemas.json':
             res.writeHead(200, { 'Content-Type': 'application/json' }); 
             res.end(JSON.stringify(await getSchemas()));
+            break;
+        
+        case 'templates.json':
+            res.writeHead(200, { 'Content-Type': 'application/json' }); 
+            res.end(JSON.stringify(await getSchemaTemplates()));
+            break;
+        
+        case 'examples.json':
+            res.writeHead(200, { 'Content-Type': 'application/json' }); 
+            res.end(JSON.stringify(await getSchemaExamples()));
             break;
         
         case 'topics.json':
@@ -520,20 +522,6 @@ async function serve(req, res) {
                         res.end(json);
                         break;
                     
-                    case '.tpl':
-                        let template = await getSchemaTemplate(type);
-
-                        res.writeHead(200, { 'Content-Type': 'text/plain' });
-                        res.end(template);
-                        break;
-                    
-                    case '.html':
-                        let example = await getSchemaExample(type);
-
-                        res.writeHead(200, { 'Content-Type': 'text/html' });
-                        res.end(example);
-                        break;
-
                     case '':
                         let html = await renderSchemaPage(type, 'en');
 
@@ -598,12 +586,6 @@ async function generate() {
             let schemaPage = await renderSchemaPage(type, 'en');
 
             await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
-
-            if(schemaHasExample(type)) {
-                let examplePage = await getSchemaExample(type, 'en');
-
-                await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type + '.html'), examplePage);
-            }
         }
             
         // Create "css" directory
@@ -614,7 +596,10 @@ async function generate() {
         // Create "js" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'js'));
         await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'js', 'script.js'), Path.join(ROOT_DIR, 'js', 'script.js'));
+        await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'js', 'schema.js'), Path.join(ROOT_DIR, 'js', 'schema.js'));
         await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'js', 'builder.js'), Path.join(ROOT_DIR, 'js', 'builder.js'));
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'js', 'mustache'));
+        await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'js', 'mustache', 'index.js'), Path.join(ROOT_DIR, 'js', 'mustache', 'index.js'));
 
         // Create "img" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'img'));
@@ -625,17 +610,26 @@ async function generate() {
             await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
         }
 
-        // Copy JSON files
-        let all = await getSchemas();
+        // Copy schema files
+        let schemas = await getSchemas();
 
-        for(let json of all) {
+        for(let json of schemas) {
             await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, json['@type'] + '.json'), JSON.stringify(json));
         }
 
-        all = JSON.stringify(all);
-                
-        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'all.json'), all);
+        // Create API json files
+        schemas = JSON.stringify(schemas);
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'schemas.json'), schemas);
     
+        let templates = JSON.stringify(await getSchemaTemplates())
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'templates.json'), templates);
+        
+        let topics = JSON.stringify(await getTopics())
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'topics.json'), topics);
+        
+        let examples = JSON.stringify(await getSchemaExamples())
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'examples.json'), examples);
+
     } catch(e) {
         console.log(e.stack || e.message);
         

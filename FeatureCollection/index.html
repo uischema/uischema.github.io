@@ -11,8 +11,6 @@
 <link rel="icon" href="/img/logo.svg">
 <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-<script type="text/javascript" src="/js/script.js"></script>
     </head>
 
     <body class="site-page">
@@ -38,30 +36,18 @@
                 <a href="/Feature" data-ui-schema="Feature" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature</p>
                     <p class="site-nav__item__description">An element for featuring other content</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/Feature.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature chain</p>
                     <p class="site-nav__item__description">A chain of features</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/FeatureChain.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature collection</p>
                     <p class="site-nav__item__description">A collection of featured items</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/FeatureCollection.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Hero</p>
                     <p class="site-nav__item__description">A large element with an image background</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/Hero.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/Image" data-ui-schema="Image" class="site-nav__item topic-0">
                     <p class="site-nav__item__name">Image</p>
@@ -92,7 +78,7 @@
                 </div>
             </header>
            
-            <div class="site-schema ui-container">
+            <div class="site-schema ui-container" data-ui-schema="FeatureCollection">
                     <h2>Properties</h2>
                     <table class="site-schema__properties">
                             <tr class="site-schema__property">
@@ -148,64 +134,24 @@
                
                 <h2>Definition</h2>
 
-                    <pre class="site-schema__code">{
-    "@context": "http://uischema.org",
-    "@type": "FeatureCollection",
-    "@label": "heading",
-    "@topic": [ "media", "text" ],
-    "heading": "string",
-    "subheading": "string",
-    "body": "string",
-    "items": [ "Feature" ],
-    "options": {
-        "useSquares": "bool",
-        "useCoverLinks": "bool",
-        "isCarousel": "bool",
-        "isGrid": "bool",
-        "columns": {
-            "xs": "int",
-            "sm": "int",
-            "md": "int",
-            "lg": "int",
-            "xl": "int"
-        }
-    }
-}
-</pre>
+                <pre class="site-schema__code site-schema__definition"></pre>
 
                 <h2>Template</h2>
 
-                    <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;FeatureCollection&quot; class&#x3D;&quot;ui-feature-collection{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
-    &lt;div class&#x3D;&quot;ui-container ui-feature-collection__container&quot;&gt;
-        {{# heading }}
-            &lt;h2 class&#x3D;&quot;ui-feature-collection__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
-        {{&#x2F; heading }}
-        
-        {{# subheading }}
-            &lt;h3 class&#x3D;&quot;ui-feature-collection__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
-        {{&#x2F; subheading }}
-        
-        {{# body }}
-            &lt;div class&#x3D;&quot;ui-feature-collection__body&quot;&gt;{{ . }}&lt;&#x2F;div&gt;
-        {{&#x2F; body }}
-    &lt;&#x2F;div&gt;
+                <pre class="site-schema__code site-schema__template"></pre>
 
-    &lt;div class&#x3D;&quot;ui-feature-collection__items{{# options.isContained }} ui-container ui-feature-collection__container{{&#x2F; options.isContained }}&quot;&gt;
-        {{# items }}
-            &lt;div class&#x3D;&quot;ui-feature-collection__item&quot;&gt;{{&gt; Feature }}&lt;&#x2F;div&gt;
-        {{&#x2F; items }}
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;section&gt;
-</pre>
-
-                    <h2>Example</h2>
-                
-                    <iframe class="site-schema__iframe" src="/FeatureCollection.html" onload="resizeIframe(this);" scrolling="no"></iframe>
+                <h2>Example</h2>
+            
+                <iframe class="site-schema__example"></iframe>
             </div>
         </main>
 
 <footer class="site-footer">
 
 </footer>
+        
+        <script type="text/javascript" src="/js/mustache/index.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/schema.js"></script>
     </body>
 </html>

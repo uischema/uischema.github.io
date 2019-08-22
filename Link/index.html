@@ -11,8 +11,6 @@
 <link rel="icon" href="/img/logo.svg">
 <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-<script type="text/javascript" src="/js/script.js"></script>
     </head>
 
     <body class="site-page">
@@ -38,30 +36,18 @@
                 <a href="/Feature" data-ui-schema="Feature" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature</p>
                     <p class="site-nav__item__description">An element for featuring other content</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/Feature.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature chain</p>
                     <p class="site-nav__item__description">A chain of features</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/FeatureChain.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature collection</p>
                     <p class="site-nav__item__description">A collection of featured items</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/FeatureCollection.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Hero</p>
                     <p class="site-nav__item__description">A large element with an image background</p>
-                        <div class="site-nav__item__preview">
-                            <iframe class="site-nav__item__preview__iframe" src="/Hero.html" scrolling="no"></iframe>
-                        </div>
                 </a>
                 <a href="/Image" data-ui-schema="Image" class="site-nav__item topic-0">
                     <p class="site-nav__item__name">Image</p>
@@ -88,7 +74,7 @@
                 </div>
             </header>
            
-            <div class="site-schema ui-container">
+            <div class="site-schema ui-container" data-ui-schema="Link">
                     <h2>Properties</h2>
                     <table class="site-schema__properties">
                             <tr class="site-schema__property">
@@ -111,25 +97,24 @@
                
                 <h2>Definition</h2>
 
-                    <pre class="site-schema__code">{
-    "@context": "http://uischema.org",
-    "@type": "Link",
-    "text": "string",
-    "href": "string",
-    "openNew": "bool"
-}
-</pre>
+                <pre class="site-schema__code site-schema__definition"></pre>
 
                 <h2>Template</h2>
 
-                    <pre class="site-schema__code">&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;{{ href }}&quot; {{# openNew }}target&#x3D;&quot;_blank&quot;{{&#x2F; openNew }}&gt;{{ text }}&lt;&#x2F;a&gt;
-</pre>
+                <pre class="site-schema__code site-schema__template"></pre>
 
+                <h2>Example</h2>
+            
+                <iframe class="site-schema__example"></iframe>
             </div>
         </main>
 
 <footer class="site-footer">
 
 </footer>
+        
+        <script type="text/javascript" src="/js/mustache/index.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/schema.js"></script>
     </body>
 </html>

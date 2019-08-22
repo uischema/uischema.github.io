@@ -38,7 +38,7 @@
                 </div>
             </header>
            
-            <div class="site-schema ui-container">
+            <div class="site-schema ui-container" data-ui-schema="{{ schema.@type }}">
                 {{# hasProperties }}
                     <h2>Properties</h2>
                     <table class="site-schema__properties">
@@ -67,24 +67,22 @@
                
                 <h2>Definition</h2>
 
-                {{# json }}
-                    <pre class="site-schema__code">{{{ . }}}</pre>
-                {{/ json }}
+                <pre class="site-schema__code site-schema__definition"></pre>
 
                 <h2>Template</h2>
 
-                {{# template }}
-                    <pre class="site-schema__code">{{ . }}</pre>
-                {{/ template }}
+                <pre class="site-schema__code site-schema__template"></pre>
 
-                {{# hasExample }} 
-                    <h2>Example</h2>
-                
-                    <iframe class="site-schema__iframe" src="/{{ schema.@type }}.html" onload="resizeIframe(this);" scrolling="no"></iframe>
-                {{/ hasExample }} 
+                <h2>Example</h2>
+            
+                <iframe class="site-schema__example"></iframe>
             </div>
         </main>
 
         {{> footer }}
+        
+        <script type="text/javascript" src="/js/mustache/index.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/schema.js"></script>
     </body>
 </html>
