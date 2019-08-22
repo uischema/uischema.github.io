@@ -4,11 +4,8 @@
         <title>{{ name }}</title>
 
         <meta name="description" content="{{ description }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
-
-        <link rel="icon" href="/img/logo.svg">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        
+        {{> head }}
     </head>
 
     <body class="site-page">
@@ -71,43 +68,20 @@
                 <h2>Definition</h2>
 
                 {{# json }}
-                    <details class="site-schema__details">
-                        <summary class="site-schema__details__summary">JSON</summary>
-                        <pre class="site-schema__code">{{{ . }}}</pre>
-                    </details>
+                    <pre class="site-schema__code">{{{ . }}}</pre>
                 {{/ json }}
 
+                <h2>Template</h2>
+
                 {{# template }}
-                    <details class="site-schema__details">
-                        <summary class="site-schema__details__summary">Template</summary>
-                        <pre class="site-schema__code">{{ . }}</pre>
-                    </details>
+                    <pre class="site-schema__code">{{ . }}</pre>
                 {{/ template }}
 
-                {{# hasExample }}
+                {{# hasExample }} 
                     <h2>Example</h2>
                 
-                    {{# exampleIframe }}
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">Visual</summary>
-                            <iframe class="site-schema__details__iframe" srcdoc="{{ . }}"></iframe>
-                        </details>
-                    {{/ exampleIframe }}
-                        
-                    {{# exampleHTML }}
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">HTML</summary>
-                            <pre class="site-schema__code">{{ . }}</pre>
-                        </details>
-                    {{/ exampleHTML }}
-                    
-                    {{# exampleJSON }}
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">JSON</summary>
-                            <pre class="site-schema__code">{{ . }}"</pre>
-                        </details>
-                    {{/ exampleJSON }}
-                {{/ hasExample }}
+                    <iframe class="site-schema__iframe" src="/{{ schema.@type }}.html" onload="resizeIframe(this);" scrolling="no"></iframe>
+                {{/ hasExample }} 
             </div>
         </main>
 

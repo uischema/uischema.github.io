@@ -1,0 +1,51 @@
+{
+    "@type": "FeatureChain",
+    "heading": "Voluptas eos",
+    "subheading": "Voluptas eos magnam voluptate",
+    "link": {
+        "text": "Link",
+        "href": "#"
+    },
+    "items": [
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "body": "Voluptas eos magnam voluptate. Sit recusandae sed dolores repellendus nam et. Fuga voluptates qui ab voluptate velit tempore. Quam et aperiam ut odit omnis earum.",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "body": "Voluptas eos magnam voluptate. Sit recusandae sed dolores repellendus nam et. Fuga voluptates qui ab voluptate velit tempore. Quam et aperiam ut odit omnis earum.",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "body": "Voluptas eos magnam voluptate. Sit recusandae sed dolores repellendus nam et. Fuga voluptates qui ab voluptate velit tempore. Quam et aperiam ut odit omnis earum.",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "body": "Voluptas eos magnam voluptate. Sit recusandae sed dolores repellendus nam et. Fuga voluptates qui ab voluptate velit tempore. Quam et aperiam ut odit omnis earum.",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            }
+        }
+    ]
+}

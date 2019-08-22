@@ -4,11 +4,15 @@
         <title>Hero</title>
 
         <meta name="description" content="A large element with an image background">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
+        
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="/img/logo.svg">
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="icon" href="/img/logo.svg">
+<link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<script type="text/javascript" src="/js/script.js"></script>
     </head>
 
     <body class="site-page">
@@ -17,8 +21,8 @@
     <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
    
     <div class="site-nav__container">
-            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle"></label>
-            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle"></label>
+            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle">
+            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle">
 
         <div class="site-nav__logo">
             <img class="site-nav__logo__image" src="/img/logo.svg">
@@ -31,33 +35,41 @@
         </div>
         
         <div class="site-nav__items">
-                <a href="/Feature" class="site-nav__item topic-0 topic-1">
+                <a href="/Feature" data-ui-schema="Feature" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature</p>
                     <p class="site-nav__item__description">An element for featuring other content</p>
+                        <div class="site-nav__item__preview">
+                            <iframe class="site-nav__item__preview__iframe" src="/Feature.html" scrolling="no"></iframe>
+                        </div>
                 </a>
-                <a href="/Gallery" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Gallery</p>
+                <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature chain</p>
+                    <p class="site-nav__item__description">A chain of features</p>
+                        <div class="site-nav__item__preview">
+                            <iframe class="site-nav__item__preview__iframe" src="/FeatureChain.html" scrolling="no"></iframe>
+                        </div>
+                </a>
+                <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature collection</p>
                     <p class="site-nav__item__description">A collection of featured items</p>
+                        <div class="site-nav__item__preview">
+                            <iframe class="site-nav__item__preview__iframe" src="/FeatureCollection.html" scrolling="no"></iframe>
+                        </div>
                 </a>
-                <a href="/Hero" class="site-nav__item topic-0 topic-1">
+                <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Hero</p>
                     <p class="site-nav__item__description">A large element with an image background</p>
+                        <div class="site-nav__item__preview">
+                            <iframe class="site-nav__item__preview__iframe" src="/Hero.html" scrolling="no"></iframe>
+                        </div>
                 </a>
-                <a href="/Highlight" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Highlight</p>
-                    <p class="site-nav__item__description">A side-by-side image and accompanying text</p>
-                </a>
-                <a href="/Image" class="site-nav__item topic-0">
+                <a href="/Image" data-ui-schema="Image" class="site-nav__item topic-0">
                     <p class="site-nav__item__name">Image</p>
                     <p class="site-nav__item__description">A reference to an image</p>
                 </a>
-                <a href="/Link" class="site-nav__item no-topic">
+                <a href="/Link" data-ui-schema="Link" class="site-nav__item no-topic">
                     <p class="site-nav__item__name">Link</p>
                     <p class="site-nav__item__description">A reference to another page or element</p>
-                </a>
-                <a href="/Timeline" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Timeline</p>
-                    <p class="site-nav__item__description">A list of events</p>
                 </a>
         </div>
     </div>
@@ -93,9 +105,7 @@
                
                 <h2>Definition</h2>
 
-                    <details class="site-schema__details">
-                        <summary class="site-schema__details__summary">JSON</summary>
-                        <pre class="site-schema__code">{
+                    <pre class="site-schema__code">{
     "@context": "http://uischema.org",
     "@type": "Hero",
     "@parent": "Feature",
@@ -105,11 +115,10 @@
     }
 }
 </pre>
-                    </details>
 
-                    <details class="site-schema__details">
-                        <summary class="site-schema__details__summary">Template</summary>
-                        <pre class="site-schema__code">&lt;{{# options.isHeader }}header{{&#x2F; options.isHeader  }}{{^ options.isHeader }}section{{&#x2F; options.isHeader }} data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;
+                <h2>Template</h2>
+
+                    <pre class="site-schema__code">&lt;{{# options.isHeader }}header{{&#x2F; options.isHeader  }}{{^ options.isHeader }}section{{&#x2F; options.isHeader }} data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;
     &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;
         {{# image }}
             &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;{{&gt; Image }}&lt;&#x2F;div&gt;
@@ -117,21 +126,21 @@
 
         {{# options.isHeader }}
             {{# heading }}
-                &lt;h1 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{{ . }}}&lt;&#x2F;h1&gt;
+                &lt;h1 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{ . }}&lt;&#x2F;h1&gt;
             {{&#x2F; heading }}
         {{&#x2F; options.isHeader }}
         {{^ options.isHeader }}
             {{# heading }}
-                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{{ . }}}&lt;&#x2F;h2&gt;
+                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
             {{&#x2F; heading }}
         {{&#x2F; options.isHeader }}
         
         {{# subheading }}
-            &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;{{{ . }}}&lt;&#x2F;h3&gt;
+            &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
         {{&#x2F; subheading }}
 
         {{# body }}
-            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;{{{ . }}}&lt;&#x2F;div&gt;
+            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;{{ . }}&lt;&#x2F;div&gt;
         {{&#x2F; body }}
 
         {{# link }}
@@ -140,52 +149,10 @@
     &lt;&#x2F;div&gt;
 &lt;&#x2F;{{# options.isHeader }}header{{&#x2F; options.isHeader  }}{{^ options.isHeader }}section{{&#x2F; options.isHeader }}&gt;
 </pre>
-                    </details>
 
                     <h2>Example</h2>
                 
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">Visual</summary>
-                            <iframe class="site-schema__details__iframe" srcdoc="&lt;!DOCTYPE html&gt;&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;0.6&quot;&gt;&lt;meta charset&#x3D;&quot;utf8&quot;&gt;&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css&quot;&gt;&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;    &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;            &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Background&quot;&gt;&lt;&#x2F;div&gt;                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;                    &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;            &lt;div class&#x3D;&quot;ui-hero__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;&lt;&#x2F;div&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;section&gt;"></iframe>
-                        </details>
-                        
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">HTML</summary>
-                            <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Hero&quot; class&#x3D;&quot;ui-hero&quot;&gt;
-    &lt;div class&#x3D;&quot;ui-container ui-hero__container&quot;&gt;
-            &lt;div class&#x3D;&quot;ui-hero__image&quot;&gt;&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; src&#x3D;&quot;&#x2F;img&#x2F;bg.jpg&quot; alt&#x3D;&quot;Background&quot;&gt;
-&lt;&#x2F;div&gt;
-
-                &lt;h2 class&#x3D;&quot;ui-hero__heading&quot;&gt;Heading&lt;&#x2F;h2&gt;
-        
-            &lt;h3 class&#x3D;&quot;ui-hero__subheading&quot;&gt;Subheading&lt;&#x2F;h3&gt;
-
-            &lt;div class&#x3D;&quot;ui-hero__body&quot;&gt;&lt;p&gt;Body&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;
-
-            &lt;div class&#x3D;&quot;ui-hero__link&quot;&gt;&lt;a data-ui-schema&#x3D;&quot;uischema.org&#x2F;Link&quot; href&#x3D;&quot;#&quot; &gt;Link&lt;&#x2F;a&gt;
-&lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;section&gt;
-</pre>
-                        </details>
-                    
-                        <details class="site-schema__details">
-                            <summary class="site-schema__details__summary">JSON</summary>
-                            <pre class="site-schema__code">{
-    &quot;@type&quot;: &quot;Hero&quot;,
-    &quot;heading&quot;: &quot;Heading&quot;,
-    &quot;subheading&quot;: &quot;Subheading&quot;,
-    &quot;body&quot;: &quot;&lt;p&gt;Body&lt;&#x2F;p&gt;&quot;,
-    &quot;image&quot;: {
-        &quot;src&quot;: &quot;&#x2F;img&#x2F;bg.jpg&quot;,
-        &quot;alt&quot;: &quot;Background&quot;
-    },
-    &quot;link&quot;: {
-        &quot;text&quot;: &quot;Link&quot;,
-        &quot;href&quot;: &quot;#&quot;
-    }
-}"</pre>
-                        </details>
+                    <iframe class="site-schema__iframe" src="/Hero.html" onload="resizeIframe(this);" scrolling="no"></iframe>
             </div>
         </main>
 

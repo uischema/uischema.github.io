@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Image</title>
+        <title>Feature chain</title>
 
-        <meta name="description" content="A reference to an image">
+        <meta name="description" content="A chain of features">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,12 +78,16 @@
         <main class="site-main">
             <header class="site-header">
                 <div class="ui-container site-header__container">
-                    <h1 class="site-header__title">Image</h1>
-                    <p class="site-header__description">A reference to an image</p>
+                    <h1 class="site-header__title">Feature chain</h1>
+                    <p class="site-header__description">A chain of features</p>
                 </div>
                 
                 <div class="site-header__links">
                     <div class="ui-container site-header__links__container">
+                            <div class="site-header__links__group">
+                                <span class="site-header__links__group__title">Parent: </span>
+                                <a href="/FeatureCollection" class="site-header__link">FeatureCollection</a>
+                            </div>
                     </div>
                 </div>
             </header>
@@ -92,14 +96,14 @@
                     <h2>Properties</h2>
                     <table class="site-schema__properties">
                             <tr class="site-schema__property">
-                                <td class="site-schema__property__key">src</td>
-                                <td class="site-schema__property__name">Source</td>
-                                <td class="site-schema__property__description">The source of the image</td>
+                                <td class="site-schema__property__key">items</td>
+                                <td class="site-schema__property__name">Items</td>
+                                <td class="site-schema__property__description">The features</td>
                             </tr>
                             <tr class="site-schema__property">
-                                <td class="site-schema__property__key">alt</td>
-                                <td class="site-schema__property__name">Description</td>
-                                <td class="site-schema__property__description">A short description of the image</td>
+                                <td class="site-schema__property__key">link</td>
+                                <td class="site-schema__property__name">Link</td>
+                                <td class="site-schema__property__description">A link after the features</td>
                             </tr>
                     </table>
                
@@ -108,18 +112,47 @@
 
                     <pre class="site-schema__code">{
     "@context": "http://uischema.org",
-    "@type": "Image",
-    "@topic": "media",
-    "src": "string",
-    "alt": "string"
+    "@type": "FeatureChain",
+    "@topic": [ "media", "text" ],
+    "@parent": "FeatureCollection",
+    "link": "Link"
 }
 </pre>
 
                 <h2>Template</h2>
 
-                    <pre class="site-schema__code">&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; class&#x3D;&quot;ui-image&quot; src&#x3D;&quot;{{ src }}&quot; alt&#x3D;&quot;{{ alt }}&quot;&gt;
+                    <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;FeatureChain&quot; class&#x3D;&quot;ui-feature-chain&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container ui-feature-chain__container&quot;&gt;
+        {{# heading }}
+            &lt;h2 class&#x3D;&quot;ui-feature-chain__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
+        {{&#x2F; heading }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-feature-chain__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+        
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-feature-chain__body&quot;&gt;{{ . }}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+        
+        &lt;div class&#x3D;&quot;ui-feature-chain__items&quot;&gt;
+            {{# items }}
+                &lt;div class&#x3D;&quot;ui-feature-chain__item&quot;&gt;
+                    {{&gt; Feature }}
+                &lt;&#x2F;div&gt;
+            {{&#x2F; items }}
+            
+            {{# link }}
+                &lt;div class&#x3D;&quot;ui-feature-chain__link&quot;&gt;{{&gt; Link }}&lt;&#x2F;div&gt;
+            {{&#x2F; link }}
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;section&gt;
 </pre>
 
+                    <h2>Example</h2>
+                
+                    <iframe class="site-schema__iframe" src="/FeatureChain.html" onload="resizeIframe(this);" scrolling="no"></iframe>
             </div>
         </main>
 

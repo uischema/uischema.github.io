@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Feature</title>
+        <title>Feature collection</title>
 
-        <meta name="description" content="An element for featuring other content">
+        <meta name="description" content="A collection of featured items">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,15 +78,15 @@
         <main class="site-main">
             <header class="site-header">
                 <div class="ui-container site-header__container">
-                    <h1 class="site-header__title">Feature</h1>
-                    <p class="site-header__description">An element for featuring other content</p>
+                    <h1 class="site-header__title">Feature collection</h1>
+                    <p class="site-header__description">A collection of featured items</p>
                 </div>
                 
                 <div class="site-header__links">
                     <div class="ui-container site-header__links__container">
                             <div class="site-header__links__group">
                                 <span class="site-header__links__group__title">Children: </span>
-                                    <a href="/Hero" class="site-header__link">Hero</a>
+                                    <a href="/FeatureChain" class="site-header__link">FeatureChain</a>
                             </div>
                     </div>
                 </div>
@@ -95,11 +95,6 @@
             <div class="site-schema ui-container">
                     <h2>Properties</h2>
                     <table class="site-schema__properties">
-                            <tr class="site-schema__property">
-                                <td class="site-schema__property__key">image</td>
-                                <td class="site-schema__property__name">Image</td>
-                                <td class="site-schema__property__description">The main image</td>
-                            </tr>
                             <tr class="site-schema__property">
                                 <td class="site-schema__property__key">heading</td>
                                 <td class="site-schema__property__name">Heading</td>
@@ -116,60 +111,96 @@
                                 <td class="site-schema__property__description">The smaller text under the headings</td>
                             </tr>
                             <tr class="site-schema__property">
-                                <td class="site-schema__property__key">link</td>
-                                <td class="site-schema__property__name">Link</td>
-                                <td class="site-schema__property__description">The URL redirected to when clicked</td>
+                                <td class="site-schema__property__key">items</td>
+                                <td class="site-schema__property__name">Items</td>
+                                <td class="site-schema__property__description">The list of featured items</td>
                             </tr>
                     </table>
                
+                    <h3>Options</h3>
+                    <table class="site-schema__properties">
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">useSquares</td>
+                                <td class="site-schema__property__name">Use squares</td>
+                                <td class="site-schema__property__description">Make the featured items square</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">useCoverLinks</td>
+                                <td class="site-schema__property__name">Use cover links</td>
+                                <td class="site-schema__property__description">Make the featured items clickable</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">isCarousel</td>
+                                <td class="site-schema__property__name">Is carousel</td>
+                                <td class="site-schema__property__description">Display all featured items in a single row</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">isGrid</td>
+                                <td class="site-schema__property__name">Is grid</td>
+                                <td class="site-schema__property__description">Restrict the featured items to a grid</td>
+                            </tr>
+                            <tr class="site-schema__property">
+                                <td class="site-schema__property__key">columns</td>
+                                <td class="site-schema__property__name">Columns</td>
+                                <td class="site-schema__property__description">The amount of columns</td>
+                            </tr>
+                    </table>
                
                 <h2>Definition</h2>
 
                     <pre class="site-schema__code">{
     "@context": "http://uischema.org",
-    "@type": "Feature",
+    "@type": "FeatureCollection",
     "@label": "heading",
     "@topic": [ "media", "text" ],
-    "image": "Image",
     "heading": "string",
     "subheading": "string",
     "body": "string",
-    "link": "Link"
+    "items": [ "Feature" ],
+    "options": {
+        "useSquares": "bool",
+        "useCoverLinks": "bool",
+        "isCarousel": "bool",
+        "isGrid": "bool",
+        "columns": {
+            "xs": "int",
+            "sm": "int",
+            "md": "int",
+            "lg": "int",
+            "xl": "int"
+        }
+    }
 }
 </pre>
 
                 <h2>Template</h2>
 
-                    <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;Feature&quot; class&#x3D;&quot;ui-feature{{^ image }} no-image{{&#x2F; image }}&quot;&gt;
-    &lt;div class&#x3D;&quot;ui-container ui-feature__container&quot;&gt;
-        &lt;div class&#x3D;&quot;ui-feature__details&quot;&gt;
-            {{# heading }}
-                &lt;h2 class&#x3D;&quot;ui-feature__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
-            {{&#x2F; heading }}
-            
-            {{# subheading }}
-                &lt;h3 class&#x3D;&quot;ui-feature__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
-            {{&#x2F; subheading }}
+                    <pre class="site-schema__code">&lt;section data-ui-schema&#x3D;&quot;uischema.org&#x2F;FeatureCollection&quot; class&#x3D;&quot;ui-feature-collection{{# options }}{{# isCarousel }} is-carousel{{&#x2F; isCarousel }}{{# isGrid }} is-grid{{&#x2F; isGrid }}{{# useCoverLinks }} use-cover-links{{&#x2F; useCoverLinks }}{{# useSquares }} use-squares{{&#x2F; useSquares }}{{# columns }} {{# xs }} columns-xs-{{ . }}{{&#x2F; xs }}{{# sm }} columns-sm-{{ . }}{{&#x2F; sm }}{{# md }} columns-md-{{ . }}{{&#x2F; md }}{{# lg }} columns-lg-{{ . }}{{&#x2F; lg }}{{# xl }} columns-xl-{{ . }}{{&#x2F; xl }}{{&#x2F; columns }}{{&#x2F; options }}&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-container ui-feature-collection__container&quot;&gt;
+        {{# heading }}
+            &lt;h2 class&#x3D;&quot;ui-feature-collection__heading&quot;&gt;{{ . }}&lt;&#x2F;h2&gt;
+        {{&#x2F; heading }}
+        
+        {{# subheading }}
+            &lt;h3 class&#x3D;&quot;ui-feature-collection__subheading&quot;&gt;{{ . }}&lt;&#x2F;h3&gt;
+        {{&#x2F; subheading }}
+        
+        {{# body }}
+            &lt;div class&#x3D;&quot;ui-feature-collection__body&quot;&gt;{{ . }}&lt;&#x2F;div&gt;
+        {{&#x2F; body }}
+    &lt;&#x2F;div&gt;
 
-            {{# body }}
-                &lt;div class&#x3D;&quot;ui-feature__body&quot;&gt;{{ . }}&lt;&#x2F;div&gt;
-            {{&#x2F; body }}
-
-            {{# link }}
-                &lt;div class&#x3D;&quot;ui-feature__link&quot;&gt;{{&gt; Link }}&lt;&#x2F;div&gt;
-            {{&#x2F; link }}
-        &lt;&#x2F;div&gt;
-    
-        {{# image }}
-            &lt;div class&#x3D;&quot;ui-feature__image&quot;&gt;{{&gt; Image }}&lt;&#x2F;div&gt;
-        {{&#x2F; image }}
+    &lt;div class&#x3D;&quot;ui-feature-collection__items{{# options.isContained }} ui-container ui-feature-collection__container{{&#x2F; options.isContained }}&quot;&gt;
+        {{# items }}
+            &lt;div class&#x3D;&quot;ui-feature-collection__item&quot;&gt;{{&gt; Feature }}&lt;&#x2F;div&gt;
+        {{&#x2F; items }}
     &lt;&#x2F;div&gt;
 &lt;&#x2F;section&gt;
 </pre>
 
                     <h2>Example</h2>
                 
-                    <iframe class="site-schema__iframe" src="/Feature.html" onload="resizeIframe(this);" scrolling="no"></iframe>
+                    <iframe class="site-schema__iframe" src="/FeatureCollection.html" onload="resizeIframe(this);" scrolling="no"></iframe>
             </div>
         </main>
 

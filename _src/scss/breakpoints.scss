@@ -1,0 +1,113 @@
+// Breakpoint definitions
+$ui-breakpoints: (
+    'width': (
+        'xl': 2560,
+        'lg': 1920,
+        'md': 1280,
+        'sm': 992,
+        'xs': 768,
+        'p': 320
+    ),
+    'height': (
+        'xl': 1600,
+        'lg': 1080,
+        'md': 1024,
+        'sm': 900,
+        'xs': 768,
+        'p': 180
+    )
+);
+
+/**
+ * Gets a query string
+ * 
+ * @param {string} size
+ * @param {string} dimension
+ * @param {string} direction
+ * 
+ * @return {string} Query string
+ */
+@function ui-get-query($size, $dimension, $direction: '') {
+    @if not map-has-key($ui-breakpoints, $dimension) {
+        @error 'Invalid breakpoint dimension "#{$dimension}".';
+    }
+
+    $sizes: map-get($ui-breakpoints, $dimension);
+
+    @if not map-has-key($sizes, $size) {
+        @error 'Invalid breakpoint size "#{$size}".';
+    }
+
+    $pixels: map-get($sizes, $size);
+
+    @if $direction != '' and $direction != 'above' {
+        @error 'Invalid breakpoint direction "#{$direction}".';
+    }
+
+    @if $direction == 'above' {
+        @return 'min-#{$dimension}: #{$pixels + 1}px';
+    } @else {
+        @return 'max-#{$dimension}: #{$pixels}px';
+    }
+}
+
+/**
+ * Implements a generic media query
+ * 
+ * @param {string} size
+ * @param {string} dimension
+ * @param {string} direction
+ */
+@mixin ui-media($size, $dimension, $direction: '') {
+    @media(ui-get-query($size, $dimension, $direction)) {
+        @content;
+    }
+}
+
+/**
+ * Implements a screen media query
+ * 
+ * @param {string} size
+ * @param {string} dimension
+ * @param {string} direction
+ */
+@mixin ui-screen($size, $dimension, $direction: '') {
+    @media screen and (ui-get-query($size, $dimension, $direction)) {
+        @content;
+    }
+}
+
+/**
+ * Implements a print media query
+ * 
+ * @param {string} size
+ * @param {string} dimension
+ * @param {string} direction
+ */
+@mixin ui-print($size, $dimension, $direction: '') {
+    @media print and (ui-get-query($size, $dimension, $direction)) {
+        @content;
+    }
+}
+
+/**
+ * Implements a speech media query
+ * 
+ * @param {string} size
+ * @param {string} dimension
+ * @param {string} direction
+ */
+@mixin ui-speech($size, $dimension, $direction: '') {
+    @media speech and (ui-get-query($size, $dimension, $direction)) {
+        @content;   
+    }
+}
+
+/**
+ * Implements a preview media query
+ */
+@mixin ui-preview() {
+    @include ui-screen('p', 'width') {
+        @content;
+    }
+}

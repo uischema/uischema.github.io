@@ -1,0 +1,64 @@
+{
+    "@type": "FeatureCollection",
+    "heading": "Voluptas eos",
+    "subheading": "Voluptas eos magnam voluptate",
+    "body": "Voluptas eos magnam voluptate. Sit recusandae sed dolores repellendus nam et. Fuga voluptates qui ab voluptate velit tempore. Quam et aperiam ut odit omnis earum.",
+    "options": {
+        "isGrid": true,
+        "useCoverLinks": true
+    },
+    "items": [
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            },
+            "link": {
+                "text": "Link",
+                "href": "#"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            },
+            "link": {
+                "text": "Link",
+                "href": "#"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            },
+            "link": {
+                "text": "Link",
+                "href": "#"
+            }
+        },
+        {
+            "@type": "Feature",
+            "heading": "Voluptas eos",
+            "subheading": "Voluptas eos magnam voluptate",
+            "image": {
+                "src": "/img/bg.jpg",
+                "alt": "Feature"
+            },
+            "link": {
+                "text": "Link",
+                "href": "#"
+            }
+        }
+    ]
+}

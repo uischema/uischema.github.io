@@ -4,7 +4,7 @@
    
     <div class="site-nav__container">
         {{# topics }}
-            <input checked type="checkbox" id="topic-{{ id }}" class="site-nav__topics__toggle"></label>
+            <input checked type="checkbox" id="topic-{{ id }}" class="site-nav__topics__toggle">
         {{/ topics }}
 
         <div class="site-nav__logo">
@@ -20,9 +20,14 @@
         
         <div class="site-nav__items">
             {{# schemas }}
-                <a href="/{{ @type }}" class="site-nav__item{{^ @topic }} no-topic{{/ @topic }}{{# @topic }} topic-{{ id }}{{/ @topic }}">
+                <a href="/{{ @type }}" data-ui-schema="{{ @type }}" class="site-nav__item{{^ @topic }} no-topic{{/ @topic }}{{# @topic }} topic-{{ id }}{{/ @topic }}">
                     <p class="site-nav__item__name">{{ @i18n.en.@name }}</p>
                     <p class="site-nav__item__description">{{ @i18n.en.@description }}</p>
+                    {{# hasExample }} 
+                        <div class="site-nav__item__preview">
+                            <iframe class="site-nav__item__preview__iframe" src="/{{ @type }}.html" scrolling="no"></iframe>
+                        </div>
+                    {{/ hasExample }}
                 </a>
             {{/ schemas }}
         </div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Image</title>
+        <title>Builder</title>
 
-        <meta name="description" content="A reference to an image">
+        <meta name="description" content="Build a web page!">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,6 @@
 
 <script type="text/javascript" src="/js/script.js"></script>
     </head>
-
     <body class="site-page">
 <nav class="site-nav">
     <label class="site-nav__toggle" for="site-nav__toggle"></label>
@@ -74,57 +73,15 @@
         </div>
     </div>
 </nav>
-
-        <main class="site-main">
-            <header class="site-header">
-                <div class="ui-container site-header__container">
-                    <h1 class="site-header__title">Image</h1>
-                    <p class="site-header__description">A reference to an image</p>
-                </div>
-                
-                <div class="site-header__links">
-                    <div class="ui-container site-header__links__container">
-                    </div>
-                </div>
-            </header>
-           
-            <div class="site-schema ui-container">
-                    <h2>Properties</h2>
-                    <table class="site-schema__properties">
-                            <tr class="site-schema__property">
-                                <td class="site-schema__property__key">src</td>
-                                <td class="site-schema__property__name">Source</td>
-                                <td class="site-schema__property__description">The source of the image</td>
-                            </tr>
-                            <tr class="site-schema__property">
-                                <td class="site-schema__property__key">alt</td>
-                                <td class="site-schema__property__name">Description</td>
-                                <td class="site-schema__property__description">A short description of the image</td>
-                            </tr>
-                    </table>
-               
-               
-                <h2>Definition</h2>
-
-                    <pre class="site-schema__code">{
-    "@context": "http://uischema.org",
-    "@type": "Image",
-    "@topic": "media",
-    "src": "string",
-    "alt": "string"
-}
-</pre>
-
-                <h2>Template</h2>
-
-                    <pre class="site-schema__code">&lt;img data-ui-schema&#x3D;&quot;uischema.org&#x2F;Image&quot; class&#x3D;&quot;ui-image&quot; src&#x3D;&quot;{{ src }}&quot; alt&#x3D;&quot;{{ alt }}&quot;&gt;
-</pre>
-
-            </div>
+            
+        <main class="site-main site-builder">
+            <div class="site-builder__slot"></div>
         </main>
 
 <footer class="site-footer">
 
 </footer>
+
+        <script type="text/javascript" src="/js/builder.js"></script>
     </body>
 </html>
