@@ -61,13 +61,35 @@
 </nav>
             
         <main class="site-main site-builder">
-            <div class="site-builder__toolbar ui-container">
-                <select class="site-builder__toolbar__input" id="site-builder__toolbar__input--name" title="Page"></select>
-                <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--add" title="Add page">➕</button>
-                <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove" title="Remove page">🗑️</button>
-            </div>
-
             <div class="site-builder__modules"></div>
+           
+            <div class="site-builder__toolbar">
+                <div class="site-builder__toolbar__group">
+                    <select class="site-builder__toolbar__input" id="site-builder__toolbar__input--pick-page" title="Page"></select>
+                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--add-page" title="Add page">➕</button>
+                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove-page" title="Remove page">🗑️</button>
+                </div>
+                <hr class="site-builder__toolbar__separator">
+                <div class="site-builder__toolbar__group">
+                    <label class="site-builder__toolbar__label" >Modules used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--module-count">0</output>
+                </div>
+                <div class="site-builder__toolbar__group">
+                    <label class="site-builder__toolbar__label" >Schemas used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--schema-count">0/0</output>
+                </div>
+                <hr class="site-builder__toolbar__separator">
+                <div class="site-builder__toolbar__group">
+                    <div class="site-builder__toolbar__label">
+                        <iframe class="site-builder__toolbar__output"  id="site-builder__toolbar__output--preview-module"></iframe>
+                    </div>
+                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove-module" title="Remove module">❌</button>
+                </div>
+                <div class="site-builder__toolbar__group">
+                    <textarea class="site-builder__toolbar__input code" id="site-builder__toolbar__input--edit-module"></textarea>
+                </div>
+                <div class="site-builder__toolbar__group">
+                    <pre class="site-builder__toolbar__output code" id="site-builder__toolbar__output--schema-definition"></pre>
+                </div>
+            </div>
         </main>
 
         <script type="text/javascript" src="/js/mustache/index.js"></script>
