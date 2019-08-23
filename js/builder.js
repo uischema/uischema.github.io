@@ -261,6 +261,7 @@ function updateStats() {
  */
 function updateInspector() {
     let inspectorDefinitionOutput = document.getElementById('site-builder__toolbar__output--schema-definition'); 
+    let inspectorSchemaLabel = document.getElementById('site-builder__toolbar__label--schema-type'); 
     let inspectorIframeOutput = document.getElementById('site-builder__toolbar__output--preview-module'); 
     let inspectorJSONInput = document.getElementById('site-builder__toolbar__input--edit-module'); 
     let moduleIndex = getActiveModuleIndex();
@@ -269,14 +270,18 @@ function updateInspector() {
         inspectorJSONInput.value = '';
         inspectorIframeOutput.srcdoc = '';
         inspectorDefinitionOutput.innerHTML = '';
+        inspectorSchemaLabel.innerHTML = '';
         return;
     }
 
     inspectorJSONInput.value = JSON.stringify(modules[moduleIndex], null, 4);
 
     UISchema.renderModuleIframe(modules[moduleIndex], inspectorIframeOutput);
-        
-    inspectorDefinitionOutput.innerHTML = JSON.stringify(UISchema.getSchema(modules[moduleIndex]['@type'], false), null, 4);
+       
+    let schema = UISchema.getSchema(modules[moduleIndex]['@type'], false);
+
+    inspectorSchemaLabel.innerHTML = schema['@type'];
+    inspectorDefinitionOutput.innerHTML = JSON.stringify(schema, null, 4);
 }
 
 /**

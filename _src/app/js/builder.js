@@ -278,10 +278,10 @@ function updateInspector() {
 
     UISchema.renderModuleIframe(modules[moduleIndex], inspectorIframeOutput);
        
-    let schema = UISchema.getSchema(modules[moduleIndex]['@type'];
+    let schema = UISchema.getSchema(modules[moduleIndex]['@type'], false);
 
     inspectorSchemaLabel.innerHTML = schema['@type'];
-    inspectorDefinitionOutput.innerHTML = JSON.stringify(schema, false), null, 4);
+    inspectorDefinitionOutput.innerHTML = JSON.stringify(schema, null, 4);
 }
 
 /**
