@@ -91,9 +91,10 @@ function onClickAddPage(e) {
     if(!name) { return; }
 
     localStorage.setItem('builder:' + name, '[]');
+    
+    renderPageNames(name);
 
     loadModules();
-    renderPageNames(name);
     renderModules();
 }
 
@@ -194,6 +195,8 @@ function renderPageNames(selected) {
     pageSelector.innerHTML = '';
 
     let names = Object.keys(localStorage);
+
+    names.sort();
 
     if(names.length < 1) {
         names.push('builder:My page');
