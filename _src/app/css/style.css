@@ -1306,7 +1306,7 @@ html {
   overflow: auto;
 }
 .site-schema__example {
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  pointer-events: none;
   border: 0;
   width: 100%;
   height: 40vh;
@@ -1390,8 +1390,17 @@ html {
 .site-builder__toolbar__label {
   flex-grow: 1;
   line-height: 2rem;
+  padding-right: 0.5rem;
+}
+.site-builder__toolbar__label.small {
+  flex-grow: 0;
+}
+.site-builder__toolbar__spacer {
+  display: flex;
+  flex-grow: 1;
 }
 .site-builder__toolbar__input.code, .site-builder__toolbar__output.code {
+  cursor: auto;
   padding: 0.5rem;
   line-height: 1;
   font-family: monospace;
@@ -1400,8 +1409,10 @@ html {
 }
 .site-builder__toolbar__output {
   line-height: 2rem;
-  height: 2rem;
   display: block;
+}
+.site-builder__toolbar__output.frame {
+  height: 2rem;
   width: 3.555rem;
   border: 0;
 }

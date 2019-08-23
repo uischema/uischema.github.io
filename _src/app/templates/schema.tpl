@@ -38,43 +38,45 @@
                 </div>
             </header>
            
-            <div class="site-schema ui-container" data-ui-schema="{{ schema.@type }}">
-                {{# hasProperties }}
-                    <h2>Properties</h2>
-                    <table class="site-schema__properties">
-                        {{# properties }}
-                            <tr class="site-schema__property">
-                                <td class="site-schema__property__key">{{ key }}</td>
-                                <td class="site-schema__property__name">{{ name }}</td>
-                                <td class="site-schema__property__description">{{ description }}</td>
-                            </tr>
-                        {{/ properties }}
-                    </table>
-                {{/ hasProperties }}
+            <div class="site-schema" data-ui-schema="{{ schema.@type }}">
+                <div class="ui-container">
+                    {{# hasProperties }}
+                        <h2>Properties</h2>
+                        <table class="site-schema__properties">
+                            {{# properties }}
+                                <tr class="site-schema__property">
+                                    <td class="site-schema__property__key">{{ key }}</td>
+                                    <td class="site-schema__property__name">{{ name }}</td>
+                                    <td class="site-schema__property__description">{{ description }}</td>
+                                </tr>
+                            {{/ properties }}
+                        </table>
+                    {{/ hasProperties }}
                
-                {{# hasOptions }}
-                    <h3>Options</h3>
-                    <table class="site-schema__properties">
-                        {{# options }}
-                            <tr class="site-schema__property">
-                                <td class="site-schema__property__key">{{ key }}</td>
-                                <td class="site-schema__property__name">{{ name }}</td>
-                                <td class="site-schema__property__description">{{ description }}</td>
-                            </tr>
-                        {{/ options }}
-                    </table>
-                {{/ hasOptions }} 
+                    {{# hasOptions }}
+                        <h3>Options</h3>
+                        <table class="site-schema__properties">
+                            {{# options }}
+                                <tr class="site-schema__property">
+                                    <td class="site-schema__property__key">{{ key }}</td>
+                                    <td class="site-schema__property__name">{{ name }}</td>
+                                    <td class="site-schema__property__description">{{ description }}</td>
+                                </tr>
+                            {{/ options }}
+                        </table>
+                    {{/ hasOptions }} 
                
-                <h2>Definition</h2>
+                    <h2>Definition</h2>
 
-                <pre class="site-schema__code site-schema__definition"></pre>
+                    <pre class="site-schema__code site-schema__definition"></pre>
 
-                <h2>Template</h2>
+                    <h2>Template</h2>
 
-                <pre class="site-schema__code site-schema__template"></pre>
+                    <pre class="site-schema__code site-schema__template"></pre>
 
-                <h2>Example</h2>
-            
+                    <h2>Example</h2>
+                </div>
+
                 <iframe class="site-schema__example"></iframe>
             </div>
         </main>

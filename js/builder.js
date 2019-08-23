@@ -102,7 +102,8 @@ function onClickAddPage(e) {
  *
  * @param {InputEvent} e
  */
-function onChangeName(e) {
+function onChangePage(e) {
+    loadModules();
     renderModules();
 }
 
@@ -260,28 +261,24 @@ function updateStats() {
  * @param {Number} moduleIndex
  */
 function updateInspector() {
-    let inspectorDefinitionOutput = document.getElementById('site-builder__toolbar__output--schema-definition'); 
-    let inspectorSchemaLabel = document.getElementById('site-builder__toolbar__label--schema-type'); 
-    let inspectorIframeOutput = document.getElementById('site-builder__toolbar__output--preview-module'); 
-    let inspectorJSONInput = document.getElementById('site-builder__toolbar__input--edit-module'); 
+    let schemaDefinition = document.getElementById('site-builder__toolbar__output--schema-definition'); 
+    let schemaType = document.getElementById('site-builder__toolbar__label--schema-type'); 
+    let editModule = document.getElementById('site-builder__toolbar__input--edit-module'); 
     let moduleIndex = getActiveModuleIndex();
 
     if(moduleIndex < 0 || !modules[moduleIndex]) {
-        inspectorJSONInput.value = '';
-        inspectorIframeOutput.srcdoc = '';
-        inspectorDefinitionOutput.innerHTML = '';
-        inspectorSchemaLabel.innerHTML = '';
+        editModule.value = '';
+        schemaDefinition.innerHTML = '';
+        schemaType.innerHTML = '';
         return;
     }
 
-    inspectorJSONInput.value = JSON.stringify(modules[moduleIndex], null, 4);
+    editModule.value = JSON.stringify(modules[moduleIndex], null, 4);
 
-    UISchema.renderModuleIframe(modules[moduleIndex], inspectorIframeOutput);
-       
     let schema = UISchema.getSchema(modules[moduleIndex]['@type'], false);
 
-    inspectorSchemaLabel.innerHTML = schema['@type'];
-    inspectorDefinitionOutput.innerHTML = JSON.stringify(schema, null, 4);
+    schemaType.innerHTML = schema['@type'];
+    schemaDefinition.innerHTML = JSON.stringify(schema, null, 4);
 }
 
 /**
@@ -298,7 +295,7 @@ async function init() {
     document.querySelector('.site-builder__modules').setAttribute('ondragover', 'onModulesDragOver(event);');
 
     // Toolbar
-    document.getElementById('site-builder__toolbar__input--pick-page').addEventListener('change', onChangeName);
+    document.getElementById('site-builder__toolbar__input--pick-page').addEventListener('change', onChangePage);
     document.getElementById('site-builder__toolbar__action--add-page').addEventListener('click', onClickAddPage);
     document.getElementById('site-builder__toolbar__action--remove-page').addEventListener('click', onClickRemovePage);
     document.getElementById('site-builder__toolbar__input--edit-module').addEventListener('change', onEditModule);
