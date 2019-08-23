@@ -21,13 +21,14 @@
                 </div>
                 <hr class="site-builder__toolbar__separator">
                 <div class="site-builder__toolbar__group">
-                    <label class="site-builder__toolbar__label" >Modules used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--module-count">0</output>
+                    <label class="site-builder__toolbar__label">Modules used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--module-count">0</output>
                 </div>
                 <div class="site-builder__toolbar__group">
-                    <label class="site-builder__toolbar__label" >Schemas used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--schema-count">0/0</output>
+                    <label class="site-builder__toolbar__label">Schemas used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--schema-count">0/0</output>
                 </div>
                 <hr class="site-builder__toolbar__separator">
                 <div class="site-builder__toolbar__group">
+                    <label class="site-builder__toolbar__label" id="site-builder__toolbar__label--schema-type"></label>
                     <div class="site-builder__toolbar__label">
                         <iframe class="site-builder__toolbar__output"  id="site-builder__toolbar__output--preview-module"></iframe>
                     </div>
