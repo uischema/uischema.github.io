@@ -120,9 +120,35 @@ html {
         }
     }
     
+    &__page {
+        text-decoration: none;
+        padding: 0.5rem;
+        display: block;
+        color: inherit;
+
+        &::before {
+            content: '❯ ';
+            position: relative;
+            top: -0.25em;
+            font-size: 0.75em;
+        }
+
+        &:focus, &:hover {
+            color: white;
+            background-color: dodgerblue;
+        }
+    }
+
+    &__title {
+        padding: 0.5rem;
+        margin-bottom: 0;
+    }
+
     &__logo {
         padding: 0.5rem;
         display: flex;
+        text-decoration: none;
+        color: inherit;
 
         &__image {
             display: block;
@@ -142,7 +168,6 @@ html {
     &__topics {
         flex-shrink: 0;
         padding: 0.5rem;
-        border-bottom: 1px solid lightgrey;
 
         &:empty {
             display: none; 
@@ -184,6 +209,7 @@ html {
         margin: 0;
         list-style-type: none;
         overflow: auto;
+        border-top: 1px solid lightgrey;
     }
 
     &__item {

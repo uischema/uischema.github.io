@@ -17,10 +17,6 @@
                     <p class="site-header__description">A portable standard for frontend web modules</p>
                 </div>
             </header>
-
-            <div class="ui-container">
-                <p>Check out the <label class="site-link" for="site-nav__toggle">schemas</label>!</p>
-            </div>
         </main>
 
         {{> footer }}

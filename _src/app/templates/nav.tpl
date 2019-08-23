@@ -7,17 +7,22 @@
             <input checked type="checkbox" id="topic-{{ id }}" class="site-nav__topics__toggle">
         {{/ topics }}
 
-        <div class="site-nav__logo">
+        <a href="/" class="site-nav__logo">
             <img class="site-nav__logo__image" src="/img/logo.svg">
             <p class="site-nav__logo__title">uischema.org</p>
+        </a>
+        
+        <h4 class="site-nav__title">Tools</h4>
+        <div class="site-nav__pages">
+            <a class="site-nav__page" href="/builder">Page builder</a>
         </div>
 
+        <h4 class="site-nav__title">Schemas</h4>
         <div class="site-nav__topics">
             {{# topics }}
                 <label for="topic-{{ id }}" class="site-nav__topics__topic">{{ name }}</label>
             {{/ topics }}
         </div>
-        
         <div class="site-nav__items">
             {{# schemas }}
                 <a href="/{{ @type }}" data-ui-schema="{{ @type }}" class="site-nav__item{{^ @topic }} no-topic{{/ @topic }}{{# @topic }} topic-{{ id }}{{/ @topic }}">
