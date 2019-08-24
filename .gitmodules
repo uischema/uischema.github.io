@@ -1,6 +1,0 @@
-[submodule "_src/schemas"]
-	path = _src/schemas
-	url = https://github.com/uischema/schemas.git
-[submodule "_src/templates"]
-	path = _src/templates
-	url = https://github.com/uischema/templates.git

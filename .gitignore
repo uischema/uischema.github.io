@@ -1,4 +1,7 @@
 _site/*
+
+_src/custom/*
+
 *.swp
 *.swo
 .sass-cache

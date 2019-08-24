@@ -8,14 +8,23 @@ const Url = require('url');
 const Util = require('util');
 
 const PORT = 4000;
+
+// Directiories
 const SRC_DIR = Path.join(__dirname);
 const ROOT_DIR = Path.join(SRC_DIR, '../');
-const TEMPLATE_DIR = Path.join(SRC_DIR, 'templates');
-const SCHEMA_DIR = Path.join(SRC_DIR, 'schemas');
-const EXAMPLES_DIR = Path.join(SRC_DIR, 'examples');
-const I18N_DIR = Path.join(SCHEMA_DIR, 'i18n');
+
+// Custom directories
+const CUSTOM_DIR = Path.join(SRC_DIR, 'custom');
+const CUSTOM_TEMPLATE_DIR = Path.join(CUSTOM_DIR, 'templates');
+const CUSTOM_SCHEMA_DIR = Path.join(CUSTOM_DIR, 'schemas');
+const CUSTOM_CSS_DIR = Path.join(CUSTOM_DIR, 'css');
+const CUSTOM_EXAMPLES_DIR = Path.join(CUSTOM_DIR, 'examples');
+const CUSTOM_I18N_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'i18n');
+
+// App directories
 const APP_DIR = Path.join(SRC_DIR, 'app');
 const APP_CSS_DIR = Path.join(APP_DIR, 'css');
+const APP_JS_DIR = Path.join(APP_DIR, 'js');
 const APP_TEMPLATE_DIR = Path.join(APP_DIR, 'templates');
 
 /**
@@ -92,8 +101,8 @@ async function getAppTemplates() {
 async function getSchemaTemplates() {
     let templates = {};
     
-    for(let filename of await readDir(TEMPLATE_DIR)) {
-        templates[Path.basename(filename, '.tpl')] = await readFile(Path.join(TEMPLATE_DIR, filename));
+    for(let filename of await readDir(CUSTOM_TEMPLATE_DIR)) {
+        templates[Path.basename(filename, '.tpl')] = await readFile(Path.join(CUSTOM_TEMPLATE_DIR, filename));
     }
 
     return templates;
@@ -107,7 +116,7 @@ async function getSchemaTemplates() {
  * @return {String} Template
  */
 async function getSchemaTemplate(type) {
-    return await readFile(Path.join(TEMPLATE_DIR, type) + '.tpl');
+    return await readFile(Path.join(CUSTOM_TEMPLATE_DIR, type) + '.tpl');
 }
 
 /**
@@ -118,7 +127,7 @@ async function getSchemaTemplate(type) {
  * @return {Object} Example
  */
 async function getSchemaExample(type) {
-    let example = await readFile(Path.join(EXAMPLES_DIR, type) + '.json');
+    let example = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, type) + '.json');
 
     try {
         return JSON.parse(example);
@@ -141,7 +150,7 @@ async function getInternationalization(type, language) {
     if(!type) { throw new Error('Type is required'); }
     if(!language) { throw new Error('Language is required'); }
 
-    let path = Path.join(I18N_DIR, language, type + '.json');
+    let path = Path.join(CUSTOM_I18N_DIR, language, type + '.json');
     
     let data = await readFile(path);
 
@@ -321,7 +330,7 @@ async function renderBuilderPage() {
 async function getSchemas() {
     let all = [];
     
-    for(let file of await readDir(Path.join(SCHEMA_DIR))) {
+    for(let file of await readDir(Path.join(CUSTOM_SCHEMA_DIR))) {
         let extension = Path.extname(file)
         let type = Path.basename(file, extension);
 
@@ -372,10 +381,10 @@ async function getTopics() {
 async function getSchemaExamples() {
     let examples = [];
     
-    for(let filename of await readDir(EXAMPLES_DIR)) {
+    for(let filename of await readDir(CUSTOM_EXAMPLES_DIR)) {
         if(Path.extname(filename) !== '.json') { continue; }
 
-        let json = await readFile(Path.join(EXAMPLES_DIR, filename));
+        let json = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, filename));
 
         json = JSON.parse(json);
 
@@ -394,15 +403,15 @@ async function getSchemaExamples() {
  */
 async function getSchema(type) {
     let file = type + '.json';
-    let json = await readFile(Path.join(SCHEMA_DIR, file));
+    let json = await readFile(Path.join(CUSTOM_SCHEMA_DIR, file));
     
     if(!json) { throw new Error('JSON file "' + file + '" could not be found in /schemas'); }
     
     json = JSON.parse(json);
     json['@i18n'] = {};
 
-    for(let language of await readDir(Path.join(I18N_DIR))) {
-        let i18n = await readFile(Path.join(I18N_DIR, language, file));
+    for(let language of await readDir(Path.join(CUSTOM_I18N_DIR))) {
+        let i18n = await readFile(Path.join(CUSTOM_I18N_DIR, language, file));
 
         if(i18n) {
             json['@i18n'][language] = JSON.parse(i18n);
@@ -432,10 +441,10 @@ async function serve(req, res) {
         case 'css':
             let css = '';
 
-            if(path[1] === 'uischema.org.css') {
-                css = await readFile(Path.join('scss', path[1]));
-            } else {
-                css = await readFile(Path.join('app', 'css', path[1]));
+            css = await readFile(Path.join(CUSTOM_CSS_DIR, path[1]));
+            
+            if(!css) {
+                css = await readFile(Path.join(APP_CSS_DIR, path[1]));
             }
 
             res.writeHead(200, { 'Content-Type': 'text/css' }); 
@@ -443,15 +452,9 @@ async function serve(req, res) {
             break;
        
         case 'js':
-            let js = '';
-
             path.shift();
 
-            if(path[0] === 'uischema.org.js') {
-                js = await readFile(Path.join('js', path.join('/')));
-            } else {
-                js = await readFile(Path.join('app', 'js', path.join('/')));
-            }
+            let js = await readFile(Path.join(APP_JS_DIR, path.join('/')));
 
             res.writeHead(200, { 'Content-Type': 'text/javascript' }); 
             res.end(js);
@@ -590,8 +593,8 @@ async function generate() {
             
         // Create "css" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'css'));
-        await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'css', 'style.css'), Path.join(ROOT_DIR, 'css', 'style.css'));
-        await Util.promisify(FileSystem.copyFile)(Path.join(SRC_DIR, 'scss', 'uischema.org.css'), Path.join(ROOT_DIR, 'css', 'uischema.org.css'));
+        await Util.promisify(FileSystem.copyFile)(Path.join(APP_CSS_DIR, 'style.css'), Path.join(ROOT_DIR, 'css', 'style.css'));
+        await Util.promisify(FileSystem.copyFile)(Path.join(CUSTOM_CSS_DIR, 'uischema.org.css'), Path.join(ROOT_DIR, 'css', 'uischema.org.css'));
         
         // Create "js" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'js'));
