@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Builder</title>
+        <title>Highlight</title>
 
-        <meta name="description" content="Build a web page!">
+        <meta name="description" content="Section element for featuring other content">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
+
     <body class="site-page">
 <nav class="site-nav">
     <label class="site-nav__toggle" for="site-nav__toggle"></label>
@@ -68,39 +69,57 @@
         </div>
     </div>
 </nav>
-            
-        <main class="site-main site-builder">
-            <div class="site-builder__modules"></div>
+
+        <main class="site-main">
+            <header class="site-header">
+                <div class="ui-container site-header__container">
+                    <h1 class="site-header__title">Highlight</h1>
+                    <p class="site-header__description">Section element for featuring other content</p>
+                </div>
+                
+                <div class="site-header__links">
+                    <div class="ui-container site-header__links__container">
+                            <div class="site-header__links__group">
+                                <span class="site-header__links__group__title">Parent: </span>
+                                <a href="/Feature" class="site-header__link">Feature</a>
+                            </div>
+                    </div>
+                </div>
+            </header>
            
-            <div class="site-builder__toolbar">
-                <div class="site-builder__toolbar__group">
-                    <select class="site-builder__toolbar__input" id="site-builder__toolbar__input--pick-page" title="Page"></select>
-                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--add-page" title="Add page">➕</button>
-                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove-page" title="Remove page">🗑️</button>
+            <div class="site-schema" data-ui-schema="Highlight">
+                <div class="ui-container">
+               
+                        <h3>Options</h3>
+                        <table class="site-schema__properties">
+                                <tr class="site-schema__property">
+                                    <td class="site-schema__property__key">useColumns</td>
+                                    <td class="site-schema__property__name">Use columns</td>
+                                    <td class="site-schema__property__description">If enabled, the body text will be divided into columns when needed</td>
+                                </tr>
+                        </table>
+               
+                    <h2>Definition</h2>
+
+                    <pre class="site-schema__code site-schema__definition"></pre>
+
+                    <h2>Template</h2>
+
+                    <pre class="site-schema__code site-schema__template"></pre>
+
+                    <h2>Example</h2>
                 </div>
-                <hr class="site-builder__toolbar__separator">
-                <div class="site-builder__toolbar__group">
-                    <label class="site-builder__toolbar__label">Modules used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--module-count">0</output>
-                </div>
-                <div class="site-builder__toolbar__group">
-                    <label class="site-builder__toolbar__label">Schemas used:</label><output class="site-builder__toolbar__output"  id="site-builder__toolbar__output--schema-count">0/0</output>
-                </div>
-                <hr class="site-builder__toolbar__separator">
-                <div class="site-builder__toolbar__group">
-                    <label class="site-builder__toolbar__label" id="site-builder__toolbar__label--schema-type"></label>
-                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove-module" title="Remove module">❌</button>
-                </div>
-                <div class="site-builder__toolbar__group">
-                    <textarea class="site-builder__toolbar__input code" id="site-builder__toolbar__input--edit-module"></textarea>
-                </div>
-                <div class="site-builder__toolbar__group">
-                    <pre class="site-builder__toolbar__output code" id="site-builder__toolbar__output--schema-definition"></pre>
-                </div>
+
+                <iframe class="site-schema__example"></iframe>
             </div>
         </main>
 
+<footer class="site-footer">
+
+</footer>
+        
         <script type="text/javascript" src="/js/mustache/index.js"></script>
         <script type="text/javascript" src="/js/script.js"></script>
-        <script type="text/javascript" src="/js/builder.js"></script>
+        <script type="text/javascript" src="/js/schema.js"></script>
     </body>
 </html>
