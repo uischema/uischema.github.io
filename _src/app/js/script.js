@@ -181,8 +181,12 @@ window.UISchema = {
         // Render previews
         for(let navItem of Array.from(document.querySelectorAll('.site-nav__item'))) {
             let type = navItem.dataset.uiSchema;
-            let example = UISchema.getExample(type);
+            let schema = UISchema.getSchema(type);
+            
+            if(schema['@role'] === 'partial') { continue; }
 
+            let example = UISchema.getExample(type);
+            
             if(!example) { continue; }
 
             let exampleContainer = document.createElement('div');
