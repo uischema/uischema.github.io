@@ -674,12 +674,6 @@ async function generate() {
             let schemaPage = await renderSchemaPage(type, 'en');
 
             await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
-
-            let example = await renderSchemaExample(type);
-
-            if(example) {
-                await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type + '.html'), example);
-            }
         }
             
         // Create "css" directory
