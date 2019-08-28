@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>uischema.org</title>
+        <title>Specification</title>
 
-        <meta name="description" content="A portable standard for web modules">
+        <meta name="description" content="A full description of the UI Schema internals">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,45 +73,121 @@
             
         <main class="site-main">
             <div class="ui-container">
-                <h1 id="uischemaorg">uischema.org</h1>
-<p>A portable standard for web modules</p>
-<h2 id="what">What?</h2>
-<p>In short, UI schema is a supplement to <a href="http://schema.org">schema.org</a>.</p>
-<p>Whereas they aim to provide a sensible specification for information architecture, UI schema aims to do the same for presentation and authoring of visual content.</p>
-<h2 id="why">Why?</h2>
-<p>Because websites are still a hot mess, and we want to help fix that.</p>
-<p>Realistically speaking, there is no such thing as a de facto CMS or website framework, and there won&#39;t be in the foreseeable future.</p>
-<p>We believe that CMS&#39;es, and the websites they provide content for, are in need of a sensible standard in order to communicate more seamlessly.</p>
-<p>If every CMS and website could be taught the same language, the technical and communicational workload of web solution providers could be reduced, which would free up their time to work on making the best user experiences they can think of.</p>
-<h3 id="providerclient-communication">Provider/client communication</h3>
-<p>When both parties are familiar with the terms used to describe a website, the communication barrier is significantly reduced.</p>
-<h3 id="seo">SEO</h3>
-<p>All software that outputs uischema.org modules also complies with the schema.org specification, so you can render the output as json-ld directly.</p>
-<h3 id="cms-agnostic-content">CMS agnostic content</h3>
-<p>By installing a plugin, schemas and authored content can be exported and imported to and from other CMS&#39;es.</p>
-<h3 id="web-agnostic-templates">Web agnostic templates</h3>
-<p>Reduce the amount of markup work needed by keeping a handy collection of templates that can be used anywhere.</p>
-<h2 id="how">How?</h2>
-<h3 id="cms">CMS</h3>
-<p>For CMS&#39;es, you need a collection of schemas (<a href="https://github.com/uischema/schemas">suggestion</a>) and a compatible plugin. The following CMS&#39;es are officially supported:</p>
+                <h1 id="specification">Specification</h1>
+<p>A full description of the UI Schema internals</p>
+<h2 id="principles">Principles</h2>
 <ul>
-<li><a href="https://hashbrown.rocks">HashBrown</a> has built-in support</li>
-<li><a href="https://drupal.org">Drupal</a> has a <a href="https://github.com/uischema/drupal">module</a></li>
+<li>Meta fields are written like <strong>@this</strong>, lowercase with a prefixed &quot;@&quot; symbol</li>
+<li>Input fields, the ones used for rendering and CMS input, are written in camelCase</li>
+<li>Schema types (like <code>&quot;Hero&quot;</code> or <code>&quot;Feature&quot;</code>) are written in PascalCase</li>
+<li>Simple data types (like <code>&quot;text&quot;</code> or <code>&quot;bool&quot;</code>) are written in lowercase</li>
+<li>Input field types can be specified in 3 ways:<ul>
+<li>As a string, to indicate a singular input field: <code>&quot;Hero&quot;</code></li>
+<li>As an array, to indicate a collection of input fields: <code>[ &quot;Hero&quot;, &quot;Highlight&quot; ]</code></li>
+<li>As an object, to indicate input rules:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@rules&quot;: { &quot;min&quot;: 100, &quot;max&quot;: 300 } }</code><ul>
+<li>Arrays can also be used here:<br>  <code>{ &quot;@type&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ], &quot;@rules&quot;: { &quot;min&quot;: 1, &quot;max&quot;: 10 } }</code></li>
 </ul>
-<h3 id="website">Website</h3>
-<p>For websites, you need the css (<a href="https://github.com/uischema/css">suggestion</a>) and templates (<a href="https://github.com/uischema/templates">suggestion</a>) of your modules. Then just request the content from your CMS and render it (we suggest using <a href="https://mustache.github.io">mustache</a>). The only remaining work in most cases will be to set up site navigation.</p>
-<p>Check out some examples <a href="https://uischema.org/examples">here</a></p>
-<h3 id="creating-schemas">Creating schemas</h3>
-<p>To create your own schemas, please check out the <a href="https://uischema.org/specification">specification</a>.</p>
-<p>You can also host a site like this one to catalogue your schemas and templates:</p>
-<ul>
-<li>Clone this website&#39;s repository: <code>git clone https://github.com/uischema/uischema.org.git</code></li>
-<li>Add your schemas to the <code>/_src/custom/schemas</code> folder (<a href="https://github.com/uischema/schemas">suggested schemas</a>)</li>
-<li>Add your templates to the <code>/_src/custom/templates</code> folder (<a href="https://github.com/uischema/templates">suggested templates</a>)</li>
-<li>Add your stylesheets to the <code>/_src/custom/css</code> folder (<a href="https://github.com/uischema/css">suggested stylesheets</a>)</li>
-<li>Either run the <code>/_src/generate.sh</code> script to generate the static site</li>
-<li>Or run the <code>/_src/serve.sh</code> script to start a server</li>
+</li>
 </ul>
+</li>
+</ul>
+<h2 id="schema-meta-fields">Schema meta fields</h2>
+<p>These fields can be used to describe a schema</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>@context</strong></td>
+<td><code>string</code></td>
+<td>A context URL for the site holding the schema information <strong>(required)</strong></td>
+</tr>
+<tr>
+<td><strong>@type</strong></td>
+<td><code>string</code></td>
+<td>A unique type name for this schema <strong>(required)</strong></td>
+</tr>
+<tr>
+<td><strong>@parent</strong></td>
+<td><code>string</code></td>
+<td>A parent schema to inherit values from</td>
+</tr>
+<tr>
+<td><strong>@role</strong></td>
+<td><code>string</code></td>
+<td>Whether this schema is meant ot be used as a full module or just part of one</td>
+</tr>
+<tr>
+<td><strong>@label</strong></td>
+<td><code>string</code></td>
+<td>The name of the field whose value represents this content when it&#39;s collapsed</td>
+</tr>
+<tr>
+<td><strong>@topic</strong></td>
+<td><code>string|array</code></td>
+<td>Topic(s) describing this schema</td>
+</tr>
+<tr>
+<td><strong>@options</strong></td>
+<td><code>object</code></td>
+<td>Options for content authors</td>
+</tr>
+</tbody></table>
+<h3 id="options">Options</h3>
+<p>The <strong>@options</strong> field is for including customisation options relating to the schema. </p>
+<p>For example:</p>
+<pre><code class="language-javascript">{
+    &quot;@type&quot;: &quot;Hero&quot;,
+    &quot;@options&quot;: {
+        &quot;isHeader&quot;: &quot;bool&quot;
+    }
+}</code></pre>
+<h2 id="data-types">Data types</h2>
+<p>Apart from referring to other schema types, input fields can refer to a simple data type.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>string</code></td>
+<td>A single line of text, no formatting</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>A text area with multiple lines of text, no formatting</td>
+</tr>
+<tr>
+<td><code>html</code></td>
+<td>A rich text editor storing its input as HTML</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td>A boolean value, <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>An integer or decimal value</td>
+</tr>
+</tbody></table>
+<h3 id="rules">Rules</h3>
+<p>Rules can be specified to restrict the input of a data type.</p>
+<p>For example:</p>
+<pre><code class="language-javascript">{
+    &quot;heading&quot;: {
+        &quot;@type&quot;: &quot;string&quot;,
+        &quot;@rules&quot;: {
+            &quot;min&quot;: 4,
+            &quot;max&quot;: 20
+        }
+    }
+}</code></pre>
 
             </div>
         </main>

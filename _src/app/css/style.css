@@ -359,6 +359,26 @@ html {
   }
 }
 
+code {
+  border-radius: 0.2rem;
+  color: hotpink;
+}
+
+pre code {
+  background-color: lightgrey;
+  color: inherit;
+  display: block;
+  padding: 1rem;
+  overflow: auto;
+}
+
+table tr th {
+  text-align: left;
+}
+table tr td, table tr th {
+  padding: 0.25rem 0.5rem;
+}
+
 .site-link {
   cursor: pointer;
   text-decoration: none;
@@ -475,6 +495,7 @@ html {
 }
 .site-nav__logo {
   padding: 0.5rem;
+  margin-bottom: 1rem;
   display: flex;
   text-decoration: none;
   color: inherit;

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Examples</title>
+
+        <meta name="description" content="This page provides a few examples on how to render UI schemas without using any libraries">
+        
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="/img/logo.svg">
+<link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body class="site-page">
+<nav class="site-nav">
+    <label class="site-nav__toggle" for="site-nav__toggle"></label>
+    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
+   
+    <div class="site-nav__container">
+            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle">
+            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle">
+
+        <a href="/" class="site-nav__logo">
+            <img class="site-nav__logo__image" src="/img/logo.svg">
+            <p class="site-nav__logo__title">uischema.org</p>
+        </a>
+        
+        <div class="site-nav__pages">
+            <a class="site-nav__page" href="/specification">Specification</a>
+            <a class="site-nav__page" href="/examples">Examples</a>
+            <a class="site-nav__page" href="/license">License</a>
+            <a class="site-nav__page" href="/builder">Page builder</a>
+        </div>
+
+        <h4 class="site-nav__title">Schemas</h4>
+        <div class="site-nav__topics">
+                <label for="topic-0" class="site-nav__topics__topic">media</label>
+                <label for="topic-1" class="site-nav__topics__topic">text</label>
+        </div>
+        <div class="site-nav__items">
+                <a href="/Feature" data-ui-schema="Feature" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature</p>
+                    <p class="site-nav__item__description">An element for featuring other content</p>
+                </a>
+                <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature chain</p>
+                    <p class="site-nav__item__description">A chain of features</p>
+                </a>
+                <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Feature collection</p>
+                    <p class="site-nav__item__description">A collection of featured items</p>
+                </a>
+                <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Hero</p>
+                    <p class="site-nav__item__description">A large element with an image background</p>
+                </a>
+                <a href="/Highlight" data-ui-schema="Highlight" class="site-nav__item topic-0 topic-1">
+                    <p class="site-nav__item__name">Highlight</p>
+                    <p class="site-nav__item__description">Section element for featuring other content</p>
+                </a>
+                <a href="/Image" data-ui-schema="Image" class="site-nav__item topic-0">
+                    <p class="site-nav__item__name">Image</p>
+                    <p class="site-nav__item__description">A reference to an image</p>
+                </a>
+                <a href="/Link" data-ui-schema="Link" class="site-nav__item no-topic">
+                    <p class="site-nav__item__name">Link</p>
+                    <p class="site-nav__item__description">A reference to another page or element</p>
+                </a>
+        </div>
+    </div>
+</nav>
+            
+        <main class="site-main">
+            <div class="ui-container">
+                <h1 id="examples">Examples</h1>
+<p>This page provides a few examples on how to render UI schemas without using any libraries</p>
+<h2 id="schema-example">Schema example</h2>
+<pre><code class="language-javascript">{
+    &quot;@context&quot;: &quot;http://uischema.org&quot;,
+    &quot;@type&quot;: &quot;SchemaType&quot;,
+    &quot;@parent&quot;: &quot;ParentSchemaType&quot;,
+    &quot;@role&quot;: &quot;partial|full&quot;,
+    &quot;@label&quot;: &quot;field1&quot;,
+    &quot;@topic&quot;: [ &quot;topic1&quot;, &quot;topic2&quot; ],
+    &quot;@options&quot;: {
+        &quot;option1&quot;: &quot;bool&quot;,
+        &quot;option2&quot;: &quot;int&quot;
+    },
+    &quot;field1&quot;: &quot;string&quot;,
+    &quot;field2&quot;: &quot;text&quot;,
+    &quot;field3a&quot;: &quot;html&quot;,
+    &quot;field3b&quot;: {
+        &quot;@type&quot;: &quot;html&quot;,
+        &quot;@rules&quot;: {
+            &quot;min&quot;: 100,
+            &quot;max&quot;: 600
+        }
+    },
+    &quot;field4a&quot;: &quot;AnotherSchemaType&quot;,
+    &quot;field4b&quot;: {
+        &quot;@type&quot;: &quot;AnotherSchemaType&quot;
+    },
+    &quot;field5a&quot;: [ &quot;AnotherSchemaType&quot;, &quot;YetAnotherSchemaType&quot; ],
+    &quot;field5b&quot;: {
+        &quot;@type&quot;: [ &quot;AnotherSchemaType&quot;, &quot;YetAnotherSchemaType&quot; ],
+        &quot;@rules&quot;: {
+            &quot;min&quot;: 2,
+            &quot;max&quot;: 10
+        }
+    }
+}</code></pre>
+<h2 id="website-examples">Website examples</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>The folders &quot;/templates&quot; and &quot;/css&quot; are in your website&#39;s project folder</li>
+<li>A REST API or a JSON file on disk is reachable from the website</li>
+</ul>
+<h3 id="php">PHP</h3>
+<p>(using <a href="https://github.com/bobthecow/mustache.php">mustache</a>):</p>
+<pre><code class="language-php">&lt;?php
+
+// Fetch the content (this could be a JSON file on disk as well)
+$page = file_get_contents(&#39;http://cms.example.com/page&#39;);
+
+// Init Mustache
+$mustache = new Mustache_Engine([
+    &#39;loader&#39; =&gt; new Mustache_Loader_FilesystemLoader(__DIR__ . &#39;/templates&#39;, [ &#39;extension&#39; =&gt; &#39;.tpl&#39; ])
+]);
+
+// Render
+echo $mustache-&gt;render($data[&#39;@type&#39;], $page);
+
+?&gt;</code></pre>
+<h3 id="nodejs">Node.js</h3>
+<p>(using <a href="https://github.com/janl/mustache.js">mustache</a>):</p>
+<pre><code class="language-javascript">const FileSystem = require(&#39;fs&#39;);
+const HTTP = require(&#39;http&#39;);
+const HTTPS = require(&#39;https&#39;);
+const Path = require(&#39;path&#39;);
+const Url = require(&#39;url&#39;);
+const Util = require(&#39;util&#39;);
+
+const Mustache = require(&#39;mustache&#39;);
+
+// Preload all templates
+async function loadTemplates() {
+    let templates = {};
+    let files = await Util.promisify(FileSystem.readdir)(Path.join(__dirname, &#39;templates&#39;));
+
+    for(let filename of files) {
+        let name = Path.basename(filename, Path.extname(filename));
+
+        templates[name] = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, &#39;templates&#39;, filename), &#39;utf8&#39;);
+    }
+
+    return templates;
+}
+
+// Fetch the content (this could be a JSON file on disk as well)
+function getPage(url) {
+    return new Promise((resolve, reject) =&gt; {
+        HTTPS.get(url, (apiResponse) =&gt; {
+            let data = &#39;&#39;;
+
+            apiResponse.on(&#39;data&#39;, (chunk) =&gt; {
+                data += chunk;
+            });
+
+            apiResponse.on(&#39;end&#39;, () =&gt; {
+                resolve(JSON.parse(data));
+            });
+
+        }).on(&#39;error&#39;, (error) =&gt; {
+            reject(error);
+        });
+    });
+}
+
+// Serve web requests
+async function serve(req, res) {
+    let templates = await loadTemplates();
+
+    let result = &#39;&#39;;
+
+    switch(req.url) {
+        // Make sure the stylesheet is served properly
+        case &#39;/css/uischema.org.css&#39;:
+            result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, &#39;css/uischema.org.css&#39;), &#39;utf8&#39;);
+            res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/css&#39;});
+            break;
+
+        // Render a page
+        default:
+            let data = await getPage(&#39;https://cms.example.com/page&#39;);
+
+            result += &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/uischema.org.css&quot;&gt;&#39;;
+            result += Mustache.render(templates[data[&#39;@type&#39;]], data, templates);
+
+            res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/html&#39;});
+            break;
+    }
+
+    res.end(result);
+}
+
+HTTP.createServer(serve).listen(4000);</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>(using <a href="https://github.com/mustache/mustache">mustache</a>):</p>
+<pre><code class="language-ruby">require &#39;socket&#39;
+require &#39;json&#39;
+require &#39;net/http&#39;
+require &#39;mustache&#39;
+
+server = TCPServer.new(4000)
+
+loop do
+    # Init Mustache
+    mustache = Mustache.new
+    mustache.template_path = __dir__ + &#39;/templates&#39;
+
+    # Set up web server
+    request = server.accept
+    response = &#39;&#39;
+
+    path = URI(request.gets.split(&#39; &#39;)[1]).path
+
+    header = &quot;HTTP/1.1 200 OK\r\n&quot;
+
+    case path
+    # Make sure the stylesheet is served properly
+    when &#39;/css/uischema.org.css&#39;
+        header += &quot;Content-Type: text/css\r\n&quot;
+
+        file_path = __dir__ + &#39;/css/uischema.org.css&#39;
+
+        response = File.read(file_path)
+
+    # Render a page
+    else
+        header += &quot;Content-Type: text/html\r\n&quot;
+
+        # Fetch the content (this could be a JSON file on disk as well)
+        data = JSON.parse(Net::HTTP.get(&#39;cms.example.com&#39;, &#39;/page&#39;))
+
+        template = File.read(__dir__ + &#39;/templates/&#39; + data[&#39;@type&#39;] + &#39;.tpl&#39;)
+
+        response = &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/uischema.org.css&quot;&gt;&#39;;
+        response += mustache.render(template, data)
+    end
+
+    header += &quot;Content-Length: #{ response.bytesize }\r\n&quot;
+    header += &quot;Connection: close\r\n&quot;
+
+    request.puts header
+    request.puts &quot;\r\n&quot;
+
+    request.puts response
+
+    request.close
+end</code></pre>
+
+            </div>
+        </main>
+
+<footer class="site-footer">
+
+</footer>
+        
+        <script type="text/javascript" src="/js/mustache/index.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+    </body>
+</html>

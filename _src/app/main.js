@@ -2,7 +2,8 @@
 
 const Path = require('path');
 const FileSystem = require('fs');
-const Mustache = require(Path.join(__dirname, 'app', 'js', 'mustache'));
+const Mustache = require(Path.join(__dirname, 'js', 'mustache'));
+const Marked = require(Path.join(__dirname, 'js', 'marked'));
 const HTTP = require('http');
 const Url = require('url');
 const Util = require('util');
@@ -10,11 +11,12 @@ const Util = require('util');
 const PORT = 4000;
 
 // Directiories
-const SRC_DIR = Path.join(__dirname);
+const APP_DIR = Path.join(__dirname);
+const SRC_DIR = Path.join(APP_DIR, '../');
+const CUSTOM_DIR = Path.join(SRC_DIR, 'custom');
 const ROOT_DIR = Path.join(SRC_DIR, '../');
 
 // Custom directories
-const CUSTOM_DIR = Path.join(SRC_DIR, 'custom');
 const CUSTOM_TEMPLATE_DIR = Path.join(CUSTOM_DIR, 'templates');
 const CUSTOM_SCHEMA_DIR = Path.join(CUSTOM_DIR, 'schemas');
 const CUSTOM_CSS_DIR = Path.join(CUSTOM_DIR, 'css');
@@ -22,9 +24,9 @@ const CUSTOM_EXAMPLES_DIR = Path.join(CUSTOM_DIR, 'examples');
 const CUSTOM_I18N_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'i18n');
 
 // App directories
-const APP_DIR = Path.join(SRC_DIR, 'app');
 const APP_CSS_DIR = Path.join(APP_DIR, 'css');
 const APP_JS_DIR = Path.join(APP_DIR, 'js');
+const APP_IMG_DIR = Path.join(APP_DIR, 'img');
 const APP_TEMPLATE_DIR = Path.join(APP_DIR, 'templates');
 
 /**
@@ -291,7 +293,7 @@ async function renderSchemaPage(type, language) {
  *
  * @return {String} HTML
  */
-async function renderIndexPage() {
+async function renderMarkdownPage(path) {
     // Load all templates
     let templates = await getAppTemplates();
     
@@ -301,7 +303,31 @@ async function renderIndexPage() {
     // App data
     await applyAppViewData(view);
 
-    return Mustache.render(templates['index'], view, templates);
+    view['content'] = Marked.parse(await readFile(Path.join(APP_DIR, path)));
+
+    // Try to find title
+    let titleMatches = view['content'].match(/<h1[^>]*>([^<]*)<\/h1>/);
+
+    if(titleMatches) {
+        view['title'] = titleMatches[1];
+    }
+
+    if(!view['title']) {
+        view['title'] = 'uischema.org';
+    }
+
+    // Try to find description
+    let descriptionMatches = view['content'].match(/<p[^>]*>([^<]*)<\/p>/);
+
+    if(descriptionMatches) {
+        view['description'] = descriptionMatches[1];
+    }
+
+    if(!view['description']) {
+        view['description'] = 'uischema.org';
+    }
+
+    return Mustache.render(templates['markdown'], view, templates);
 }
 
 /**
@@ -461,7 +487,7 @@ async function serve(req, res) {
             break;
 
         case 'img':
-            let img = await readFile(Path.join('app', 'img', path[1]), true);
+            let img = await readFile(Path.join(APP_IMG_DIR, path[1]), true);
 
             if(path[1].indexOf('.svg') > -1) {
                 res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); 
@@ -493,16 +519,30 @@ async function serve(req, res) {
             res.end(JSON.stringify(await getTopics()));
             break;
 
-        // Builder
+        // Pages
         case 'builder':
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(await renderBuilderPage());
             break;
 
-        // Index page
+        case 'examples':
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(await renderMarkdownPage('pages/examples.md'));
+            break;
+        
+        case 'specification':
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(await renderMarkdownPage('pages/specification.md'));
+            break;
+        
+        case 'license':
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(await renderMarkdownPage('LICENSE'));
+            break;
+
         case undefined:
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(await renderIndexPage());
+            res.end(await renderMarkdownPage('README.md'));
             break;
 
         // Schema page
@@ -569,16 +609,29 @@ async function generate() {
             await unlink(Path.join(ROOT_DIR, filename));
         }
 
-        // Render the index page
-        let indexPage = await renderIndexPage();
-
-        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
-        
         // Render the builder page
         let builderPage = await renderBuilderPage();
-
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'builder'));
         await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'builder', 'index.html'), builderPage);
+        
+        // Render the index page
+        let indexPage = await renderMarkdownPage('README.md');
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'index.html'), indexPage);
+        
+        // Render the specification page
+        let specificationPage = await renderMarkdownPage('pages/specification.md');
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'specification'));
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'specification', 'index.html'), specificationPage);
+        
+        // Render the examples page
+        let examplesPage = await renderMarkdownPage('pages/examples.md');
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'examples'));
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'examples', 'index.html'), examplesPage);
+        
+        // Render the license page
+        let licensePage = await renderMarkdownPage('LICENSE');
+        await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'license'));
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'license', 'index.html'), licensePage);
 
         // Render the schema pages
         for(let json of await getSchemas()) {
@@ -612,6 +665,12 @@ async function generate() {
 
             await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'img', filename), Path.join(ROOT_DIR, 'img', filename));
         }
+
+        // Copy README.md
+        await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'README.md'), Path.join(ROOT_DIR, 'README.md'));
+        
+        // Copy LICENSE
+        await Util.promisify(FileSystem.copyFile)(Path.join(APP_DIR, 'LICENSE'), Path.join(ROOT_DIR, 'LICENSE'));
 
         // Copy schema files
         let schemas = await getSchemas();
