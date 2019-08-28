@@ -40,6 +40,7 @@ Example of the exported output:
 {
     "@context": "http://uischema.org",
     "@type": "Feature",
+    "image": "Image",
     "@i18n": {
         "@name": "Feature",
         "@description": "An element for featuring other content",
