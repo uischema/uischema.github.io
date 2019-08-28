@@ -111,6 +111,45 @@ async function getSchemaTemplates() {
 }
 
 /**
+ * Gets a schema example HTML
+ *
+ * @param {String} type
+ *
+ * @return {String} HTML
+ */
+async function renderSchemaExample(type) {
+    let json = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, type + '.json'));
+    let html = '';
+
+    if(!json) { return ''; }
+
+    json = JSON.parse(json);
+    
+    let schemaTemplates = await getSchemaTemplates();
+
+    html = await Mustache.render(schemaTemplates[type], json, schemaTemplates);
+    
+    html = `
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=0.6">
+                <meta charset="utf8">
+                <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
+                <link rel="stylesheet" type="text/css" href="/css/style.css">
+            </head>
+            <body>
+                ${html}
+            </body>
+        </html>
+    `;
+    
+    html = html.replace(/\n/g, '');
+
+    return html;
+}
+
+/**
  * Gets a schema template
  *
  * @param {String} type
@@ -199,7 +238,7 @@ async function applyAppViewData(view) {
  * @return {Boolean} Result
  */
 function schemaHasExample(type) {
-    return FileSystem.existsSync(Path.join(SRC_DIR, 'examples', type + '.json'));
+    return FileSystem.existsSync(Path.join(CUSTOM_EXAMPLES_DIR, type + '.json'));
 }
 
 /**
@@ -245,27 +284,6 @@ async function renderSchemaPage(type, language) {
     delete view['properties']['@name'];
     delete view['properties']['@description'];
 
-    // Extract the options
-    if(view['properties']['options']) {
-        let options = [];
-        
-        for(let key in view['properties']['options']) {
-            if(key[0] === '@') { continue; }
-
-            options.push({
-                'key': key,
-                'name': view['properties']['options'][key]['@name'],
-                'description': view['properties']['options'][key]['@description']
-            });
-        }
-
-        view['options'] = options;
-    }
-    
-    delete view['properties']['options'];
-   
-    let parentProperties
-
     let properties = [];
 
     for(let key in view['properties']) {
@@ -282,6 +300,7 @@ async function renderSchemaPage(type, language) {
     view['hasChildren'] = view['children'].length > 0;
     view['hasOptions'] = Array.isArray(view['options']) && view['options'].length > 0;
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
+    view['isAbstract'] = view['schema']['@role'] === 'abstract';
     view['hasExample'] = schemaHasExample(type);
 
     // Render the view
@@ -565,11 +584,24 @@ async function serve(req, res) {
                         res.end(json);
                         break;
                     
-                    case '':
-                        let html = await renderSchemaPage(type, 'en');
+                    case '.html':
+                        let html = await renderSchemaExample(type);
+
+                        if(!html) {
+                            res.writeHead(404, { 'Content-Type': 'text/html' });
+                            res.end('No example provided for schema "' + type + '".');
+                            break;
+                        }
 
                         res.writeHead(200, { 'Content-Type': 'text/html' });
                         res.end(html);
+                        break;
+                    
+                    case '':
+                        let page = await renderSchemaPage(type, 'en');
+
+                        res.writeHead(200, { 'Content-Type': 'text/html' });
+                        res.end(page);
                         break;
 
                     default:

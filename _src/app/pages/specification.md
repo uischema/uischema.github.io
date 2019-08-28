@@ -28,23 +28,7 @@ These fields can be used to describe a schema
 | **@role** | `string` | Whether this schema is meant ot be used as a full module **(full)**, just part of one **(partial)**, or not used in rendering at all **(abstract)** |
 | **@label** | `string` | The name of the field whose value represents this content when it's collapsed |
 | **@topic** | `string\|array` | Topic(s) describing this schema |
-| **@options** | `object` | Options for content authors |
 | **@i18n** | `object` | Translations for field names |
-
-### Options
-
-The **@options** field is for including customisation options relating to the schema. 
-
-For example:
-
-```javascript
-{
-    "@type": "Hero",
-    "@options": {
-        "isHeader": "bool"
-    }
-}
-```
 
 ### Translations
 
@@ -73,6 +57,23 @@ Apart from referring to other schema types, input fields can refer to a simple d
 | `html` | A rich text editor storing its input as HTML |
 | `bool` | A boolean value, `true` or `false` |
 | `number` | An integer or decimal value |
+| `{}` | A nested structure of fields |
+
+### Nested
+
+The nested fields can be used to include customisation options relating to the schema. 
+
+For example:
+
+```javascript
+{
+    "@type": "Hero",
+    "options": {
+        "isHeader": "bool"
+    }
+}
+```
+
 
 ### Rules
 

@@ -12,7 +12,7 @@ This page provides a few examples on how to render UI schemas without using any 
     "@role": "partial|full",
     "@label": "field1",
     "@topic": [ "topic1", "topic2" ],
-    "@options": {
+    "options": {
         "option1": "bool",
         "option2": "int"
     },

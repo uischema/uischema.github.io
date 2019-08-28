@@ -16,6 +16,11 @@
                 <div class="ui-container site-header__container">
                     <h1 class="site-header__title">{{ name }}</h1>
                     <p class="site-header__description">{{ description }}</p>
+                    
+                    {{# schema.@role }}
+                        <h4>Role: {{ . }}</h4>
+                    {{/ schema.@role }}
+
                 </div>
                 
                 <div class="site-header__links">
@@ -70,14 +75,20 @@
 
                     <pre class="site-schema__code site-schema__definition"></pre>
 
-                    <h2>Template</h2>
+                    {{^ isAbstract }}
+                        <h2>Template</h2>
 
-                    <pre class="site-schema__code site-schema__template"></pre>
+                        <pre class="site-schema__code site-schema__template"></pre>
 
-                    <h2>Example</h2>
+                        {{# hasExample }}
+                            <h2>Example</h2>
+                        {{/ hasExample }}
+                    {{/ isAbstract }}
                 </div>
 
-                <iframe class="site-schema__example"></iframe>
+                {{# hasExample }}
+                    <iframe class="site-schema__example"></iframe>
+                {{/ hasExample }}
             </div>
         </main>
 
