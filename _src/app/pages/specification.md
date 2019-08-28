@@ -29,6 +29,7 @@ These fields can be used to describe a schema
 | **@label** | `string` | The name of the field whose value represents this content when it's collapsed |
 | **@topic** | `string\|array` | Topic(s) describing this schema |
 | **@options** | `object` | Options for content authors |
+| **@i18n** | `object` | Translations for field names |
 
 ### Options
 
@@ -45,6 +46,21 @@ For example:
 }
 ```
 
+### Translations
+
+Translations can be provided for field labels. They are commonly stored in a folder `/i18n/[language]/SchemaType.json` and appended to the schema upon export.
+
+Example of the exported output:
+
+```javascript
+{
+    "@name": "Feature",
+    "@description": "An element for featuring other content",
+    "image": {
+        "@name": "Image",
+        "@description": "The main image"
+    }
+```
 
 ## Data types
 

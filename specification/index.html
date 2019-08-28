@@ -136,6 +136,11 @@
 <td><code>object</code></td>
 <td>Options for content authors</td>
 </tr>
+<tr>
+<td><strong>@i18n</strong></td>
+<td><code>object</code></td>
+<td>Translations for field names</td>
+</tr>
 </tbody></table>
 <h3 id="options">Options</h3>
 <p>The <strong>@options</strong> field is for including customisation options relating to the schema. </p>
@@ -146,6 +151,16 @@
         &quot;isHeader&quot;: &quot;bool&quot;
     }
 }</code></pre>
+<h3 id="translations">Translations</h3>
+<p>Translations can be provided for field labels. They are commonly stored in a folder <code>/i18n/[language]/SchemaType.json</code> and appended to the schema upon export.</p>
+<p>Example of the exported output:</p>
+<pre><code class="language-javascript">{
+    &quot;@name&quot;: &quot;Feature&quot;,
+    &quot;@description&quot;: &quot;An element for featuring other content&quot;,
+    &quot;image&quot;: {
+        &quot;@name&quot;: &quot;Image&quot;,
+        &quot;@description&quot;: &quot;The main image&quot;
+    }</code></pre>
 <h2 id="data-types">Data types</h2>
 <p>Apart from referring to other schema types, input fields can refer to a simple data type.</p>
 <table>
