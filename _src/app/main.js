@@ -20,7 +20,7 @@ const ROOT_DIR = Path.join(SRC_DIR, '../');
 const CUSTOM_TEMPLATE_DIR = Path.join(CUSTOM_DIR, 'templates');
 const CUSTOM_SCHEMA_DIR = Path.join(CUSTOM_DIR, 'schemas');
 const CUSTOM_CSS_DIR = Path.join(CUSTOM_DIR, 'css');
-const CUSTOM_EXAMPLES_DIR = Path.join(CUSTOM_DIR, 'examples');
+const CUSTOM_EXAMPLES_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'examples');
 const CUSTOM_I18N_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'i18n');
 
 // App directories
@@ -674,6 +674,12 @@ async function generate() {
             let schemaPage = await renderSchemaPage(type, 'en');
 
             await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type, 'index.html'), schemaPage);
+
+            let example = await renderSchemaExample(type);
+
+            if(example) {
+                await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, type + '.html'), example);
+            }
         }
             
         // Create "css" directory
