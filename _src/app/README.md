@@ -43,7 +43,7 @@ For most CMS'es, you need a plugin. The following CMS'es are officially supporte
 * [HashBrown](https://hashbrown.rocks) has built-in support
 * [Drupal](https://drupal.org) has a [module](https://github.com/uischema/drupal)
 
-To import UI schemas into your CMS, point the importer towards the URL of your collection or a single schema (for example "https://uischema.org/schemas.json" or "https://uischema.org/Feature.json")
+To import UI schemas into your CMS, point the importer towards the URL of your collection or a single schema (for example https://uischema.org/schemas.json or https://uischema.org/Feature.json)
 
 ### Website
 
