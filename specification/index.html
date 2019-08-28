@@ -155,11 +155,15 @@
 <p>Translations can be provided for field labels. They are commonly stored in a folder <code>/i18n/[language]/SchemaType.json</code> and appended to the schema upon export.</p>
 <p>Example of the exported output:</p>
 <pre><code class="language-javascript">{
-    &quot;@name&quot;: &quot;Feature&quot;,
-    &quot;@description&quot;: &quot;An element for featuring other content&quot;,
-    &quot;image&quot;: {
-        &quot;@name&quot;: &quot;Image&quot;,
-        &quot;@description&quot;: &quot;The main image&quot;
+    &quot;@context&quot;: &quot;http://uischema.org&quot;,
+    &quot;@type&quot;: &quot;Feature&quot;,
+    &quot;@i18n&quot;: {
+        &quot;@name&quot;: &quot;Feature&quot;,
+        &quot;@description&quot;: &quot;An element for featuring other content&quot;,
+        &quot;image&quot;: {
+            &quot;@name&quot;: &quot;Image&quot;,
+            &quot;@description&quot;: &quot;The main image&quot;
+        }
     }</code></pre>
 <h2 id="data-types">Data types</h2>
 <p>Apart from referring to other schema types, input fields can refer to a simple data type.</p>

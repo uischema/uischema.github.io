@@ -38,11 +38,15 @@ Example of the exported output:
 
 ```javascript
 {
-    "@name": "Feature",
-    "@description": "An element for featuring other content",
-    "image": {
-        "@name": "Image",
-        "@description": "The main image"
+    "@context": "http://uischema.org",
+    "@type": "Feature",
+    "@i18n": {
+        "@name": "Feature",
+        "@description": "An element for featuring other content",
+        "image": {
+            "@name": "Image",
+            "@description": "The main image"
+        }
     }
 ```
 
