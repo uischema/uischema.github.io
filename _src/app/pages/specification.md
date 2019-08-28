@@ -25,7 +25,7 @@ These fields can be used to describe a schema
 | **@context** | `string` | A context URL for the site holding the schema information **(required)** |
 | **@type** | `string` | A unique type name for this schema **(required)** |
 | **@parent** | `string` | A parent schema to inherit values from |
-| **@role** | `string` | Whether this schema is meant ot be used as a full module or just part of one |
+| **@role** | `string` | Whether this schema is meant ot be used as a full module **(full)**, just part of one **(partial)**, or not used in rendering at all **(abstract)** |
 | **@label** | `string` | The name of the field whose value represents this content when it's collapsed |
 | **@topic** | `string\|array` | Topic(s) describing this schema |
 | **@options** | `object` | Options for content authors |
