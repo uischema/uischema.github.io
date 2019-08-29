@@ -10,11 +10,9 @@ A full description of the UI Schema internals
 * Simple data types (like `"text"` or `"bool"`) are written in lowercase
 * Input field types can be specified in 3 ways:
     * As a string, to indicate a singular input field: `"Hero"`
-    * As an array, to indicate a collection of input fields: `[ "Hero", "Highlight" ]`
-    * As an object, to indicate input rules:  
+    * As an array, to indicate multiple input fields 
+    * As an object with **@type** and **@rules** fields:  
         `{ "@type": "text", "@rules": { "min": 100, "max": 300 } }`
-        * Arrays can also be used here:  
-            `{ "@type": [ "Hero", "Highlight" ], "@rules": { "min": 1, "max": 10 } }`
 
 ## Schema meta fields
 
@@ -62,23 +60,23 @@ Apart from referring to other schema types, input fields can refer to a simple d
 | `html` | A rich text editor storing its input as HTML |
 | `bool` | A boolean value, `true` or `false` |
 | `number` | An integer or decimal value |
-| `{}` | A nested structure of fields |
+| `array` | An array of value types |
 
-### Nested
+### Nested structure
 
-The nested fields can be used to include customisation options relating to the schema. 
+Nested fields can be used to include customisation options relating to the schema. 
 
 For example:
 
 ```javascript
 {
     "@type": "Hero",
+    "heading": "string",
     "options": {
         "isHeader": "bool"
     }
 }
 ```
-
 
 ### Rules
 
@@ -91,8 +89,31 @@ For example:
     "heading": {
         "@type": "string",
         "@rules": {
-            "min": 4,
+            "required": true,
             "max": 20
+        }
+    }
+}
+```
+
+### Arrays
+
+Arrays can be declared as an implicit JSON array, indicating only which value types are allowed inside it:
+
+```javascript
+{
+    "items": [ "Feature" ]
+}
+```
+
+They can also be declared as an explicit block with more rules:
+
+```javascript
+    "items": {
+        "@type": "array",
+        "@rules": {
+            "types": [ "Hero", "Highlight" ],
+            "max": 4
         }
     }
 }

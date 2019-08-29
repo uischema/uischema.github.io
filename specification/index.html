@@ -97,11 +97,8 @@
 <li>Simple data types (like <code>&quot;text&quot;</code> or <code>&quot;bool&quot;</code>) are written in lowercase</li>
 <li>Input field types can be specified in 3 ways:<ul>
 <li>As a string, to indicate a singular input field: <code>&quot;Hero&quot;</code></li>
-<li>As an array, to indicate a collection of input fields: <code>[ &quot;Hero&quot;, &quot;Highlight&quot; ]</code></li>
-<li>As an object, to indicate input rules:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@rules&quot;: { &quot;min&quot;: 100, &quot;max&quot;: 300 } }</code><ul>
-<li>Arrays can also be used here:<br>  <code>{ &quot;@type&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ], &quot;@rules&quot;: { &quot;min&quot;: 1, &quot;max&quot;: 10 } }</code></li>
-</ul>
-</li>
+<li>As an array, to indicate multiple input fields </li>
+<li>As an object with <strong>@type</strong> and <strong>@rules</strong> fields:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@rules&quot;: { &quot;min&quot;: 100, &quot;max&quot;: 300 } }</code></li>
 </ul>
 </li>
 </ul>
@@ -196,15 +193,16 @@
 <td>An integer or decimal value</td>
 </tr>
 <tr>
-<td><code>{}</code></td>
-<td>A nested structure of fields</td>
+<td><code>array</code></td>
+<td>An array of value types</td>
 </tr>
 </tbody></table>
-<h3 id="nested">Nested</h3>
-<p>The nested fields can be used to include customisation options relating to the schema. </p>
+<h3 id="nested-structure">Nested structure</h3>
+<p>Nested fields can be used to include customisation options relating to the schema. </p>
 <p>For example:</p>
 <pre><code class="language-javascript">{
     &quot;@type&quot;: &quot;Hero&quot;,
+    &quot;heading&quot;: &quot;string&quot;,
     &quot;options&quot;: {
         &quot;isHeader&quot;: &quot;bool&quot;
     }
@@ -216,8 +214,22 @@
     &quot;heading&quot;: {
         &quot;@type&quot;: &quot;string&quot;,
         &quot;@rules&quot;: {
-            &quot;min&quot;: 4,
+            &quot;required&quot;: true,
             &quot;max&quot;: 20
+        }
+    }
+}</code></pre>
+<h3 id="arrays">Arrays</h3>
+<p>Arrays can be declared as an implicit JSON array, indicating only which value types are allowed inside it:</p>
+<pre><code class="language-javascript">{
+    &quot;items&quot;: [ &quot;Feature&quot; ]
+}</code></pre>
+<p>They can also be declared as an explicit block with more rules:</p>
+<pre><code class="language-javascript">    &quot;items&quot;: {
+        &quot;@type&quot;: &quot;array&quot;,
+        &quot;@rules&quot;: {
+            &quot;types&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ],
+            &quot;max&quot;: 4
         }
     }
 }</code></pre>
