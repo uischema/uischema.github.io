@@ -190,24 +190,22 @@
 <td>A boolean value, <code>true</code> or <code>false</code></td>
 </tr>
 <tr>
-<td><code>number</code></td>
-<td>An integer or decimal value</td>
+<td><code>int</code></td>
+<td>An integer value</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>A decimal value</td>
 </tr>
 <tr>
 <td><code>array</code></td>
 <td>An array of value types</td>
 </tr>
+<tr>
+<td><code>dict</code></td>
+<td>A nested structure</td>
+</tr>
 </tbody></table>
-<h3 id="nested-structure">Nested structure</h3>
-<p>Nested fields can be used to include customisation options relating to the schema. </p>
-<p>For example:</p>
-<pre><code class="language-javascript">{
-    &quot;@type&quot;: &quot;Hero&quot;,
-    &quot;heading&quot;: &quot;string&quot;,
-    &quot;options&quot;: {
-        &quot;isHeader&quot;: &quot;bool&quot;
-    }
-}</code></pre>
 <h3 id="rules">Rules</h3>
 <p>Rules can be specified to restrict the input of a data type.</p>
 <p>For example:</p>
@@ -218,6 +216,20 @@
             &quot;required&quot;: true,
             &quot;max&quot;: 20
         }
+    }
+}</code></pre>
+<h3 id="nested-fields">Nested fields</h3>
+<p>Nested fields can be declared as an implicit JSON object:</p>
+<pre><code class="language-javascript">{
+    &quot;options&quot;: {
+        &quot;isHeader&quot;: &quot;bool&quot;
+    }
+}</code></pre>
+<p>The type can optionally be explicitly declared:</p>
+<pre><code class="language-javascript">{
+    &quot;options&quot;: {
+        &quot;@type&quot;: &quot;dict&quot;,
+        &quot;isHeader&quot;: &quot;bool&quot;
     }
 }</code></pre>
 <h3 id="arrays">Arrays</h3>

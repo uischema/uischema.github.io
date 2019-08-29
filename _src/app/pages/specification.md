@@ -60,24 +60,10 @@ Apart from referring to other schema types, input fields can refer to a simple d
 | `text` | A text area with multiple lines of text, no formatting |
 | `html` | A rich text editor storing its input as HTML |
 | `bool` | A boolean value, `true` or `false` |
-| `number` | An integer or decimal value |
+| `int` | An integer value |
+| `float` | A decimal value |
 | `array` | An array of value types |
-
-### Nested structure
-
-Nested fields can be used to include customisation options relating to the schema. 
-
-For example:
-
-```javascript
-{
-    "@type": "Hero",
-    "heading": "string",
-    "options": {
-        "isHeader": "bool"
-    }
-}
-```
+| `dict` | A nested structure |
 
 ### Rules
 
@@ -93,6 +79,29 @@ For example:
             "required": true,
             "max": 20
         }
+    }
+}
+```
+
+### Nested fields
+
+Nested fields can be declared as an implicit JSON object:
+
+```javascript
+{
+    "options": {
+        "isHeader": "bool"
+    }
+}
+```
+
+The type can optionally be explicitly declared:
+
+```javascript
+{
+    "options": {
+        "@type": "dict",
+        "isHeader": "bool"
     }
 }
 ```
