@@ -109,6 +109,7 @@ Arrays can be declared as an implicit JSON array, indicating only which value ty
 They can also be declared as an explicit block with more rules:
 
 ```javascript
+{
     "items": {
         "@type": "array",
         "@rules": {
