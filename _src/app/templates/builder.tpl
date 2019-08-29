@@ -29,6 +29,8 @@
                 <hr class="site-builder__toolbar__separator">
                 <div class="site-builder__toolbar__group">
                     <label class="site-builder__toolbar__label" id="site-builder__toolbar__label--schema-type"></label>
+                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--move-module-up" title="Move module up">🔼</button>
+                    <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--move-module-down" title="Move module down">🔽</button>
                     <button class="site-builder__toolbar__action" id="site-builder__toolbar__action--remove-module" title="Remove module">❌</button>
                 </div>
                 <div class="site-builder__toolbar__group">

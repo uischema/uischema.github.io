@@ -359,6 +359,21 @@ html {
   }
 }
 
+.site-main:not(.site-builder) h1 {
+  margin-top: 8rem;
+  margin-bottom: 0.5em;
+  font-size: 3rem;
+  font-weight: 500;
+}
+.site-main:not(.site-builder) h1 + p {
+  margin-bottom: 8rem;
+}
+.site-main:not(.site-builder) h2, .site-main:not(.site-builder) h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
 code {
   border-radius: 0.2rem;
   color: hotpink;
@@ -377,6 +392,10 @@ table tr th {
 }
 table tr td, table tr th {
   padding: 0.25rem 0.5rem;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .site-link {
@@ -1476,6 +1495,7 @@ table tr td, table tr th {
 
 .site-page {
   background-color: whitesmoke;
+  color: black;
 }
 @media (min-width: 992px) {
   .site-page {

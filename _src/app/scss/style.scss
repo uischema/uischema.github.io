@@ -15,6 +15,7 @@
     }
 }
 
+// Typography
 html {
     font-family: sans-serif;
     font-size: 16px;
@@ -33,6 +34,25 @@ html {
     }
 }
 
+.site-main:not(.site-builder) {
+    h1  {
+        margin-top: 8rem;
+        margin-bottom: 0.5em;
+        font-size: 3rem;
+        font-weight: 500;
+
+        + p {
+            margin-bottom: 8rem;
+        }
+    }
+    
+    h2, h3 {
+        font-weight: 600;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+}
+
 code {
     border-radius: 0.2rem;
     color: hotpink;
@@ -46,6 +66,7 @@ pre code {
     overflow: auto;
 }
 
+// Data view
 table {
     tr {
         th {
@@ -57,6 +78,10 @@ table {
         }
     }
 }
+
+.hidden {
+    display: none !important;
+}   
 
 .site-link {
     @include link();
@@ -510,6 +535,7 @@ table {
 
 .site-page {
     background-color: whitesmoke;
+    color: black;
 
     @media(min-width: 992px) {
         display: flex;

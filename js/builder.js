@@ -141,6 +141,44 @@ function onClickRemoveModule(e) {
 }
 
 /**
+ * Event: Clicked move module up
+ *
+ * @param {InputEvent} e
+ */
+function onClickMoveModuleUp(e) {
+    let activeModule = getActiveModuleIndex();
+
+    if(activeModule < 1) { return; }
+
+    let newIndex = activeModule - 1;
+    let module = modules.splice(activeModule, 1)[0];
+    modules.splice(newIndex, 0, module); 
+
+    saveModules();
+    renderModules(newIndex);
+    updateInspector();
+}
+
+/**
+ * Event: Clicked move module down
+ *
+ * @param {InputEvent} e
+ */
+function onClickMoveModuleDown(e) {
+    let activeModule = getActiveModuleIndex();
+
+    if(activeModule > modules.length - 2) { return; }
+
+    let newIndex = activeModule + 1;
+    let module = modules.splice(activeModule, 1)[0];
+    modules.splice(newIndex, 0, module); 
+
+    saveModules();
+    renderModules(newIndex);
+    updateInspector();
+}
+
+/**
  * Event: Edited module
  *
  * @param {InputEvent} e
@@ -166,6 +204,19 @@ function onEditModule(e) {
     } catch(e) {
         inspectorJSONInput.classList.toggle('error', true);
 
+    }
+}
+
+/**
+ * Sets the active module index
+ *
+ * @param {Number} index
+ */
+function setActiveModuleIndex(index) {
+    let moduleElements = document.querySelectorAll('.site-builder__module');
+
+    for(let i = 0; i < moduleElements.length; i++) {
+        moduleElements[i].classList.toggle('active', i === index);
     }
 }
 
@@ -214,8 +265,11 @@ function renderPageNames(selected) {
 /**
  * Renders all modules
  */
-function renderModules() {
-    let activeModule = getActiveModuleIndex();
+function renderModules(activeModule = -1) {
+    if(activeModule < 0) {
+        activeModule = getActiveModuleIndex();
+    }
+
     let modulesContainer = document.querySelector('.site-builder__modules');
 
     modulesContainer.innerHTML = '';
@@ -266,15 +320,19 @@ function updateStats() {
 function updateInspector() {
     let schemaDefinition = document.getElementById('site-builder__toolbar__output--schema-definition'); 
     let schemaType = document.getElementById('site-builder__toolbar__label--schema-type'); 
-    let editModule = document.getElementById('site-builder__toolbar__input--edit-module'); 
+    let editModule = document.getElementById('site-builder__toolbar__input--edit-module');
+    let removeModule  = document.getElementById('site-builder__toolbar__action--remove-module');
+    let moveModuleUp  = document.getElementById('site-builder__toolbar__action--move-module-up');
+    let moveModuleDown  = document.getElementById('site-builder__toolbar__action--move-module-down');
+    
     let moduleIndex = getActiveModuleIndex();
+    let hasActiveModule = moduleIndex > -1 && moduleIndex < modules.length && !!modules[moduleIndex];
 
-    if(moduleIndex < 0 || !modules[moduleIndex]) {
-        editModule.value = '';
-        schemaDefinition.innerHTML = '';
-        schemaType.innerHTML = '';
-        return;
+    for(let element of [ schemaDefinition, schemaType, editModule, removeModule, moveModuleUp, moveModuleDown ]) {
+        element.classList.toggle('hidden', !hasActiveModule);
     }
+
+    if(!hasActiveModule) { return; }
 
     editModule.value = JSON.stringify(modules[moduleIndex], null, 4);
 
@@ -290,6 +348,11 @@ function updateInspector() {
 async function init() {
     // Drag 'n' drop
     for(let navItem of Array.from(document.querySelectorAll('.site-nav__item'))) {
+        if(!navItem.querySelector('.site-nav__item__preview')) {
+            navItem.style.display = 'none';
+            continue;
+        }
+
         navItem.setAttribute('draggable', 'true');
         navItem.setAttribute('ondragstart', 'onNavItemDragStart(event);');
     }
@@ -302,6 +365,8 @@ async function init() {
     document.getElementById('site-builder__toolbar__action--add-page').addEventListener('click', onClickAddPage);
     document.getElementById('site-builder__toolbar__action--remove-page').addEventListener('click', onClickRemovePage);
     document.getElementById('site-builder__toolbar__input--edit-module').addEventListener('change', onEditModule);
+    document.getElementById('site-builder__toolbar__action--move-module-up').addEventListener('click', onClickMoveModuleUp);
+    document.getElementById('site-builder__toolbar__action--move-module-down').addEventListener('click', onClickMoveModuleDown);
     document.getElementById('site-builder__toolbar__action--remove-module').addEventListener('click', onClickRemoveModule);
     
     // Saved pages
