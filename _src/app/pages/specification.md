@@ -47,6 +47,7 @@ Example of the exported output:
             "@description": "The main image"
         }
     }
+}
 ```
 
 ## Data types
