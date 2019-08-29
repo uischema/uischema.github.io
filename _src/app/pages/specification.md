@@ -1,6 +1,6 @@
 # Specification
 
-A full description of the UI Schema internals
+A full description of the UI schema internals
 
 ## Principles
 
