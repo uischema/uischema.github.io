@@ -10,7 +10,7 @@ A full description of the UI Schema internals
 * Simple data types (like `"text"` or `"bool"`) are written in lowercase
 * Input field types can be specified in 3 ways:
     * As a string, to indicate a singular input field: `"Hero"`
-    * As an array, to indicate multiple input fields 
+    * As an array, to indicate multiple input fields: `[ "Hero", "Highlight" ]`
     * As an object with **@type** and **@rules** fields:  
         `{ "@type": "text", "@rules": { "min": 100, "max": 300 } }`
 
