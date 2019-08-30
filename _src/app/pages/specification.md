@@ -116,10 +116,10 @@ Input rules are defined as meta values in the field definition.
 
 | Name          | Value type    | Used with type            | Description |
 | ---           | ---           | ---                       | --- |
-| `max`         | `int`         | `array\|string\|text`     | A maximum value |
-| `min`         | `int`         | `array\|string\|text`     | A minimum value |
-| `required`    | `bool`        | `*`                       | Whether a field is required |
-| `items`       | `array`       | `array`                   | A list of allowed value types |
+| **@max**      | `int`         | `array\|string\|text`     | A maximum value |
+| **@min**      | `int`         | `array\|string\|text`     | A minimum value |
+| **@required** | `bool`        | `*`                       | Whether a field is required |
+| **@items**    | `array`       | `array`                   | A list of allowed value types |
 
 ### Example
 
