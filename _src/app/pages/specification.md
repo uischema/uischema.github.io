@@ -104,7 +104,7 @@ They can also be declared as an explicit block with rules:
 {
     "items": {
         "@type": "array",
-        "@types": [ "Hero", "Highlight" ],
+        "@items": [ "Hero", "Highlight" ],
         "@max": 4
     }
 }
@@ -119,7 +119,7 @@ Input rules are defined as meta values in the field definition.
 | `max`         | `int`         | `array\|string\|text`     | A maximum value |
 | `min`         | `int`         | `array\|string\|text`     | A minimum value |
 | `required`    | `bool`        | `*`                       | Whether a field is required |
-| `types`       | `array`       | `array`                   | A list of allowed value types |
+| `items`       | `array`       | `array`                   | A list of allowed value types |
 
 ### Example
 
