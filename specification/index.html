@@ -98,7 +98,7 @@
 <li>Input field types can be specified in 3 ways:<ul>
 <li>As a string, to indicate a singular input field: <code>&quot;Hero&quot;</code></li>
 <li>As an array, to indicate multiple input fields: <code>[ &quot;Hero&quot;, &quot;Highlight&quot; ]</code></li>
-<li>As an object with <strong>@type</strong> and <strong>@rules</strong> fields:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@rules&quot;: { &quot;min&quot;: 100, &quot;max&quot;: 300 } }</code></li>
+<li>As an object with <strong>@type</strong> and <strong>@[rule]</strong> fields:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@min&quot;: 100, &quot;@max&quot;: 300 }</code></li>
 </ul>
 </li>
 </ul>
@@ -206,18 +206,6 @@
 <td>A nested structure</td>
 </tr>
 </tbody></table>
-<h3 id="rules">Rules</h3>
-<p>Rules can be specified to restrict the input of a data type.</p>
-<p>For example:</p>
-<pre><code class="language-javascript">{
-    &quot;heading&quot;: {
-        &quot;@type&quot;: &quot;string&quot;,
-        &quot;@rules&quot;: {
-            &quot;required&quot;: true,
-            &quot;max&quot;: 20
-        }
-    }
-}</code></pre>
 <h3 id="nested-fields">Nested fields</h3>
 <p>Nested fields can be declared as an implicit JSON object:</p>
 <pre><code class="language-javascript">{
@@ -237,14 +225,56 @@
 <pre><code class="language-javascript">{
     &quot;items&quot;: [ &quot;Feature&quot; ]
 }</code></pre>
-<p>They can also be declared as an explicit block with more rules:</p>
+<p>They can also be declared as an explicit block with rules:</p>
 <pre><code class="language-javascript">{
     &quot;items&quot;: {
         &quot;@type&quot;: &quot;array&quot;,
-        &quot;@rules&quot;: {
-            &quot;types&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ],
-            &quot;max&quot;: 4
-        }
+        &quot;@types&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ],
+        &quot;@max&quot;: 4
+    }
+}</code></pre>
+<h2 id="rules">Rules</h2>
+<p>Input rules are defined as meta values in the field definition.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value type</th>
+<th>Used with type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>max</code></td>
+<td><code>int</code></td>
+<td><code>array|string|text</code></td>
+<td>A maximum value</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td><code>int</code></td>
+<td><code>array|string|text</code></td>
+<td>A minimum value</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><code>bool</code></td>
+<td><code>*</code></td>
+<td>Whether a field is required</td>
+</tr>
+<tr>
+<td><code>types</code></td>
+<td><code>array</code></td>
+<td><code>array</code></td>
+<td>A list of allowed value types</td>
+</tr>
+</tbody></table>
+<h3 id="example">Example</h3>
+<pre><code class="language-javascript">{
+    &quot;heading&quot;: {
+        &quot;@type&quot;: &quot;string&quot;,
+        &quot;@required&quot;: true,
+        &quot;@max&quot;: 200
     }
 }</code></pre>
 

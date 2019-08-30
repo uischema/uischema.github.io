@@ -11,22 +11,22 @@ A full description of the UI schema internals
 * Input field types can be specified in 3 ways:
     * As a string, to indicate a singular input field: `"Hero"`
     * As an array, to indicate multiple input fields: `[ "Hero", "Highlight" ]`
-    * As an object with **@type** and **@rules** fields:  
-        `{ "@type": "text", "@rules": { "min": 100, "max": 300 } }`
+    * As an object with **@type** and **@[rule]** fields:  
+        `{ "@type": "text", "@min": 100, "@max": 300 }`
 
 ## Schema meta fields
 
 These fields can be used to describe a schema
 
-| Name | Type | Description |
-| --- | --- | --- |
-| **@context** | `string` | A context URL for the site holding the schema information **(required)** |
-| **@type** | `string` | A unique type name for this schema **(required)** |
-| **@parent** | `string` | A parent schema to inherit values from |
-| **@role** | `string` | Whether this schema is meant ot be used as a full module **(full)**, just part of one **(partial)**, or not used in rendering at all **(abstract)** |
-| **@label** | `string` | The name of the field whose value represents this content when it's collapsed |
-| **@topic** | `string\|array` | Topic(s) describing this schema |
-| **@i18n** | `object` | Translations for field names |
+| Name          | Type              | Description |
+| ---           | ---               | --- |
+| **@context**  | `string`          | A context URL for the site holding the schema information **(required)** |
+| **@type**     | `string`          | A unique type name for this schema **(required)** |
+| **@parent**   | `string`          | A parent schema to inherit values from |
+| **@role**     | `string`          | Whether this schema is meant ot be used as a full module **(full)**, just part of one **(partial)**, or not used in rendering at all **(abstract)** |
+| **@label**    | `string`          | The name of the field whose value represents this content when it's collapsed |
+| **@topic**    | `string\|array`   | Topic(s) describing this schema |
+| **@i18n**     | `object`          | Translations for field names |
 
 ### Translations
 
@@ -54,34 +54,16 @@ Example of the exported output:
 
 Apart from referring to other schema types, input fields can refer to a simple data type.
 
-| Name | Description |
-| --- | --- |
-| `string` | A single line of text, no formatting |
-| `text` | A text area with multiple lines of text, no formatting |
-| `html` | A rich text editor storing its input as HTML |
-| `bool` | A boolean value, `true` or `false` |
-| `int` | An integer value |
-| `float` | A decimal value |
-| `array` | An array of value types |
-| `dict` | A nested structure |
-
-### Rules
-
-Rules can be specified to restrict the input of a data type.
-
-For example:
-
-```javascript
-{
-    "heading": {
-        "@type": "string",
-        "@rules": {
-            "required": true,
-            "max": 20
-        }
-    }
-}
-```
+| Name      | Description |
+| ---       | --- |
+| `string`  | A single line of text, no formatting |
+| `text`    | A text area with multiple lines of text, no formatting |
+| `html`    | A rich text editor storing its input as HTML |
+| `bool`    | A boolean value, `true` or `false` |
+| `int`     | An integer value |
+| `float`   | A decimal value |
+| `array`   | An array of value types |
+| `dict`    | A nested structure |
 
 ### Nested fields
 
@@ -116,16 +98,37 @@ Arrays can be declared as an implicit JSON array, indicating only which value ty
 }
 ```
 
-They can also be declared as an explicit block with more rules:
+They can also be declared as an explicit block with rules:
 
 ```javascript
 {
     "items": {
         "@type": "array",
-        "@rules": {
-            "types": [ "Hero", "Highlight" ],
-            "max": 4
-        }
+        "@types": [ "Hero", "Highlight" ],
+        "@max": 4
+    }
+}
+```
+
+## Rules
+
+Input rules are defined as meta values in the field definition.
+
+| Name          | Value type    | Used with type            | Description |
+| ---           | ---           | ---                       | --- |
+| `max`         | `int`         | `array\|string\|text`     | A maximum value |
+| `min`         | `int`         | `array\|string\|text`     | A minimum value |
+| `required`    | `bool`        | `*`                       | Whether a field is required |
+| `types`       | `array`       | `array`                   | A list of allowed value types |
+
+### Example
+
+```javascript
+{
+    "heading": {
+        "@type": "string",
+        "@required": true,
+        "@max": 200
     }
 }
 ```
