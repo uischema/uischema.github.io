@@ -121,7 +121,7 @@ Input rules are defined as meta values in the field definition.
 | **@max**          | `int`         | `array\|string\|text`     | A maximum value |
 | **@min**          | `int`         | `array\|string\|text`     | A minimum value |
 | **@required**     | `bool`        | `*`                       | Whether a field is required |
-| **@type**         | `string`      | `string\|media`           | The type of input (mimetype, string type, etc.) |
+| **@inputtype**    | `string`      | `string\|media`           | The type of input (mimetype, string type, etc.) |
 
 ### Example
 
