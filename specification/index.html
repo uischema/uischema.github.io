@@ -174,36 +174,40 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><code>string</code></td>
-<td>A single line of text, no formatting</td>
-</tr>
-<tr>
-<td><code>text</code></td>
-<td>A text area with multiple lines of text, no formatting</td>
-</tr>
-<tr>
-<td><code>html</code></td>
-<td>A rich text editor storing its input as HTML</td>
+<td><code>array</code></td>
+<td>An array of value types</td>
 </tr>
 <tr>
 <td><code>bool</code></td>
 <td>A boolean value, <code>true</code> or <code>false</code></td>
 </tr>
 <tr>
-<td><code>int</code></td>
-<td>An integer value</td>
+<td><code>dict</code></td>
+<td>A nested structure</td>
 </tr>
 <tr>
 <td><code>float</code></td>
 <td>A decimal value</td>
 </tr>
 <tr>
-<td><code>array</code></td>
-<td>An array of value types</td>
+<td><code>html</code></td>
+<td>A rich text editor storing its input as HTML</td>
 </tr>
 <tr>
-<td><code>dict</code></td>
-<td>A nested structure</td>
+<td><code>int</code></td>
+<td>An integer value</td>
+</tr>
+<tr>
+<td><code>media</code></td>
+<td>A media file (image, video, pdf, etc.)`</td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>A single line of text, no formatting</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>A text area with multiple lines of text, no formatting</td>
 </tr>
 </tbody></table>
 <h3 id="nested-fields">Nested fields</h3>
@@ -245,6 +249,12 @@
 </tr>
 </thead>
 <tbody><tr>
+<td><strong>@items</strong></td>
+<td><code>array</code></td>
+<td><code>array</code></td>
+<td>A list of allowed value types</td>
+</tr>
+<tr>
 <td><strong>@max</strong></td>
 <td><code>int</code></td>
 <td><code>array|string|text</code></td>
@@ -263,10 +273,10 @@
 <td>Whether a field is required</td>
 </tr>
 <tr>
-<td><strong>@items</strong></td>
-<td><code>array</code></td>
-<td><code>array</code></td>
-<td>A list of allowed value types</td>
+<td><strong>@type</strong></td>
+<td><code>string</code></td>
+<td><code>string|media</code></td>
+<td>The type of input (mimetype, string type, etc.)</td>
 </tr>
 </tbody></table>
 <h3 id="example">Example</h3>

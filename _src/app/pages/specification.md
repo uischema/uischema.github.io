@@ -56,14 +56,15 @@ Apart from referring to other schema types, input fields can refer to a simple d
 
 | Name      | Description |
 | ---       | --- |
+| `array`   | An array of value types |
+| `bool`    | A boolean value, `true` or `false` |
+| `dict`    | A nested structure |
+| `float`   | A decimal value |
+| `html`    | A rich text editor storing its input as HTML |
+| `int`     | An integer value |
+| `media`   | A media file (image, video, pdf, etc.)` |
 | `string`  | A single line of text, no formatting |
 | `text`    | A text area with multiple lines of text, no formatting |
-| `html`    | A rich text editor storing its input as HTML |
-| `bool`    | A boolean value, `true` or `false` |
-| `int`     | An integer value |
-| `float`   | A decimal value |
-| `array`   | An array of value types |
-| `dict`    | A nested structure |
 
 ### Nested fields
 
@@ -114,12 +115,13 @@ They can also be declared as an explicit block with rules:
 
 Input rules are defined as meta values in the field definition.
 
-| Name          | Value type    | Used with type            | Description |
-| ---           | ---           | ---                       | --- |
-| **@max**      | `int`         | `array\|string\|text`     | A maximum value |
-| **@min**      | `int`         | `array\|string\|text`     | A minimum value |
-| **@required** | `bool`        | `*`                       | Whether a field is required |
-| **@items**    | `array`       | `array`                   | A list of allowed value types |
+| Name              | Value type    | Used with type            | Description |
+| ---               | ---           | ---                       | --- |
+| **@items**        | `array`       | `array`                   | A list of allowed value types |
+| **@max**          | `int`         | `array\|string\|text`     | A maximum value |
+| **@min**          | `int`         | `array\|string\|text`     | A minimum value |
+| **@required**     | `bool`        | `*`                       | Whether a field is required |
+| **@type**         | `string`      | `string\|media`           | The type of input (mimetype, string type, etc.) |
 
 ### Example
 
