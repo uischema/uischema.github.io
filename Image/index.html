@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hero</title>
+        <title>Image</title>
 
-        <meta name="description" content="A large element with an image background">
+        <meta name="description" content="A reference to an image">
         
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,30 +89,32 @@
         <main class="site-main">
             <header class="site-header">
                 <div class="ui-container site-header__container">
-                    <h1 class="site-header__title">Hero</h1>
-                    <p class="site-header__description">A large element with an image background</p>
+                    <h1 class="site-header__title">Image</h1>
+                    <p class="site-header__description">A reference to an image</p>
                     
+                        <h4>Role: partial</h4>
 
                 </div>
                 
                 <div class="site-header__links">
                     <div class="ui-container site-header__links__container">
-                            <div class="site-header__links__group">
-                                <span class="site-header__links__group__title">Parent: </span>
-                                <a href="/Feature" class="site-header__link">Feature</a>
-                            </div>
                     </div>
                 </div>
             </header>
            
-            <div class="site-schema" data-ui-schema="Hero">
+            <div class="site-schema" data-ui-schema="Image">
                 <div class="ui-container">
                         <h2>Properties</h2>
                         <table class="site-schema__properties">
                                 <tr class="site-schema__property">
-                                    <td class="site-schema__property__key">options</td>
-                                    <td class="site-schema__property__name">Options</td>
-                                    <td class="site-schema__property__description">Configuration for this hero</td>
+                                    <td class="site-schema__property__key">src</td>
+                                    <td class="site-schema__property__name">Source</td>
+                                    <td class="site-schema__property__description">The source of the image</td>
+                                </tr>
+                                <tr class="site-schema__property">
+                                    <td class="site-schema__property__key">alt</td>
+                                    <td class="site-schema__property__name">Description</td>
+                                    <td class="site-schema__property__description">A short description of the image</td>
                                 </tr>
                         </table>
                
@@ -125,10 +127,8 @@
 
                         <pre class="site-schema__code site-schema__template"></pre>
 
-                            <h2>Example</h2>
                 </div>
 
-                    <iframe class="site-schema__example"></iframe>
             </div>
         </main>
 
