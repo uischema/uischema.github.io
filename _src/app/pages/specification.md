@@ -62,7 +62,7 @@ Apart from referring to other schema types, input fields can refer to a simple d
 | `float`   | A decimal value |
 | `html`    | A rich text editor storing its input as HTML |
 | `int`     | An integer value |
-| `media`   | A media file (image, video, pdf, etc.)` |
+| `media`   | A media file (image, video, pdf, etc.) |
 | `string`  | A single line of text, no formatting |
 | `text`    | A text area with multiple lines of text, no formatting |
 
