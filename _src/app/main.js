@@ -20,7 +20,7 @@ const ROOT_DIR = Path.join(SRC_DIR, '../');
 const CUSTOM_TEMPLATE_DIR = Path.join(CUSTOM_DIR, 'templates');
 const CUSTOM_SCHEMA_DIR = Path.join(CUSTOM_DIR, 'schemas');
 const CUSTOM_CSS_DIR = Path.join(CUSTOM_DIR, 'css');
-const CUSTOM_EXAMPLES_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'examples');
+const CUSTOM_EXAMPLE_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'examples');
 const CUSTOM_I18N_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'i18n');
 
 // App directories
@@ -104,6 +104,8 @@ async function getSchemaTemplates() {
     let templates = {};
     
     for(let filename of await readDir(CUSTOM_TEMPLATE_DIR)) {
+        if(Path.extname(filename) !== '.tpl') { continue; }
+        
         templates[Path.basename(filename, '.tpl')] = await readFile(Path.join(CUSTOM_TEMPLATE_DIR, filename));
     }
 
@@ -118,7 +120,7 @@ async function getSchemaTemplates() {
  * @return {String} HTML
  */
 async function renderSchemaExample(type) {
-    let json = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, type + '.json'));
+    let json = await readFile(Path.join(CUSTOM_EXAMPLE_DIR, type + '.json'));
     let html = '';
 
     if(!json) { return ''; }
@@ -168,7 +170,7 @@ async function getSchemaTemplate(type) {
  * @return {Object} Example
  */
 async function getSchemaExample(type) {
-    let example = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, type) + '.json');
+    let example = await readFile(Path.join(CUSTOM_EXAMPLE_DIR, type) + '.json');
 
     try {
         return JSON.parse(example);
@@ -233,15 +235,6 @@ async function applyAppViewData(view) {
 }
 
 /**
- * Checks whether a schema has an example
- *
- * @return {Boolean} Result
- */
-function schemaHasExample(type) {
-    return FileSystem.existsSync(Path.join(CUSTOM_EXAMPLES_DIR, type + '.json'));
-}
-
-/**
  * Render a schema page
  *
  * @param {String} type
@@ -300,9 +293,9 @@ async function renderSchemaPage(type, language) {
     view['hasChildren'] = view['children'].length > 0;
     view['hasOptions'] = Array.isArray(view['options']) && view['options'].length > 0;
     view['hasProperties'] = Array.isArray(view['properties']) && view['properties'].length > 0;
-    view['isAbstract'] = view['schema']['@role'] === 'abstract';
-    view['hasExample'] = schemaHasExample(type);
-
+    view['hasTemplate'] = FileSystem.existsSync(Path.join(CUSTOM_TEMPLATE_DIR, type + '.tpl'));
+    view['hasExample'] = view['hasTemplate'] && FileSystem.existsSync(Path.join(CUSTOM_EXAMPLE_DIR, type + '.json'));
+    
     // Render the view
     return Mustache.render(appTemplates['schema'], view, appTemplates);
 }
@@ -426,10 +419,16 @@ async function getTopics() {
 async function getSchemaExamples() {
     let examples = [];
     
-    for(let filename of await readDir(CUSTOM_EXAMPLES_DIR)) {
+    for(let filename of await readDir(CUSTOM_EXAMPLE_DIR)) {
         if(Path.extname(filename) !== '.json') { continue; }
 
-        let json = await readFile(Path.join(CUSTOM_EXAMPLES_DIR, filename));
+        let type = Path.basename(filename, '.json');
+
+        let hasTemplate = FileSystem.existsSync(Path.join(CUSTOM_TEMPLATE_DIR, type + '.tpl'));
+
+        if(!hasTemplate) { continue; }
+
+        let json = await readFile(Path.join(CUSTOM_EXAMPLE_DIR, filename));
 
         json = JSON.parse(json);
 

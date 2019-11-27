@@ -75,15 +75,15 @@
 
                     <pre class="site-schema__code site-schema__definition"></pre>
 
-                    {{^ isAbstract }}
+                    {{# hasTemplate }}
                         <h2>Template</h2>
 
                         <pre class="site-schema__code site-schema__template"></pre>
-
-                        {{# hasExample }}
-                            <h2>Example</h2>
-                        {{/ hasExample }}
-                    {{/ isAbstract }}
+                    {{/ hasTemplate }}
+                    
+                    {{# hasExample }}
+                        <h2>Example</h2>
+                    {{/ hasExample }}
                 </div>
 
                 {{# hasExample }}
