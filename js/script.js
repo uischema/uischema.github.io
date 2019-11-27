@@ -79,7 +79,11 @@ window.UISchema = {
      * @return {String} HTML
      */
     renderModule: (module) => {
-        return Mustache.render(UISchema.templates[module['@type']], module, UISchema.templates);
+        let template = UISchema.templates[module['@type']];
+
+        if(!template) { return ''; }
+
+        return Mustache.render(template, module, UISchema.templates);
     },
 
     /**
@@ -90,6 +94,12 @@ window.UISchema = {
      */
     renderModuleIframe: (module, iframe, autoResize = false) => {
         let moduleHTML = UISchema.renderModule(module);
+
+        if(!moduleHTML) {
+            iframe.style.display = 'none';
+            return;
+        }
+
         let html = `
             <!DOCTYPE html>
             <html>
