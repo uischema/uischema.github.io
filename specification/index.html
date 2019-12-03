@@ -186,6 +186,10 @@
 <td>A boolean value, <code>true</code> or <code>false</code></td>
 </tr>
 <tr>
+<td><code>date</code></td>
+<td>A date value</td>
+</tr>
+<tr>
 <td><code>dict</code></td>
 <td>A nested structure</td>
 </tr>
@@ -204,6 +208,10 @@
 <tr>
 <td><code>media</code></td>
 <td>A media file (image, video, pdf, etc.)</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>A list of options</td>
 </tr>
 <tr>
 <td><code>string</code></td>
@@ -277,10 +285,10 @@
 <td>Whether a field is required</td>
 </tr>
 <tr>
-<td><strong>@variant</strong></td>
-<td><code>string</code></td>
-<td><code>string|media</code></td>
-<td>The type of input (mimetype, string type, etc.)</td>
+<td><strong>@options</strong></td>
+<td><code>array</code></td>
+<td><code>*</code></td>
+<td>Options for this field, like mimetypes or select options</td>
 </tr>
 </tbody></table>
 <h3 id="example">Example</h3>
@@ -289,6 +297,10 @@
         &quot;@type&quot;: &quot;string&quot;,
         &quot;@required&quot;: true,
         &quot;@max&quot;: 200
+    },
+    &quot;layout&quot;: {
+        &quot;@type&quot;: &quot;options&quot;,
+
     }
 }</code></pre>
 

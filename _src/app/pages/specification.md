@@ -58,11 +58,13 @@ Apart from referring to other schema types, input fields can refer to a simple d
 | ---       | --- |
 | `array`   | An array of value types |
 | `bool`    | A boolean value, `true` or `false` |
+| `date`    | A date value |
 | `dict`    | A nested structure |
 | `float`   | A decimal value |
 | `html`    | A rich text editor storing its input as HTML |
 | `int`     | An integer value |
 | `media`   | A media file (image, video, pdf, etc.) |
+| `options` | A list of options |
 | `string`  | A single line of text, no formatting |
 | `text`    | A text area with multiple lines of text, no formatting |
 
@@ -121,7 +123,7 @@ Input rules are defined as meta values in the field definition.
 | **@max**          | `int`         | `array\|string\|text`     | A maximum value |
 | **@min**          | `int`         | `array\|string\|text`     | A minimum value |
 | **@required**     | `bool`        | `*`                       | Whether a field is required |
-| **@variant**      | `string`      | `string\|media`           | The type of input (mimetype, string type, etc.) |
+| **@options**      | `array`       | `*`                       | Options for this field, like mimetypes or select options |
 
 ### Example
 
@@ -131,6 +133,10 @@ Input rules are defined as meta values in the field definition.
         "@type": "string",
         "@required": true,
         "@max": 200
+    },
+    "layout": {
+        "@type": "options",
+
     }
 }
 ```
