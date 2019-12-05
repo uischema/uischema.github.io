@@ -107,7 +107,7 @@ They can also be declared as an explicit block with rules:
 {
     "items": {
         "@type": "array",
-        "@items": [ "Hero", "Highlight" ],
+        "@options": [ "Hero", "Highlight" ],
         "@max": 4
     }
 }
