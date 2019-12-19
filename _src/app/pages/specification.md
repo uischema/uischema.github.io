@@ -26,6 +26,7 @@ These fields can be used to describe a schema
 | **@role**     | `string`          | Whether this schema is a full module **(module)** or just part of one **(partial)** |
 | **@label**    | `string`          | The name of the field whose value represents this content when it's collapsed |
 | **@topic**    | `string\|array`   | Topic(s) describing this schema |
+| **@process**  | `string\|array`   | An optional callable method for the server to process an element |
 | **@i18n**     | `object`          | Translations for field names |
 
 ### Translations
@@ -119,7 +120,6 @@ Input rules are defined as meta values in the field definition.
 
 | Name              | Value type    | Used with type            | Description |
 | ---               | ---           | ---                       | --- |
-| **@items**        | `array`       | `array`                   | A list of allowed value types |
 | **@max**          | `int`         | `array\|string\|text`     | A maximum value |
 | **@min**          | `int`         | `array\|string\|text`     | A minimum value |
 | **@required**     | `bool`        | `*`                       | Whether a field is required |
