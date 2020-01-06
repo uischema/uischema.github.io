@@ -122,19 +122,14 @@
 <td>A context URL for the site holding the schema information <strong>(required)</strong></td>
 </tr>
 <tr>
-<td><strong>@type</strong></td>
-<td><code>string</code></td>
-<td>A unique type name for this schema <strong>(required)</strong></td>
+<td><strong>@i18n</strong></td>
+<td><code>object</code></td>
+<td>Translations for field names</td>
 </tr>
 <tr>
-<td><strong>@parent</strong></td>
+<td><strong>@init</strong></td>
 <td><code>string</code></td>
-<td>A parent schema to inherit values from</td>
-</tr>
-<tr>
-<td><strong>@role</strong></td>
-<td><code>string</code></td>
-<td>Whether this schema is a full module <strong>(module)</strong> or just part of one <strong>(partial)</strong></td>
+<td>An optional callable method for the server to initialise a schema</td>
 </tr>
 <tr>
 <td><strong>@label</strong></td>
@@ -142,19 +137,29 @@
 <td>The name of the field whose value represents this content when it&#39;s collapsed</td>
 </tr>
 <tr>
+<td><strong>@parent</strong></td>
+<td><code>string</code></td>
+<td>A parent schema to inherit values from</td>
+</tr>
+<tr>
+<td><strong>@process</strong></td>
+<td><code>string</code></td>
+<td>An optional callable method for the server to process an element</td>
+</tr>
+<tr>
+<td><strong>@role</strong></td>
+<td><code>string</code></td>
+<td>Whether this schema is a full module <strong>(module)</strong> or just part of one <strong>(partial)</strong></td>
+</tr>
+<tr>
 <td><strong>@topic</strong></td>
 <td><code>string|array</code></td>
 <td>Topic(s) describing this schema</td>
 </tr>
 <tr>
-<td><strong>@process</strong></td>
-<td><code>string|array</code></td>
-<td>An optional callable method for the server to process an element</td>
-</tr>
-<tr>
-<td><strong>@i18n</strong></td>
-<td><code>object</code></td>
-<td>Translations for field names</td>
+<td><strong>@type</strong></td>
+<td><code>string</code></td>
+<td>A unique type name for this schema <strong>(required)</strong></td>
 </tr>
 </tbody></table>
 <h3 id="translations">Translations</h3>
