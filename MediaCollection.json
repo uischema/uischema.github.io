@@ -1,0 +1,1 @@
+{"@context":"http://uischema.org","@type":"MediaCollection","@parent":"WebPageElement","@label":"heading","heading":"string","body":"text","items":["MediaObject"],"@i18n":{"en":{"@name":"Media Collection","heading":{"@name":"Heading"},"body":{"@name":"Body"},"items":{"@name":"Items"}}}}

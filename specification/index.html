@@ -73,13 +73,13 @@
                     <p class="site-nav__item__name">Highlight</p>
                     <p class="site-nav__item__description">Section element for featuring other content</p>
                 </a>
-                <a href="/Image" data-ui-schema="Image" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Image</p>
-                    <p class="site-nav__item__description">A reference to an image</p>
-                </a>
                 <a href="/Link" data-ui-schema="Link" class="site-nav__item no-topic">
                     <p class="site-nav__item__name">Link</p>
                     <p class="site-nav__item__description">A reference to another page or element</p>
+                </a>
+                <a href="/MediaCollection" data-ui-schema="MediaCollection" class="site-nav__item no-topic">
+                    <p class="site-nav__item__name">Media Collection</p>
+                    <p class="site-nav__item__description"></p>
                 </a>
                 <a href="/WebPageElement" data-ui-schema="WebPageElement" class="site-nav__item no-topic">
                     <p class="site-nav__item__name">Web Page Element</p>
@@ -179,7 +179,9 @@
     }
 }</code></pre>
 <h2 id="data-types">Data types</h2>
-<p>Apart from referring to other schema types, input fields can refer to a simple data type.</p>
+<p>Apart from the types described below, input field can also refer to other uischemas.</p>
+<h3 id="simple-types">Simple types</h3>
+<p>These types can be represented in simple JSON:</p>
 <table>
 <thead>
 <tr>
@@ -216,10 +218,6 @@
 <td>An integer value</td>
 </tr>
 <tr>
-<td><code>media</code></td>
-<td>A media file (image, video, pdf, etc.)</td>
-</tr>
-<tr>
 <td><code>options</code></td>
 <td>A list of options</td>
 </tr>
@@ -232,7 +230,37 @@
 <td>A text area with multiple lines of text, no formatting</td>
 </tr>
 </tbody></table>
-<h3 id="nested-fields">Nested fields</h3>
+<h3 id="common-schemaorg-types">Common schema.org types</h3>
+<p>Any <a href="https://schema.org">schema.org</a> type can be used, but these are the most common cases:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AudioObject</code></td>
+<td>An audio clip</td>
+</tr>
+<tr>
+<td><code>DataDownload</code></td>
+<td>An binary file intended for download</td>
+</tr>
+<tr>
+<td><code>ImageObject</code></td>
+<td>An image</td>
+</tr>
+<tr>
+<td><code>VideoObject</code></td>
+<td>An audio clip</td>
+</tr>
+<tr>
+<td><code>MediaObject</code></td>
+<td>A generic media file, covering all above types</td>
+</tr>
+</tbody></table>
+<h3 id="nested-fields-dict">Nested fields (dict)</h3>
 <p>Nested fields can be declared as an implicit JSON object:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {

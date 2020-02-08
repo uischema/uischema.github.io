@@ -54,23 +54,38 @@ Example of the exported output:
 
 ## Data types
 
-Apart from referring to other schema types, input fields can refer to a simple data type.
+Apart from the types described below, input field can also refer to other uischemas.
 
-| Name      | Description |
-| ---       | --- |
-| `array`   | An array of value types |
-| `bool`    | A boolean value, `true` or `false` |
-| `date`    | A date value |
-| `dict`    | A nested structure |
-| `float`   | A decimal value |
-| `html`    | A rich text editor storing its input as HTML |
-| `int`     | An integer value |
-| `media`   | A media file (image, video, pdf, etc.) |
-| `options` | A list of options |
-| `string`  | A single line of text, no formatting |
-| `text`    | A text area with multiple lines of text, no formatting |
+### Simple types
 
-### Nested fields
+These types can be represented in simple JSON:
+
+| Name              | Description |
+| ---               | --- |
+| `array`           | An array of value types |
+| `bool`            | A boolean value, `true` or `false` |
+| `date`            | A date value |
+| `dict`            | A nested structure |
+| `float`           | A decimal value |
+| `html`            | A rich text editor storing its input as HTML |
+| `int`             | An integer value |
+| `options`         | A list of options |
+| `string`          | A single line of text, no formatting |
+| `text`            | A text area with multiple lines of text, no formatting |
+
+### Common schema.org types
+
+Any [schema.org](https://schema.org) type can be used, but these are the most common cases:
+
+| Name              | Description |
+| ---               | --- |
+| `AudioObject`     | An audio clip |
+| `DataDownload`    | An binary file intended for download |
+| `ImageObject`     | An image |
+| `VideoObject`     | An audio clip |
+| `MediaObject`     | A generic media file, covering all above types |
+
+### Nested fields (dict)
 
 Nested fields can be declared as an implicit JSON object:
 
