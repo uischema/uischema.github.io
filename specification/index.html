@@ -97,12 +97,11 @@
 <ul>
 <li>Meta fields are written like <strong>@this</strong>, lowercase with a prefixed &quot;@&quot; symbol</li>
 <li>Input fields, the ones used for rendering and CMS input, are written in camelCase</li>
-<li>Schema types (like <code>&quot;Hero&quot;</code> or <code>&quot;Feature&quot;</code>) are written in PascalCase</li>
-<li>Simple data types (like <code>&quot;text&quot;</code> or <code>&quot;bool&quot;</code>) are written in lowercase</li>
+<li>Value types (like <code>&quot;Hero&quot;</code> or <code>&quot;Text&quot;</code>) are written in PascalCase</li>
 <li>Input field types can be specified in 3 ways:<ul>
 <li>As a string, to indicate a singular input field: <code>&quot;Hero&quot;</code></li>
 <li>As an array, to indicate multiple input fields: <code>[ &quot;Hero&quot;, &quot;Highlight&quot; ]</code></li>
-<li>As an object with <strong>@type</strong> and <strong>@[rule]</strong> fields:<br>  <code>{ &quot;@type&quot;: &quot;text&quot;, &quot;@min&quot;: 100, &quot;@max&quot;: 300 }</code></li>
+<li>As an object with <strong>@type</strong> and <strong>@[rule]</strong> fields:<br>  <code>{ &quot;@type&quot;: &quot;Text&quot;, &quot;@min&quot;: 100, &quot;@max&quot;: 300 }</code></li>
 </ul>
 </li>
 </ul>
@@ -147,11 +146,6 @@
 <td>An optional callable method for the server to process an element</td>
 </tr>
 <tr>
-<td><strong>@role</strong></td>
-<td><code>string</code></td>
-<td>Whether this schema is a full module <strong>(module)</strong> or just part of one <strong>(partial)</strong></td>
-</tr>
-<tr>
 <td><strong>@topic</strong></td>
 <td><code>string|array</code></td>
 <td>Topic(s) describing this schema</td>
@@ -163,12 +157,12 @@
 </tr>
 </tbody></table>
 <h3 id="translations">Translations</h3>
-<p>Translations can be provided for field labels. They are commonly stored in a folder <code>/i18n/[language]/SchemaType.json</code> and appended to the schema upon export.</p>
+<p>Translations can be provided for field labels. They are commonly stored in a folder <code>/i18n/[language]/[type].json</code> and appended to the schema upon export.</p>
 <p>Example of the exported output:</p>
 <pre><code class="language-javascript">{
     &quot;@context&quot;: &quot;http://uischema.org&quot;,
     &quot;@type&quot;: &quot;Feature&quot;,
-    &quot;image&quot;: &quot;Image&quot;,
+    &quot;image&quot;: &quot;ImageObject&quot;,
     &quot;@i18n&quot;: {
         &quot;@name&quot;: &quot;Feature&quot;,
         &quot;@description&quot;: &quot;An element for featuring other content&quot;,
@@ -179,59 +173,9 @@
     }
 }</code></pre>
 <h2 id="data-types">Data types</h2>
-<p>Apart from the types described below, input field can also refer to other uischemas.</p>
-<h3 id="simple-types">Simple types</h3>
-<p>These types can be represented in simple JSON:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>array</code></td>
-<td>An array of value types</td>
-</tr>
-<tr>
-<td><code>bool</code></td>
-<td>A boolean value, <code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td>A date value</td>
-</tr>
-<tr>
-<td><code>dict</code></td>
-<td>A nested structure</td>
-</tr>
-<tr>
-<td><code>float</code></td>
-<td>A decimal value</td>
-</tr>
-<tr>
-<td><code>html</code></td>
-<td>A rich text editor storing its input as HTML</td>
-</tr>
-<tr>
-<td><code>int</code></td>
-<td>An integer value</td>
-</tr>
-<tr>
-<td><code>options</code></td>
-<td>A list of options</td>
-</tr>
-<tr>
-<td><code>string</code></td>
-<td>A single line of text, no formatting</td>
-</tr>
-<tr>
-<td><code>text</code></td>
-<td>A text area with multiple lines of text, no formatting</td>
-</tr>
-</tbody></table>
+<p>Apart from the types described below, input field can also refer to other schemas.</p>
 <h3 id="common-schemaorg-types">Common schema.org types</h3>
-<p>Any <a href="https://schema.org">schema.org</a> type can be used, but these are the most common cases:</p>
+<p>Any <a href="https://schema.org/DataType">schema.org</a> type can be used, here are some common cases:</p>
 <table>
 <thead>
 <tr>
@@ -244,37 +188,87 @@
 <td>An audio clip</td>
 </tr>
 <tr>
+<td><code>Boolean</code></td>
+<td>A boolean value, <code>true</code> or <code>false</code></td>
+</tr>
+<tr>
 <td><code>DataDownload</code></td>
 <td>An binary file intended for download</td>
+</tr>
+<tr>
+<td><code>DateTime</code></td>
+<td>A date/time value</td>
+</tr>
+<tr>
+<td><code>Date</code></td>
+<td>A date value</td>
+</tr>
+<tr>
+<td><code>Enumeration</code></td>
+<td>A list of options</td>
 </tr>
 <tr>
 <td><code>ImageObject</code></td>
 <td>An image</td>
 </tr>
 <tr>
-<td><code>VideoObject</code></td>
-<td>An audio clip</td>
+<td><code>ItemList</code></td>
+<td>An array of value types</td>
 </tr>
 <tr>
 <td><code>MediaObject</code></td>
-<td>A generic media file, covering all above types</td>
+<td>A generic media file</td>
+</tr>
+<tr>
+<td><code>Number</code></td>
+<td>A numeric value</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td>A single line of text, no formatting</td>
+</tr>
+<tr>
+<td><code>Thing</code></td>
+<td>A nested structure</td>
+</tr>
+<tr>
+<td><code>VideoObject</code></td>
+<td>An audio clip</td>
 </tr>
 </tbody></table>
-<h3 id="nested-fields-dict">Nested fields (dict)</h3>
+<h3 id="extensions">Extensions</h3>
+<p>A few more descriptive data types:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>RichText</code></td>
+<td>A rich text editor storing its input as HTML</td>
+</tr>
+<tr>
+<td><code>MultiLineText</code></td>
+<td>A text area with multiple lines of text, no formatting</td>
+</tr>
+</tbody></table>
+<h3 id="nested-fields-thing">Nested fields (Thing)</h3>
 <p>Nested fields can be declared as an implicit JSON object:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
-        &quot;isHeader&quot;: &quot;bool&quot;
+        &quot;isHeader&quot;: &quot;Boolean&quot;
     }
 }</code></pre>
 <p>The type can optionally be explicitly declared:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
-        &quot;@type&quot;: &quot;dict&quot;,
-        &quot;isHeader&quot;: &quot;bool&quot;
+        &quot;@type&quot;: &quot;Thing&quot;,
+        &quot;isHeader&quot;: &quot;Boolean&quot;
     }
 }</code></pre>
-<h3 id="arrays">Arrays</h3>
+<h3 id="arrays-itemlist">Arrays (ItemList)</h3>
 <p>Arrays can be declared as an implicit JSON array, indicating only which value types are allowed inside it:</p>
 <pre><code class="language-javascript">{
     &quot;items&quot;: [ &quot;Feature&quot; ]
@@ -282,7 +276,7 @@
 <p>They can also be declared as an explicit block with rules:</p>
 <pre><code class="language-javascript">{
     &quot;items&quot;: {
-        &quot;@type&quot;: &quot;array&quot;,
+        &quot;@type&quot;: &quot;ItemList&quot;,
         &quot;@options&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ],
         &quot;@max&quot;: 4
     }
@@ -301,13 +295,13 @@
 <tbody><tr>
 <td><strong>@max</strong></td>
 <td><code>int</code></td>
-<td><code>array|string|text</code></td>
+<td><code>ItemList|Text|Number</code></td>
 <td>A maximum value</td>
 </tr>
 <tr>
 <td><strong>@min</strong></td>
 <td><code>int</code></td>
-<td><code>array|string|text</code></td>
+<td><code>ItemList|Text|Number</code></td>
 <td>A minimum value</td>
 </tr>
 <tr>
@@ -326,13 +320,9 @@
 <h3 id="example">Example</h3>
 <pre><code class="language-javascript">{
     &quot;heading&quot;: {
-        &quot;@type&quot;: &quot;string&quot;,
+        &quot;@type&quot;: &quot;Text&quot;,
         &quot;@required&quot;: true,
         &quot;@max&quot;: 200
-    },
-    &quot;layout&quot;: {
-        &quot;@type&quot;: &quot;options&quot;,
-
     }
 }</code></pre>
 

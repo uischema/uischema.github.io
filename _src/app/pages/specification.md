@@ -6,13 +6,12 @@ A full description of the UI schema internals
 
 * Meta fields are written like **@this**, lowercase with a prefixed "@" symbol
 * Input fields, the ones used for rendering and CMS input, are written in camelCase
-* Schema types (like `"Hero"` or `"Feature"`) are written in PascalCase
-* Simple data types (like `"text"` or `"bool"`) are written in lowercase
+* Value types (like `"Hero"` or `"Text"`) are written in PascalCase
 * Input field types can be specified in 3 ways:
     * As a string, to indicate a singular input field: `"Hero"`
     * As an array, to indicate multiple input fields: `[ "Hero", "Highlight" ]`
     * As an object with **@type** and **@[rule]** fields:  
-        `{ "@type": "text", "@min": 100, "@max": 300 }`
+        `{ "@type": "Text", "@min": 100, "@max": 300 }`
 
 ## Schema meta fields
 
@@ -26,13 +25,12 @@ These fields can be used to describe a schema
 | **@label**    | `string`          | The name of the field whose value represents this content when it's collapsed |
 | **@parent**   | `string`          | A parent schema to inherit values from |
 | **@process**  | `string`          | An optional callable method for the server to process an element |
-| **@role**     | `string`          | Whether this schema is a full module **(module)** or just part of one **(partial)** |
 | **@topic**    | `string\|array`   | Topic(s) describing this schema |
 | **@type**     | `string`          | A unique type name for this schema **(required)** |
 
 ### Translations
 
-Translations can be provided for field labels. They are commonly stored in a folder `/i18n/[language]/SchemaType.json` and appended to the schema upon export.
+Translations can be provided for field labels. They are commonly stored in a folder `/i18n/[language]/[type].json` and appended to the schema upon export.
 
 Example of the exported output:
 
@@ -40,7 +38,7 @@ Example of the exported output:
 {
     "@context": "http://uischema.org",
     "@type": "Feature",
-    "image": "Image",
+    "image": "ImageObject",
     "@i18n": {
         "@name": "Feature",
         "@description": "An element for featuring other content",
@@ -54,45 +52,45 @@ Example of the exported output:
 
 ## Data types
 
-Apart from the types described below, input field can also refer to other uischemas.
-
-### Simple types
-
-These types can be represented in simple JSON:
-
-| Name              | Description |
-| ---               | --- |
-| `array`           | An array of value types |
-| `bool`            | A boolean value, `true` or `false` |
-| `date`            | A date value |
-| `dict`            | A nested structure |
-| `float`           | A decimal value |
-| `html`            | A rich text editor storing its input as HTML |
-| `int`             | An integer value |
-| `options`         | A list of options |
-| `string`          | A single line of text, no formatting |
-| `text`            | A text area with multiple lines of text, no formatting |
+Apart from the types described below, input field can also refer to other schemas.
 
 ### Common schema.org types
 
-Any [schema.org](https://schema.org) type can be used, but these are the most common cases:
+Any [schema.org](https://schema.org/DataType) type can be used, here are some common cases:
 
 | Name              | Description |
 | ---               | --- |
 | `AudioObject`     | An audio clip |
+| `Boolean`         | A boolean value, `true` or `false` |
 | `DataDownload`    | An binary file intended for download |
+| `DateTime`        | A date/time value |
+| `Date`            | A date value |
+| `Enumeration`     | A list of options |
 | `ImageObject`     | An image |
+| `ItemList`        | An array of value types |
+| `MediaObject`     | A generic media file |
+| `Number`          | A numeric value |
+| `Text`            | A single line of text, no formatting |
+| `Thing`           | A nested structure |
 | `VideoObject`     | An audio clip |
-| `MediaObject`     | A generic media file, covering all above types |
 
-### Nested fields (dict)
+### Extensions
+
+A few more descriptive data types:
+
+| Name              | Description |
+| ---               | --- |
+| `RichText`        | A rich text editor storing its input as HTML |
+| `MultiLineText`   | A text area with multiple lines of text, no formatting |
+
+### Nested fields (Thing)
 
 Nested fields can be declared as an implicit JSON object:
 
 ```javascript
 {
     "options": {
-        "isHeader": "bool"
+        "isHeader": "Boolean"
     }
 }
 ```
@@ -102,13 +100,13 @@ The type can optionally be explicitly declared:
 ```javascript
 {
     "options": {
-        "@type": "dict",
-        "isHeader": "bool"
+        "@type": "Thing",
+        "isHeader": "Boolean"
     }
 }
 ```
 
-### Arrays
+### Arrays (ItemList)
 
 Arrays can be declared as an implicit JSON array, indicating only which value types are allowed inside it:
 
@@ -123,7 +121,7 @@ They can also be declared as an explicit block with rules:
 ```javascript
 {
     "items": {
-        "@type": "array",
+        "@type": "ItemList",
         "@options": [ "Hero", "Highlight" ],
         "@max": 4
     }
@@ -136,8 +134,8 @@ Input rules are defined as meta values in the field definition.
 
 | Name              | Value type    | Used with type            | Description |
 | ---               | ---           | ---                       | --- |
-| **@max**          | `int`         | `array\|string\|text`     | A maximum value |
-| **@min**          | `int`         | `array\|string\|text`     | A minimum value |
+| **@max**          | `int`         | `ItemList\|Text\|Number`  | A maximum value |
+| **@min**          | `int`         | `ItemList\|Text\|Number`  | A minimum value |
 | **@required**     | `bool`        | `*`                       | Whether a field is required |
 | **@options**      | `array`       | `*`                       | Options for this field, like mimetypes or select options |
 
@@ -146,13 +144,9 @@ Input rules are defined as meta values in the field definition.
 ```javascript
 {
     "heading": {
-        "@type": "string",
+        "@type": "Text",
         "@required": true,
         "@max": 200
-    },
-    "layout": {
-        "@type": "options",
-
     }
 }
 ```

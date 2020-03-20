@@ -8,7 +8,7 @@ const HTTP = require('http');
 const Url = require('url');
 const Util = require('util');
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Directiories
 const APP_DIR = Path.join(__dirname);
