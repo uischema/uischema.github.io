@@ -71,7 +71,7 @@ Any [schema.org](https://schema.org/DataType) type can be used, here are some co
 | `MediaObject`     | A generic media file |
 | `Number`          | A numeric value |
 | `Text`            | A single line of text, no formatting |
-| `Thing`           | A nested structure |
+| `Intangible`      | A nested structure |
 | `VideoObject`     | An audio clip |
 
 ### Extensions
@@ -83,7 +83,7 @@ A few more descriptive data types:
 | `RichText`        | A rich text editor storing its input as HTML |
 | `MultiLineText`   | A text area with multiple lines of text, no formatting |
 
-### Nested fields (Thing)
+### Nested fields (Intangible)
 
 Nested fields can be declared as an implicit JSON object:
 
@@ -100,7 +100,7 @@ The type can optionally be explicitly declared:
 ```javascript
 {
     "options": {
-        "@type": "Thing",
+        "@type": "Intangible",
         "isHeader": "Boolean"
     }
 }
