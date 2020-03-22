@@ -72,7 +72,7 @@ Any [schema.org](https://schema.org/DataType) type can be used, here are some co
 | `Number`          | A numeric value |
 | `Text`            | A single line of text, no formatting |
 | `Intangible`      | A nested structure |
-| `VideoObject`     | An audio clip |
+| `VideoObject`     | A video |
 
 ### Extensions
 
@@ -124,6 +124,27 @@ They can also be declared as an explicit block with rules:
         "@type": "ItemList",
         "@options": [ "Hero", "Highlight" ],
         "@max": 4
+    }
+}
+```
+
+### Selects/dropdowns (Enumeration)
+
+Dropdowns can be declared explicitly with or without translation strings:
+
+```javascript
+{
+    "layout" {
+        "@type": "Enumeration",
+        "@options": [ "left", "right" ]
+    },
+    "@i18n": {
+        "en": {
+            "layout": {
+                "@name": "Layout",
+                "@options": [ "Left aligned", "Right aligned ]
+            }
+        }
     }
 }
 ```

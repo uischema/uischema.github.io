@@ -1,5 +1,6 @@
 'use strict';
 
+const Sass = require('sass');
 const Path = require('path');
 const FileSystem = require('fs');
 const Mustache = require(Path.join(__dirname, 'js', 'mustache'));
@@ -25,6 +26,7 @@ const CUSTOM_I18N_DIR = Path.join(CUSTOM_SCHEMA_DIR, 'i18n');
 
 // App directories
 const APP_CSS_DIR = Path.join(APP_DIR, 'css');
+const APP_SCSS_DIR = Path.join(APP_DIR, 'scss');
 const APP_JS_DIR = Path.join(APP_DIR, 'js');
 const APP_IMG_DIR = Path.join(APP_DIR, 'img');
 const APP_TEMPLATE_DIR = Path.join(APP_DIR, 'templates');
@@ -137,7 +139,6 @@ async function renderSchemaExample(type) {
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=0.6">
                 <meta charset="utf8">
-                <link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
                 <link rel="stylesheet" type="text/css" href="/css/style.css">
             </head>
             <body>
@@ -677,8 +678,10 @@ async function generate() {
             
         // Create "css" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'css'));
-        await Util.promisify(FileSystem.copyFile)(Path.join(APP_CSS_DIR, 'style.css'), Path.join(ROOT_DIR, 'css', 'style.css'));
-        await Util.promisify(FileSystem.copyFile)(Path.join(CUSTOM_CSS_DIR, 'uischema.org.css'), Path.join(ROOT_DIR, 'css', 'uischema.org.css'));
+
+        let compiled = Sass.renderSync({file: Path.join(APP_SCSS_DIR, 'index.scss')});
+       
+        await Util.promisify(FileSystem.writeFile)(Path.join(ROOT_DIR, 'css', 'style.css'), compiled.css);
         
         // Create "js" directory
         await Util.promisify(FileSystem.mkdir)(Path.join(ROOT_DIR, 'js'));

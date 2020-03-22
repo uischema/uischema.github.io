@@ -1,5 +1,6 @@
 _site/*
 
+_src/app/node_modules/*
 _src/custom/*
 
 *.swp
