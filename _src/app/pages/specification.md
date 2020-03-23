@@ -20,6 +20,7 @@ These fields can be used to describe a schema
 | Name          | Type              | Description |
 | ---           | ---               | --- |
 | **@context**  | `string`          | A context URL for the site holding the schema information **(required)** |
+| **@config**   | `object`          | A structured set of arbitrary values |
 | **@i18n**     | `object`          | Translations for field names |
 | **@init**     | `string`          | An optional callable method for the server to initialise a schema |
 | **@label**    | `string`          | The name of the field whose value represents this content when it's collapsed |
@@ -71,7 +72,7 @@ Any [schema.org](https://schema.org/DataType) type can be used, here are some co
 | `MediaObject`     | A generic media file |
 | `Number`          | A numeric value |
 | `Text`            | A single line of text, no formatting |
-| `Intangible`      | A nested structure |
+| `StructuredValue` | A nested structure |
 | `VideoObject`     | A video |
 
 ### Extensions
@@ -83,7 +84,7 @@ A few more descriptive data types:
 | `RichText`        | A rich text editor storing its input as HTML |
 | `MultiLineText`   | A text area with multiple lines of text, no formatting |
 
-### Nested fields (Intangible)
+### Nested fields (StructuredValue)
 
 Nested fields can be declared as an implicit JSON object:
 
@@ -100,7 +101,7 @@ The type can optionally be explicitly declared:
 ```javascript
 {
     "options": {
-        "@type": "Intangible",
+        "@type": "StructuredValue",
         "isHeader": "Boolean"
     }
 }

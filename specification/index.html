@@ -103,6 +103,11 @@
 <td>A context URL for the site holding the schema information <strong>(required)</strong></td>
 </tr>
 <tr>
+<td><strong>@config</strong></td>
+<td><code>object</code></td>
+<td>A structured set of arbitrary values</td>
+</tr>
+<tr>
 <td><strong>@i18n</strong></td>
 <td><code>object</code></td>
 <td>Translations for field names</td>
@@ -210,7 +215,7 @@
 <td>A single line of text, no formatting</td>
 </tr>
 <tr>
-<td><code>Intangible</code></td>
+<td><code>StructuredValue</code></td>
 <td>A nested structure</td>
 </tr>
 <tr>
@@ -236,7 +241,7 @@
 <td>A text area with multiple lines of text, no formatting</td>
 </tr>
 </tbody></table>
-<h3 id="nested-fields-intangible">Nested fields (Intangible)</h3>
+<h3 id="nested-fields-structuredvalue">Nested fields (StructuredValue)</h3>
 <p>Nested fields can be declared as an implicit JSON object:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
@@ -246,7 +251,7 @@
 <p>The type can optionally be explicitly declared:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
-        &quot;@type&quot;: &quot;Intangible&quot;,
+        &quot;@type&quot;: &quot;StructuredValue&quot;,
         &quot;isHeader&quot;: &quot;Boolean&quot;
     }
 }</code></pre>
