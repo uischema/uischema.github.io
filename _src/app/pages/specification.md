@@ -63,6 +63,7 @@ Any [schema.org](https://schema.org/DataType) type can be used, here are some co
 | ---               | --- |
 | `AudioObject`     | An audio clip |
 | `Boolean`         | A boolean value, `true` or `false` |
+| `CreativeWork`    | A reference to some content, typically a web page |
 | `DataDownload`    | An binary file intended for download |
 | `DateTime`        | A date/time value |
 | `Date`            | A date value |
