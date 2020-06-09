@@ -484,16 +484,10 @@ async function serve(req, res) {
             break;
         
         case 'css':
-            let css = '';
-
-            css = await readFile(Path.join(CUSTOM_CSS_DIR, path[1]));
-            
-            if(!css) {
-                css = await readFile(Path.join(APP_CSS_DIR, path[1]));
-            }
-
+            let compiled = Sass.renderSync({file: Path.join(APP_SCSS_DIR, 'index.scss')});
+           
             res.writeHead(200, { 'Content-Type': 'text/css' }); 
-            res.end(css);
+            res.end(compiled.css);
             break;
        
         case 'js':

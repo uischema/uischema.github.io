@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" href="/img/logo.svg">
-<link rel="stylesheet" type="text/css" href="/css/uischema.org.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body class="site-page">
@@ -49,7 +48,11 @@
                 </a>
                 <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Feature collection</p>
-                    <p class="site-nav__item__description">A collection of featured items</p>
+                    <p class="site-nav__item__description">A collection of features</p>
+                </a>
+                <a href="/FeatureRail" data-ui-schema="FeatureRail" class="site-nav__item no-topic">
+                    <p class="site-nav__item__name">Feature rail</p>
+                    <p class="site-nav__item__description">A sliding rail of featured items</p>
                 </a>
                 <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
                     <p class="site-nav__item__name">Hero</p>
@@ -93,12 +96,11 @@
 <p>Reduce the amount of markup work needed by keeping a handy collection of templates that can be used anywhere.</p>
 <h2 id="how">How?</h2>
 <h3 id="cms">CMS</h3>
-<p>For most CMS&#39;es, you need a plugin. The following CMS&#39;es are officially supported:</p>
+<p>To use schemas in a CMS, you can either write your own or use the <a href="https://github.com/uischema/schemas">suggested schemas</a>. The following CMS&#39;es are officially supported:</p>
 <ul>
-<li><a href="https://hashbrown.rocks">HashBrown</a> has built-in support</li>
-<li><a href="https://drupal.org">Drupal</a> has a <a href="https://github.com/uischema/drupal">module</a></li>
+<li><a href="https://hashbrowncms.org">HashBrown</a> has built-in support (schemas go in the <code>/plugins/YOUR_PLUGIN/schemas/</code> folder)</li>
+<li><a href="https://drupal.org">Drupal</a> has a <a href="https://www.drupal.org/project/uischema">module</a> (schemas go in the <code>/sites/YOUR_SITE/uischema</code> folder)</li>
 </ul>
-<p>To import UI schemas into your CMS, point the importer towards the URL of your collection or a single schema (for example <a href="https://uischema.org/schemas.json">https://uischema.org/schemas.json</a> or <a href="https://uischema.org/Feature.json">https://uischema.org/Feature.json</a>)</p>
 <h3 id="website">Website</h3>
 <p>For websites, you need the css (<a href="https://github.com/uischema/css">suggestion</a>) and templates (<a href="https://github.com/uischema/templates">suggestion</a>) of your modules. Then just request the content from your CMS and render it (we suggest using <a href="https://mustache.github.io">mustache</a>). The only remaining work in most cases will be to set up site navigation.</p>
 <p>Check out some examples <a href="https://uischema.org/examples">here</a></p>
