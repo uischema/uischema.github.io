@@ -17,23 +17,23 @@ A full description of the UI schema internals
 
 These fields can be used to describe a schema
 
-| Name          | Type              | Description |
-| ---           | ---               | --- |
-| **@context**  | `string`          | A context URL for the site holding the schema information **(required)** |
-| **@config**   | `object`          | A structured set of arbitrary values |
-| **@i18n**     | `object`          | Translations for field names |
-| **@init**     | `string`          | An optional callable method for the server to initialise a schema |
-| **@label**    | `string`          | The name of the field whose value represents this content when it's collapsed |
-| **@parent**   | `string`          | A parent schema to inherit values from |
-| **@process**  | `string`          | An optional callable method for the server to process an element |
-| **@topic**    | `string\|array`   | Topic(s) describing this schema |
-| **@type**     | `string`          | A unique type name for this schema **(required)** |
+| Name                      | Type              | Description |
+| ---                       | ---               | --- |
+| **@context**              | `string`          | A context URL for the site holding the schema information **(required)** |
+| **@config**               | `object`          | A structured set of arbitrary values |
+| **@i18n** or **@l10n**    | `object`          | Translations for field names |
+| **@init**                 | `string`          | An optional callable method for the server to initialise a schema |
+| **@label**                | `string`          | The name of the field whose value represents this content when it's collapsed |
+| **@parent**               | `string`          | A parent schema to inherit values from |
+| **@process**              | `string`          | An optional callable method for the server to process an element |
+| **@topic**                | `string\|array`   | Topic(s) describing this schema |
+| **@type**                 | `string`          | A unique type name for this schema **(required)** |
 
 ### Translations
 
-Translations can be provided for field labels. They are commonly stored in a folder `/i18n/[language]/[type].json` and appended to the schema upon export.
+Translations can be provided for field labels. They are commonly stored in the **@i18n** or **@l10n** variable, or in a folder `/i18n/[locale]/[type].json` and appended to the schema upon export.
 
-Example of the exported output:
+Example schema and translation:
 
 ```javascript
 {
@@ -41,19 +41,39 @@ Example of the exported output:
     "@type": "Feature",
     "image": "ImageObject",
     "@i18n": {
-        "@name": "Feature",
-        "@description": "An element for featuring other content",
-        "image": {
-            "@name": "Image",
-            "@description": "The main image"
+        "en": {
+            "@name": "Feature",
+            "@description": "An element for featuring other content",
+            "image": {
+                "@name": "Image",
+                "@description": "The main image"
+            }
         }
     }
 }
 ```
 
+The above would look like this after being compiled with a translation:
+
+```javascript
+{
+    "@context": "http://uischema.org",
+    "@type": "Feature",
+    "@name": "Feature",
+    "@description": "An element for featuring other content",
+    "image": {
+        "@type": "ImageObject",
+        "@name": "Image",
+        "@description": "The main image"
+    }
+}
+```
+
+If localisation support is not relevant, the `@name` and `@description` fields can just be typed into the schema itself.
+
 ## Data types
 
-Apart from the types described below, input field can also refer to other schemas.
+Apart from the types described below, fields can also refer to other schemas.
 
 ### Common schema.org types
 
@@ -138,15 +158,37 @@ Dropdowns can be declared explicitly with or without translation strings:
 {
     "layout" {
         "@type": "Enumeration",
+        "@max": 1
         "@options": [ "left", "right" ]
     },
     "@i18n": {
         "en": {
             "layout": {
                 "@name": "Layout",
-                "@options": [ "Left aligned", "Right aligned ]
+                "@options": [ "Left aligned", "Right aligned" ]
             }
         }
+    }
+}
+```
+
+The field descriptions can also be "baked in", as explained in the "translations" section above:
+
+```javascript
+{
+    "layout" {
+        "@type": "Enumeration",
+        "@max": 1
+        "@options": [
+            {
+                "@name": "Left aligned",
+                "@value": "left"
+            },
+            {
+                "@name": "Right aligned",
+                "@value": "right"
+            }
+        ]
     }
 }
 ```
@@ -162,7 +204,7 @@ Input rules are defined as meta values in the field definition.
 | **@required**     | `bool`        | `*`                       | Whether a field is required |
 | **@options**      | `array`       | `*`                       | Options for this field, like mimetypes or select options |
 
-### Example
+### Example 1: Text string
 
 ```javascript
 {
@@ -170,6 +212,53 @@ Input rules are defined as meta values in the field definition.
         "@type": "Text",
         "@required": true,
         "@max": 200
+    }
+}
+```
+
+### Example 2: Dropdown selector
+
+```javascript
+{
+    "options": {
+        "@type": "Enumeration",
+        "@max": 1,
+        "@options": [
+            {
+                "@name": "One",
+                "@value": 1
+            },
+            {
+                "@name": "Two",
+                "@value": 2
+            }
+        ]
+    }
+}
+```
+
+### Example 2: Dropdown selector (multiple)
+
+```javascript
+{
+    "options": {
+        "@type": "Enumeration",
+        "@min": 2,
+        "@max": 3
+        "@options": [
+            {
+                "@name": "One",
+                "@value": 1
+            },
+            {
+                "@name": "Two",
+                "@value": 2
+            },
+            {
+                "@name": "Three",
+                "@value": 3
+            }
+        ]
     }
 }
 ```

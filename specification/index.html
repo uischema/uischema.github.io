@@ -111,7 +111,7 @@
 <td>A structured set of arbitrary values</td>
 </tr>
 <tr>
-<td><strong>@i18n</strong></td>
+<td><strong>@i18n</strong> or <strong>@l10n</strong></td>
 <td><code>object</code></td>
 <td>Translations for field names</td>
 </tr>
@@ -147,23 +147,38 @@
 </tr>
 </tbody></table>
 <h3 id="translations">Translations</h3>
-<p>Translations can be provided for field labels. They are commonly stored in a folder <code>/i18n/[language]/[type].json</code> and appended to the schema upon export.</p>
-<p>Example of the exported output:</p>
+<p>Translations can be provided for field labels. They are commonly stored in the <strong>@i18n</strong> or <strong>@l10n</strong> variable, or in a folder <code>/i18n/[locale]/[type].json</code> and appended to the schema upon export.</p>
+<p>Example schema and translation:</p>
 <pre><code class="language-javascript">{
     &quot;@context&quot;: &quot;http://uischema.org&quot;,
     &quot;@type&quot;: &quot;Feature&quot;,
     &quot;image&quot;: &quot;ImageObject&quot;,
     &quot;@i18n&quot;: {
-        &quot;@name&quot;: &quot;Feature&quot;,
-        &quot;@description&quot;: &quot;An element for featuring other content&quot;,
-        &quot;image&quot;: {
-            &quot;@name&quot;: &quot;Image&quot;,
-            &quot;@description&quot;: &quot;The main image&quot;
+        &quot;en&quot;: {
+            &quot;@name&quot;: &quot;Feature&quot;,
+            &quot;@description&quot;: &quot;An element for featuring other content&quot;,
+            &quot;image&quot;: {
+                &quot;@name&quot;: &quot;Image&quot;,
+                &quot;@description&quot;: &quot;The main image&quot;
+            }
         }
     }
 }</code></pre>
+<p>The above would look like this after being compiled with a translation:</p>
+<pre><code class="language-javascript">{
+    &quot;@context&quot;: &quot;http://uischema.org&quot;,
+    &quot;@type&quot;: &quot;Feature&quot;,
+    &quot;@name&quot;: &quot;Feature&quot;,
+    &quot;@description&quot;: &quot;An element for featuring other content&quot;,
+    &quot;image&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;@name&quot;: &quot;Image&quot;,
+        &quot;@description&quot;: &quot;The main image&quot;
+    }
+}</code></pre>
+<p>If localisation support is not relevant, the <code>@name</code> and <code>@description</code> fields can just be typed into the schema itself.</p>
 <h2 id="data-types">Data types</h2>
-<p>Apart from the types described below, input field can also refer to other schemas.</p>
+<p>Apart from the types described below, fields can also refer to other schemas.</p>
 <h3 id="common-schemaorg-types">Common schema.org types</h3>
 <p>Any <a href="https://schema.org/DataType">schema.org</a> type can be used, here are some common cases:</p>
 <table>
@@ -280,15 +295,33 @@
 <pre><code class="language-javascript">{
     &quot;layout&quot; {
         &quot;@type&quot;: &quot;Enumeration&quot;,
+        &quot;@max&quot;: 1
         &quot;@options&quot;: [ &quot;left&quot;, &quot;right&quot; ]
     },
     &quot;@i18n&quot;: {
         &quot;en&quot;: {
             &quot;layout&quot;: {
                 &quot;@name&quot;: &quot;Layout&quot;,
-                &quot;@options&quot;: [ &quot;Left aligned&quot;, &quot;Right aligned ]
+                &quot;@options&quot;: [ &quot;Left aligned&quot;, &quot;Right aligned&quot; ]
             }
         }
+    }
+}</code></pre>
+<p>The field descriptions can also be &quot;baked in&quot;, as explained in the &quot;translations&quot; section above:</p>
+<pre><code class="language-javascript">{
+    &quot;layout&quot; {
+        &quot;@type&quot;: &quot;Enumeration&quot;,
+        &quot;@max&quot;: 1
+        &quot;@options&quot;: [
+            {
+                &quot;@name&quot;: &quot;Left aligned&quot;,
+                &quot;@value&quot;: &quot;left&quot;
+            },
+            {
+                &quot;@name&quot;: &quot;Right aligned&quot;,
+                &quot;@value&quot;: &quot;right&quot;
+            }
+        ]
     }
 }</code></pre>
 <h2 id="rules">Rules</h2>
@@ -327,12 +360,51 @@
 <td>Options for this field, like mimetypes or select options</td>
 </tr>
 </tbody></table>
-<h3 id="example">Example</h3>
+<h3 id="example-1-text-string">Example 1: Text string</h3>
 <pre><code class="language-javascript">{
     &quot;heading&quot;: {
         &quot;@type&quot;: &quot;Text&quot;,
         &quot;@required&quot;: true,
         &quot;@max&quot;: 200
+    }
+}</code></pre>
+<h3 id="example-2-dropdown-selector">Example 2: Dropdown selector</h3>
+<pre><code class="language-javascript">{
+    &quot;options&quot;: {
+        &quot;@type&quot;: &quot;Enumeration&quot;,
+        &quot;@max&quot;: 1,
+        &quot;@options&quot;: [
+            {
+                &quot;@name&quot;: &quot;One&quot;,
+                &quot;@value&quot;: 1
+            },
+            {
+                &quot;@name&quot;: &quot;Two&quot;,
+                &quot;@value&quot;: 2
+            }
+        ]
+    }
+}</code></pre>
+<h3 id="example-2-dropdown-selector-multiple">Example 2: Dropdown selector (multiple)</h3>
+<pre><code class="language-javascript">{
+    &quot;options&quot;: {
+        &quot;@type&quot;: &quot;Enumeration&quot;,
+        &quot;@min&quot;: 2,
+        &quot;@max&quot;: 3
+        &quot;@options&quot;: [
+            {
+                &quot;@name&quot;: &quot;One&quot;,
+                &quot;@value&quot;: 1
+            },
+            {
+                &quot;@name&quot;: &quot;Two&quot;,
+                &quot;@value&quot;: 2
+            },
+            {
+                &quot;@name&quot;: &quot;Three&quot;,
+                &quot;@value&quot;: 3
+            }
+        ]
     }
 }</code></pre>
 
