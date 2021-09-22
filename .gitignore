@@ -1,9 +1,3 @@
-_site/*
-
-_src/app/node_modules/*
-_src/custom/*
-_src/.env
-
 *.swp
 *.swo
-.sass-cache
+*.html

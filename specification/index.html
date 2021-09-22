@@ -1,82 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Specification</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>uischema.org</title>
+        <style type="text/css">
+            body {
+                margin: 3rem auto;
+                max-width: 60rem;
+                width: calc(100% - 4rem);
+                line-height: 1.6;
+                font-size: 16px;
+                color: #444;
+            }
 
-        <meta name="description" content="A full description of the UI schema internals">
-        
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            h1, h2, h3 {
+                line-height:1.2;
+            }
 
-<link rel="icon" href="/img/logo.svg">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+            nav {
+                display: flex;
+                margin-bottom: 3rem;
+            }
+                nav a {
+                    margin-left: 0.5rem;
+                }
+
+                nav a:first-child {
+                    flex-grow: 1;
+                    margin-left: 0;
+                }
+
+            code {
+                color: dodgerblue;
+            }
+
+            pre {
+                background-color: lightgrey;
+                padding: 1rem;
+                overflow: auto;
+            }
+                pre code {
+                    color: dimgrey;
+                }
+
+            table th {
+                text-align: left;
+                padding-right: 1rem;
+            }
+
+            table td {
+                padding-right: 1rem;
+            }
+        </style>
     </head>
-    <body class="site-page">
-<nav class="site-nav">
-    <label class="site-nav__toggle" for="site-nav__toggle"></label>
-    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
-   
-    <div class="site-nav__container">
-            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle">
-            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle">
+    <body>
+        <nav>
+            <a href="/">uischema.org</a>
+            <a href="/examples">Examples</a>
+            <a href="/specification">Specification</a>
+        </nav>
 
-        <a href="/" class="site-nav__logo">
-            <img class="site-nav__logo__image" src="/img/logo.svg">
-            <p class="site-nav__logo__title">uischema.org</p>
-        </a>
-        
-        <div class="site-nav__pages">
-            <a class="site-nav__page" href="/specification">Specification</a>
-            <a class="site-nav__page" href="/examples">Examples</a>
-            <a class="site-nav__page" href="/license">License</a>
-            <a class="site-nav__page" href="/builder">Page builder</a>
-        </div>
-
-        <h4 class="site-nav__title">Schemas</h4>
-        <div class="site-nav__topics">
-                <label for="topic-0" class="site-nav__topics__topic">media</label>
-                <label for="topic-1" class="site-nav__topics__topic">text</label>
-        </div>
-        <div class="site-nav__items">
-                <a href="/Feature" data-ui-schema="Feature" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Feature</p>
-                    <p class="site-nav__item__description">An element for featuring other content</p>
-                </a>
-                <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Feature chain</p>
-                    <p class="site-nav__item__description">A chain of features</p>
-                </a>
-                <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Feature collection</p>
-                    <p class="site-nav__item__description">A collection of features</p>
-                </a>
-                <a href="/FeatureRail" data-ui-schema="FeatureRail" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Feature rail</p>
-                    <p class="site-nav__item__description">A sliding rail of featured items</p>
-                </a>
-                <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Hero</p>
-                    <p class="site-nav__item__description">A large element with an image background</p>
-                </a>
-                <a href="/Highlight" data-ui-schema="Highlight" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Highlight</p>
-                    <p class="site-nav__item__description">Section element for featuring other content</p>
-                </a>
-                <a href="/MediaCollection" data-ui-schema="MediaCollection" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Media Collection</p>
-                    <p class="site-nav__item__description"></p>
-                </a>
-                <a href="/WebPageElement" data-ui-schema="WebPageElement" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Web Page Element</p>
-                    <p class="site-nav__item__description">A module on a web page (same as http:&#x2F;&#x2F;schema.org&#x2F;WebPageElement)</p>
-                </a>
-        </div>
-    </div>
-</nav>
-            
-        <main class="site-main">
-            <div class="ui-container">
-                <h1 id="specification">Specification</h1>
+        <h1 id="specification">Specification</h1>
 <p>A full description of the UI schema internals</p>
 <h2 id="principles">Principles</h2>
 <ul>
@@ -163,7 +148,8 @@
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
 <p>The above would look like this after being compiled with a translation:</p>
 <pre><code class="language-javascript">{
     &quot;@context&quot;: &quot;http://uischema.org&quot;,
@@ -175,7 +161,8 @@
         &quot;@name&quot;: &quot;Image&quot;,
         &quot;@description&quot;: &quot;The main image&quot;
     }
-}</code></pre>
+}
+</code></pre>
 <p>If localisation support is not relevant, the <code>@name</code> and <code>@description</code> fields can just be typed into the schema itself.</p>
 <h2 id="data-types">Data types</h2>
 <p>Apart from the types described below, fields can also refer to other schemas.</p>
@@ -269,19 +256,22 @@
     &quot;options&quot;: {
         &quot;isHeader&quot;: &quot;Boolean&quot;
     }
-}</code></pre>
+}
+</code></pre>
 <p>The type can optionally be explicitly declared:</p>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
         &quot;@type&quot;: &quot;StructuredValue&quot;,
         &quot;isHeader&quot;: &quot;Boolean&quot;
     }
-}</code></pre>
+}
+</code></pre>
 <h3 id="arrays-itemlist">Arrays (ItemList)</h3>
 <p>Arrays can be declared as an implicit JSON array, indicating only which value types are allowed inside it:</p>
 <pre><code class="language-javascript">{
     &quot;items&quot;: [ &quot;Feature&quot; ]
-}</code></pre>
+}
+</code></pre>
 <p>They can also be declared as an explicit block with rules:</p>
 <pre><code class="language-javascript">{
     &quot;items&quot;: {
@@ -289,7 +279,8 @@
         &quot;@options&quot;: [ &quot;Hero&quot;, &quot;Highlight&quot; ],
         &quot;@max&quot;: 4
     }
-}</code></pre>
+}
+</code></pre>
 <h3 id="selectsdropdowns-enumeration">Selects/dropdowns (Enumeration)</h3>
 <p>Dropdowns can be declared explicitly with or without translation strings:</p>
 <pre><code class="language-javascript">{
@@ -306,7 +297,8 @@
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
 <p>The field descriptions can also be &quot;baked in&quot;, as explained in the &quot;translations&quot; section above:</p>
 <pre><code class="language-javascript">{
     &quot;layout&quot; {
@@ -323,7 +315,8 @@
             }
         ]
     }
-}</code></pre>
+}
+</code></pre>
 <h2 id="rules">Rules</h2>
 <p>Input rules are defined as meta values in the field definition.</p>
 <table>
@@ -367,7 +360,8 @@
         &quot;@required&quot;: true,
         &quot;@max&quot;: 200
     }
-}</code></pre>
+}
+</code></pre>
 <h3 id="example-2-dropdown-selector">Example 2: Dropdown selector</h3>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
@@ -384,7 +378,8 @@
             }
         ]
     }
-}</code></pre>
+}
+</code></pre>
 <h3 id="example-2-dropdown-selector-multiple">Example 2: Dropdown selector (multiple)</h3>
 <pre><code class="language-javascript">{
     &quot;options&quot;: {
@@ -406,16 +401,8 @@
             }
         ]
     }
-}</code></pre>
+}
+</code></pre>
 
-            </div>
-        </main>
-
-<footer class="site-footer">
-
-</footer>
-        
-        <script type="text/javascript" src="/js/mustache/index.js"></script>
-        <script type="text/javascript" src="/js/script.js"></script>
     </body>
 </html>

@@ -1,82 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Examples</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>uischema.org</title>
+        <style type="text/css">
+            body {
+                margin: 3rem auto;
+                max-width: 60rem;
+                width: calc(100% - 4rem);
+                line-height: 1.6;
+                font-size: 16px;
+                color: #444;
+            }
 
-        <meta name="description" content="This page provides a few examples on how to render UI schemas without using any libraries">
-        
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            h1, h2, h3 {
+                line-height:1.2;
+            }
 
-<link rel="icon" href="/img/logo.svg">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+            nav {
+                display: flex;
+                margin-bottom: 3rem;
+            }
+                nav a {
+                    margin-left: 0.5rem;
+                }
+
+                nav a:first-child {
+                    flex-grow: 1;
+                    margin-left: 0;
+                }
+
+            code {
+                color: dodgerblue;
+            }
+
+            pre {
+                background-color: lightgrey;
+                padding: 1rem;
+                overflow: auto;
+            }
+                pre code {
+                    color: dimgrey;
+                }
+
+            table th {
+                text-align: left;
+                padding-right: 1rem;
+            }
+
+            table td {
+                padding-right: 1rem;
+            }
+        </style>
     </head>
-    <body class="site-page">
-<nav class="site-nav">
-    <label class="site-nav__toggle" for="site-nav__toggle"></label>
-    <input class="site-nav__toggle__checkbox" id="site-nav__toggle" type="checkbox">
-   
-    <div class="site-nav__container">
-            <input checked type="checkbox" id="topic-0" class="site-nav__topics__toggle">
-            <input checked type="checkbox" id="topic-1" class="site-nav__topics__toggle">
+    <body>
+        <nav>
+            <a href="/">uischema.org</a>
+            <a href="/examples">Examples</a>
+            <a href="/specification">Specification</a>
+        </nav>
 
-        <a href="/" class="site-nav__logo">
-            <img class="site-nav__logo__image" src="/img/logo.svg">
-            <p class="site-nav__logo__title">uischema.org</p>
-        </a>
-        
-        <div class="site-nav__pages">
-            <a class="site-nav__page" href="/specification">Specification</a>
-            <a class="site-nav__page" href="/examples">Examples</a>
-            <a class="site-nav__page" href="/license">License</a>
-            <a class="site-nav__page" href="/builder">Page builder</a>
-        </div>
-
-        <h4 class="site-nav__title">Schemas</h4>
-        <div class="site-nav__topics">
-                <label for="topic-0" class="site-nav__topics__topic">media</label>
-                <label for="topic-1" class="site-nav__topics__topic">text</label>
-        </div>
-        <div class="site-nav__items">
-                <a href="/Feature" data-ui-schema="Feature" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Feature</p>
-                    <p class="site-nav__item__description">An element for featuring other content</p>
-                </a>
-                <a href="/FeatureChain" data-ui-schema="FeatureChain" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Feature chain</p>
-                    <p class="site-nav__item__description">A chain of features</p>
-                </a>
-                <a href="/FeatureCollection" data-ui-schema="FeatureCollection" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Feature collection</p>
-                    <p class="site-nav__item__description">A collection of features</p>
-                </a>
-                <a href="/FeatureRail" data-ui-schema="FeatureRail" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Feature rail</p>
-                    <p class="site-nav__item__description">A sliding rail of featured items</p>
-                </a>
-                <a href="/Hero" data-ui-schema="Hero" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Hero</p>
-                    <p class="site-nav__item__description">A large element with an image background</p>
-                </a>
-                <a href="/Highlight" data-ui-schema="Highlight" class="site-nav__item topic-0 topic-1">
-                    <p class="site-nav__item__name">Highlight</p>
-                    <p class="site-nav__item__description">Section element for featuring other content</p>
-                </a>
-                <a href="/MediaCollection" data-ui-schema="MediaCollection" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Media Collection</p>
-                    <p class="site-nav__item__description"></p>
-                </a>
-                <a href="/WebPageElement" data-ui-schema="WebPageElement" class="site-nav__item no-topic">
-                    <p class="site-nav__item__name">Web Page Element</p>
-                    <p class="site-nav__item__description">A module on a web page (same as http:&#x2F;&#x2F;schema.org&#x2F;WebPageElement)</p>
-                </a>
-        </div>
-    </div>
-</nav>
-            
-        <main class="site-main">
-            <div class="ui-container">
-                <h1 id="examples">Examples</h1>
+        <h1 id="examples">Examples</h1>
 <p>This page provides a few examples on how to render UI schemas without using any libraries</p>
 <h2 id="schema-example">Schema example</h2>
 <pre><code class="language-javascript">{
@@ -112,7 +97,8 @@
             &quot;max&quot;: 10
         }
     }
-}</code></pre>
+}
+</code></pre>
 <h2 id="website-examples">Website examples</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -134,7 +120,8 @@ $mustache = new Mustache_Engine([
 // Render
 echo $mustache-&gt;render($data[&#39;@type&#39;], $page);
 
-?&gt;</code></pre>
+?&gt;
+</code></pre>
 <h3 id="nodejs">Node.js</h3>
 <p>(using <a href="https://github.com/janl/mustache.js">mustache</a>):</p>
 <pre><code class="language-javascript">const FileSystem = require(&#39;fs&#39;);
@@ -192,7 +179,7 @@ async function serve(req, res) {
             result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, &#39;css/uischema.org.css&#39;), &#39;utf8&#39;);
             res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/css&#39;});
             break;
-
+        
         // Render a page
         default:
             let data = await getPage(&#39;https://cms.example.com/page&#39;);
@@ -207,7 +194,8 @@ async function serve(req, res) {
     res.end(result);
 }
 
-HTTP.createServer(serve).listen(4000);</code></pre>
+HTTP.createServer(serve).listen(4000);
+</code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>(using <a href="https://github.com/mustache/mustache">mustache</a>):</p>
 <pre><code class="language-ruby">require &#39;socket&#39;
@@ -238,7 +226,7 @@ loop do
         file_path = __dir__ + &#39;/css/uischema.org.css&#39;
 
         response = File.read(file_path)
-
+    
     # Render a page
     else
         header += &quot;Content-Type: text/html\r\n&quot;
@@ -261,16 +249,8 @@ loop do
     request.puts response
 
     request.close
-end</code></pre>
+end
+</code></pre>
 
-            </div>
-        </main>
-
-<footer class="site-footer">
-
-</footer>
-        
-        <script type="text/javascript" src="/js/mustache/index.js"></script>
-        <script type="text/javascript" src="/js/script.js"></script>
     </body>
 </html>

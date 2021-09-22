@@ -1,0 +1,22 @@
+{
+  "name": "uischema.org",
+  "version": "1.0.0",
+  "description": "A portable standard for web modules",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uischema/uischema.org.git"
+  },
+  "author": "Jeppe Zapp",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/uischema/uischema.org/issues"
+  },
+  "homepage": "https://github.com/uischema/uischema.org#readme",
+  "dependencies": {
+    "marked": "^3.0.4"
+  }
+}
