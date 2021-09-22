@@ -81,25 +81,16 @@
 <p>Reduce the amount of markup work needed by keeping a handy collection of templates that can be used anywhere.</p>
 <h2 id="how">How?</h2>
 <h3 id="cms">CMS</h3>
-<p>To use schemas in a CMS, you can either write your own or use the <a href="https://github.com/uischema/schemas">suggested schemas</a>. The following CMS&#39;es are officially supported:</p>
+<p>The following CMS&#39;es are officially supported:</p>
 <ul>
 <li><a href="https://hashbrowncms.org">HashBrown</a> has built-in support (schemas go in the <code>/plugins/YOUR_PLUGIN/schemas/</code> folder)</li>
 <li><a href="https://drupal.org">Drupal</a> has a <a href="https://www.drupal.org/project/uischema">module</a> (schemas go in the <code>/sites/YOUR_SITE/uischema</code> folder)</li>
 </ul>
 <h3 id="website">Website</h3>
-<p>For websites, you need the css (<a href="https://github.com/uischema/css">suggestion</a>) and templates (<a href="https://github.com/uischema/templates">suggestion</a>) of your modules. Then just request the content from your CMS and render it (we suggest using <a href="https://mustache.github.io">mustache</a>). The only remaining work in most cases will be to set up site navigation.</p>
+<p>For websites, you need the css and templates of your modules. Then just request the content from your CMS and render it (we suggest using <a href="https://mustache.github.io">mustache</a>). The only remaining work in most cases will be to set up site navigation.</p>
 <p>Check out some examples <a href="https://uischema.org/examples">here</a></p>
 <h3 id="creating-schemas">Creating schemas</h3>
 <p>To create your own schemas, please check out the <a href="https://uischema.org/specification">specification</a>.</p>
-<p>You can also host a site like this one to catalogue your schemas and templates:</p>
-<ul>
-<li>Clone this website&#39;s repository: <code>git clone https://github.com/uischema/uischema.org.git</code></li>
-<li>Add your schemas to the <code>/_src/custom/schemas</code> folder (<a href="https://github.com/uischema/schemas">suggested schemas</a>)</li>
-<li>Add your templates to the <code>/_src/custom/templates</code> folder (<a href="https://github.com/uischema/templates">suggested templates</a>)</li>
-<li>Add your stylesheets to the <code>/_src/custom/css</code> folder (<a href="https://github.com/uischema/css">suggested stylesheets</a>)</li>
-<li>Either run the <code>/_src/generate.sh</code> script to generate the static site</li>
-<li>Or run the <code>/_src/serve.sh</code> script to start a server</li>
-</ul>
 
     </body>
 </html>
