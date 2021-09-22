@@ -125,8 +125,8 @@ async function serve(req, res) {
 
     switch(req.url) {
         // Make sure the stylesheet is served properly
-        case '/css/uischema.org.css':
-            result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, 'css/uischema.org.css'), 'utf8');
+        case '/css/style.css':
+            result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, 'css/style.css'), 'utf8');
             res.writeHead(200, {'Content-Type': 'text/css'});
             break;
         
@@ -134,7 +134,7 @@ async function serve(req, res) {
         default:
             let data = await getPage('https://cms.example.com/page');
 
-            result += '<!DOCTYPE html><link rel="stylesheet" type="text/css" href="/css/uischema.org.css">';
+            result += '<!DOCTYPE html><link rel="stylesheet" type="text/css" href="/css/style.css">';
             result += Mustache.render(templates[data['@type']], data, templates);
 
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -174,10 +174,10 @@ loop do
 
     case path
     # Make sure the stylesheet is served properly
-    when '/css/uischema.org.css'
+    when '/css/style.css'
         header += "Content-Type: text/css\r\n"
 
-        file_path = __dir__ + '/css/uischema.org.css'
+        file_path = __dir__ + '/css/style.css'
 
         response = File.read(file_path)
     
@@ -190,7 +190,7 @@ loop do
 
         template = File.read(__dir__ + '/templates/' + data['@type'] + '.tpl')
 
-        response = '<!DOCTYPE html><link rel="stylesheet" type="text/css" href="/css/uischema.org.css">';
+        response = '<!DOCTYPE html><link rel="stylesheet" type="text/css" href="/css/style.css">';
         response += mustache.render(template, data)
     end
 

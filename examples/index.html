@@ -175,8 +175,8 @@ async function serve(req, res) {
 
     switch(req.url) {
         // Make sure the stylesheet is served properly
-        case &#39;/css/uischema.org.css&#39;:
-            result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, &#39;css/uischema.org.css&#39;), &#39;utf8&#39;);
+        case &#39;/css/style.css&#39;:
+            result = await Util.promisify(FileSystem.readFile)(Path.join(__dirname, &#39;css/style.css&#39;), &#39;utf8&#39;);
             res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/css&#39;});
             break;
         
@@ -184,7 +184,7 @@ async function serve(req, res) {
         default:
             let data = await getPage(&#39;https://cms.example.com/page&#39;);
 
-            result += &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/uischema.org.css&quot;&gt;&#39;;
+            result += &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/style.css&quot;&gt;&#39;;
             result += Mustache.render(templates[data[&#39;@type&#39;]], data, templates);
 
             res.writeHead(200, {&#39;Content-Type&#39;: &#39;text/html&#39;});
@@ -220,10 +220,10 @@ loop do
 
     case path
     # Make sure the stylesheet is served properly
-    when &#39;/css/uischema.org.css&#39;
+    when &#39;/css/style.css&#39;
         header += &quot;Content-Type: text/css\r\n&quot;
 
-        file_path = __dir__ + &#39;/css/uischema.org.css&#39;
+        file_path = __dir__ + &#39;/css/style.css&#39;
 
         response = File.read(file_path)
     
@@ -236,7 +236,7 @@ loop do
 
         template = File.read(__dir__ + &#39;/templates/&#39; + data[&#39;@type&#39;] + &#39;.tpl&#39;)
 
-        response = &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/uischema.org.css&quot;&gt;&#39;;
+        response = &#39;&lt;!DOCTYPE html&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/style.css&quot;&gt;&#39;;
         response += mustache.render(template, data)
     end
 
