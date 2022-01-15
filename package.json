@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/uischema/uischema.org#readme",
   "dependencies": {
-    "marked": "^3.0.4"
+    "marked": "^4.0.10"
   }
 }
